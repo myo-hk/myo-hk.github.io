@@ -637,9 +637,9 @@ Expected: 12 passed.
 python3 scripts/add_posthog.py --test | tail -20
 ```
 
-Expected: 430 files scanned (421 blog articles + `blog/index.html` + 7 root pages + `presentations/index.html`), 430 injected, 0 errors. Confirm the byte delta per file is roughly +3.5 KB and identical across files.
+Expected: 429 files scanned (421 files matching `blog/*.html`, which already includes `blog/index.html`, + 7 root pages + `presentations/index.html`), 429 injected, 0 errors. Confirm the byte delta per file is roughly +3.5 KB and identical across files.
 
-If the count is not 430, stop and reconcile the arithmetic before continuing.
+If the count is not 429, stop and reconcile the arithmetic before continuing. Note the 429, not 430: `blog/*.html` already matches `blog/index.html`, so counting both double-counts one file.
 
 **Step 6: Commit**
 
@@ -902,7 +902,7 @@ git commit -m "feat(analytics): add PostHog CSP allowlist script"
 ## Task 4: Apply to all static pages and verify no regression
 
 **Files:**
-- Modify: 430 HTML files (via Task 2 script)
+- Modify: 429 HTML files (via Task 2 script)
 - Modify: 4 HTML files (via Task 3 script)
 - Create: `tests/posthog.spec.ts`
 
@@ -1659,7 +1659,7 @@ Then open **Activity → Recordings** and confirm at least one recording exists.
 
 Report to the user:
 - Project id and token location (`scripts/posthog_config.py`)
-- Files changed: 430 static pages, 4 CSP patches, 40 presentations
+- Files changed: 429 static pages, 4 CSP patches, 40 presentations
 - Live-event confirmation for `click_whatsapp`
 - Recording confirmation
 - The late-load pageview trade-off, restated so it is a documented decision rather than a future surprise
