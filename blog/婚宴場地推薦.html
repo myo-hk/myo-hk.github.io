@@ -352,6 +352,97 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta name="apple-mobile-web-app-title" content="My O!">
 <link rel="apple-touch-icon" href="../image/icon-192x192.png">
+<!-- PostHog: lazy load on first interaction or 3000ms. See scripts/add_posthog.py -->
+<script>
+(function () {
+  if (window.__myoPostHog) return;
+  window.__myoPostHog = true;
+  var KEY = "phc_Bh9JEckmeRh3GGbBNyV45tj44L6NqxmeBqAxRPRtdzK5";
+  var API_HOST = "https://us.i.posthog.com";
+  var DEFAULTS = "2026-05-30";
+  var queue = [];
+  var loaded = false;
+  var injected = false;
+
+  function client() {
+    var c = window.posthog;
+    return c && typeof c.capture === "function" ? c : null;
+  }
+
+  function enqueue(name, props) {
+    if (loaded) {
+      var c = client();
+      if (c) c.capture(name, props);
+      return;
+    }
+    if (queue.length < 50) queue.push([name, props]);
+  }
+
+  function flush() {
+    var c = client();
+    if (!loaded || !c) return;
+    while (queue.length) {
+      var item = queue.shift();
+      c.capture(item[0], item[1]);
+    }
+  }
+
+  function start() {
+    if (injected) return;
+    injected = true;
+    var s = document.createElement("script");
+    s.id = "myo-posthog-script";
+    s.type = "text/javascript";
+    s.crossOrigin = "anonymous";
+    s.async = true;
+    s.src = API_HOST.replace(".i.posthog.com", "-assets.i.posthog.com") + "/static/array.js";
+    s.onload = function () {
+      var c = client();
+      if (!c) return;
+      c.init(KEY, { api_host: API_HOST, defaults: DEFAULTS, capture_pageview: false, autocapture: true });
+      loaded = true;
+      c.capture("$pageview", {
+        $current_url: window.location.href,
+        $referrer: document.referrer
+      });
+      flush();
+    };
+    document.head.appendChild(s);
+  }
+
+  // Bridge existing gtag('event', name, params) calls into PostHog.
+  // The original still runs first, so GA4 behaviour is unchanged.
+  if (typeof window.gtag === "function") {
+    var original = window.gtag;
+    window.gtag = function () {
+      var args = Array.prototype.slice.call(arguments);
+      original.apply(window, args);
+      if (args[0] !== "event" || typeof args[1] !== "string") return;
+      var p = args[2] || {};
+      var props = {};
+      if (p.event_category !== undefined) props.category = p.event_category;
+      if (p.event_label !== undefined) props.label = p.event_label;
+      if (p.value !== undefined) props.value = p.value;
+      if (p.non_interaction !== undefined) props.non_interaction = p.non_interaction;
+      enqueue(args[1], props);
+      if (!loaded) start();
+    };
+  }
+
+  function onFirstInteraction() {
+    start();
+    for (var i = 0; i < ["touchstart", "click", "scroll", "keydown", "mouseover"].length; i++) {
+      document.removeEventListener(["touchstart", "click", "scroll", "keydown", "mouseover"][i], onFirstInteraction, true);
+    }
+  }
+
+  var TRIGGERS = ["touchstart", "click", "scroll", "keydown", "mouseover"];
+  for (var j = 0; j < TRIGGERS.length; j++) {
+    document.addEventListener(TRIGGERS[j], onFirstInteraction, { capture: true, passive: true });
+  }
+  setTimeout(start, 3000);
+})();
+</script>
 </head>
 <body>
     <nav class="bg-white p-4 shadow-md sticky top-0 z-50">

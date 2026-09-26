@@ -32,7 +32,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My O! 專屬結婚證書套：設計師級證書套訂製 | 香港</title>
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data: https:; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://cdnjs.cloudflare.com https://unpkg.com https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com https://unpkg.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; connect-src 'self' https://www.google-analytics.com https://static.cloudflareinsights.com https://cloudflareinsights.com; frame-src 'none'; object-src 'none'; base-uri 'self';">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data: https:; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://cdnjs.cloudflare.com https://unpkg.com https://static.cloudflareinsights.com https://*.posthog.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com https://unpkg.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; connect-src 'self' https://www.google-analytics.com https://static.cloudflareinsights.com https://cloudflareinsights.com https://*.posthog.com; frame-src 'none'; object-src 'none'; base-uri 'self'; worker-src 'self' blob: data:;">
     <meta name="description" content="My O! 為您的結婚證書打造設計師級專屬證書套，採用熱轉印工藝印上新人名字與結婚日期。多款顏色材質可選，米色亞麻布與藍色磨砂珠光，讓愛情見證永恆閃耀。">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://myo-makeyourown.pages.dev/">
@@ -234,6 +234,97 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
     <meta name="apple-mobile-web-app-title" content="My O!">
     <link rel="apple-touch-icon" href="/image/icon-192x192.png">
+<!-- PostHog: lazy load on first interaction or 3000ms. See scripts/add_posthog.py -->
+<script>
+(function () {
+  if (window.__myoPostHog) return;
+  window.__myoPostHog = true;
+  var KEY = "phc_Bh9JEckmeRh3GGbBNyV45tj44L6NqxmeBqAxRPRtdzK5";
+  var API_HOST = "https://us.i.posthog.com";
+  var DEFAULTS = "2026-05-30";
+  var queue = [];
+  var loaded = false;
+  var injected = false;
+
+  function client() {
+    var c = window.posthog;
+    return c && typeof c.capture === "function" ? c : null;
+  }
+
+  function enqueue(name, props) {
+    if (loaded) {
+      var c = client();
+      if (c) c.capture(name, props);
+      return;
+    }
+    if (queue.length < 50) queue.push([name, props]);
+  }
+
+  function flush() {
+    var c = client();
+    if (!loaded || !c) return;
+    while (queue.length) {
+      var item = queue.shift();
+      c.capture(item[0], item[1]);
+    }
+  }
+
+  function start() {
+    if (injected) return;
+    injected = true;
+    var s = document.createElement("script");
+    s.id = "myo-posthog-script";
+    s.type = "text/javascript";
+    s.crossOrigin = "anonymous";
+    s.async = true;
+    s.src = API_HOST.replace(".i.posthog.com", "-assets.i.posthog.com") + "/static/array.js";
+    s.onload = function () {
+      var c = client();
+      if (!c) return;
+      c.init(KEY, { api_host: API_HOST, defaults: DEFAULTS, capture_pageview: false, autocapture: true });
+      loaded = true;
+      c.capture("$pageview", {
+        $current_url: window.location.href,
+        $referrer: document.referrer
+      });
+      flush();
+    };
+    document.head.appendChild(s);
+  }
+
+  // Bridge existing gtag('event', name, params) calls into PostHog.
+  // The original still runs first, so GA4 behaviour is unchanged.
+  if (typeof window.gtag === "function") {
+    var original = window.gtag;
+    window.gtag = function () {
+      var args = Array.prototype.slice.call(arguments);
+      original.apply(window, args);
+      if (args[0] !== "event" || typeof args[1] !== "string") return;
+      var p = args[2] || {};
+      var props = {};
+      if (p.event_category !== undefined) props.category = p.event_category;
+      if (p.event_label !== undefined) props.label = p.event_label;
+      if (p.value !== undefined) props.value = p.value;
+      if (p.non_interaction !== undefined) props.non_interaction = p.non_interaction;
+      enqueue(args[1], props);
+      if (!loaded) start();
+    };
+  }
+
+  function onFirstInteraction() {
+    start();
+    for (var i = 0; i < ["touchstart", "click", "scroll", "keydown", "mouseover"].length; i++) {
+      document.removeEventListener(["touchstart", "click", "scroll", "keydown", "mouseover"][i], onFirstInteraction, true);
+    }
+  }
+
+  var TRIGGERS = ["touchstart", "click", "scroll", "keydown", "mouseover"];
+  for (var j = 0; j < TRIGGERS.length; j++) {
+    document.addEventListener(TRIGGERS[j], onFirstInteraction, { capture: true, passive: true });
+  }
+  setTimeout(start, 3000);
+})();
+</script>
 </head>
 <body>
     <nav class="bg-white p-4 shadow-md sticky top-0 z-50">
