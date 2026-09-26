@@ -2,7 +2,7 @@
 
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
-**Goal:** Install PostHog on every page of the myo-hk static site (422 blog pages, 7 root pages, 1 presentation index) and all 40 Vite/React presentations, with autocapture, heatmaps, session replay, exception capture, console log capture, and Web Vitals — while leaving Google Analytics 4 fully intact.
+**Goal:** Install PostHog on every page of the myo-hk static site (429 pages: the 421 files matching `blog/*.html` — which already includes `blog/index.html` — plus 7 root pages plus the presentation index) and all 40 Vite/React presentations, with autocapture, heatmaps, session replay, exception capture, console log capture, and Web Vitals — while leaving Google Analytics 4 fully intact.
 
 **Architecture:** Three independent layers, each with its own test suite and its own commit.
 
