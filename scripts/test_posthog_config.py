@@ -40,3 +40,37 @@ class TestPostHogConfig:
         """scroll_depth fires on scroll; social clicks fire on click."""
         assert "click" in posthog_config.TRIGGER_EVENTS
         assert "scroll" in posthog_config.TRIGGER_EVENTS
+
+    def test_load_delay_ms(self):
+        """Downstream scripts gate the lazy-load timer on this value."""
+        assert posthog_config.LOAD_DELAY_MS == 3000
+
+    def test_max_queue(self):
+        """Downstream scripts cap the gtag event buffer at this value."""
+        assert posthog_config.MAX_QUEUE == 50
+
+    def test_script_marker(self):
+        """Idempotency marker used by HTML injection scripts (Tasks 2/3/5)."""
+        assert posthog_config.SCRIPT_MARKER == "myo-posthog-script"
+
+    def test_guard_marker(self):
+        """Idempotency guard marker used by HTML injection scripts."""
+        assert posthog_config.GUARD_MARKER == "__myoPostHog"
+
+    def test_root_pages_exact_contents(self):
+        """Every root-level page must appear — a missing entry silently skips loader injection."""
+        assert len(posthog_config.ROOT_PAGES) == 7
+        assert posthog_config.ROOT_PAGES == [
+            "index.html",
+            "v2.html",
+            "poster.html",
+            "heic-converter.html",
+            "faq.html",
+            "privacy.html",
+            "terms.html",
+        ]
+
+    def test_html_artifacts_not_in_root_pages(self):
+        """HTML-Artifacts.html is an internal experiment — skip it, don't load it."""
+        assert "HTML-Artifacts.html" not in posthog_config.ROOT_PAGES
+        assert "HTML-Artifacts.html" in posthog_config.SKIP_FILES
