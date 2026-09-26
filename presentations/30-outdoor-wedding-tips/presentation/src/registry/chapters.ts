@@ -2,13 +2,13 @@ import type { ChapterDef } from "./types";
 
 import { Coldopen } from "../chapters/01-coldopen/Coldopen";
 import { NARRATIONS as N01 } from "../chapters/01-coldopen/narrations";
-import { Weather } from "../chapters/02-weather/weather";
+import { Weather } from "../chapters/02-weather/Weather.tsx";
 import { NARRATIONS as N02 } from "../chapters/02-weather/narrations";
-import { Deco } from "../chapters/03-deco/deco";
+import { Deco } from "../chapters/03-deco/Deco.tsx";
 import { NARRATIONS as N03 } from "../chapters/03-deco/narrations";
-import { Logistics } from "../chapters/04-logistics/logistics";
+import { Logistics } from "../chapters/04-logistics/Logistics.tsx";
 import { NARRATIONS as N04 } from "../chapters/04-logistics/narrations";
-import { Photo } from "../chapters/05-photo/photo";
+import { Photo } from "../chapters/05-photo/Photo.tsx";
 import { NARRATIONS as N05 } from "../chapters/05-photo/narrations";
 import { CTA } from "../chapters/06-cta/CTA";
 import { NARRATIONS as N06 } from "../chapters/06-cta/narrations";

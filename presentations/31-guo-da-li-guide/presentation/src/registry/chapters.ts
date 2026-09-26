@@ -2,13 +2,13 @@ import type { ChapterDef } from "./types";
 
 import { Coldopen } from "../chapters/01-coldopen/Coldopen";
 import { NARRATIONS as N01 } from "../chapters/01-coldopen/narrations";
-import { Gifts } from "../chapters/02-gifts/gifts";
+import { Gifts } from "../chapters/02-gifts/Gifts.tsx";
 import { NARRATIONS as N02 } from "../chapters/02-gifts/narrations";
-import { Process } from "../chapters/03-process/process";
+import { Process } from "../chapters/03-process/Process.tsx";
 import { NARRATIONS as N03 } from "../chapters/03-process/narrations";
-import { Modern } from "../chapters/04-modern/modern";
+import { Modern } from "../chapters/04-modern/Modern.tsx";
 import { NARRATIONS as N04 } from "../chapters/04-modern/narrations";
-import { Advice } from "../chapters/05-advice/advice";
+import { Advice } from "../chapters/05-advice/Advice.tsx";
 import { NARRATIONS as N05 } from "../chapters/05-advice/narrations";
 import { CTA } from "../chapters/06-cta/CTA";
 import { NARRATIONS as N06 } from "../chapters/06-cta/narrations";

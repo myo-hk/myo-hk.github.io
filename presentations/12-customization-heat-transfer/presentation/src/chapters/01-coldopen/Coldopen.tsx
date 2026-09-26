@@ -8,7 +8,7 @@ export function Coldopen({ step }: Props) {
     return (
       <div className="co-scene">
         <div className="co-hook">
-          <svg viewBox="0 0 80 80" class="co-hook-icon" width="80" height="80"><circle cx="40" cy="40" r="36" stroke="var(--accent)" strokeWidth="3" fill="var(--accent-soft)"/><path d="M24 40l12 12 20-20" stroke="var(--accent)" strokeWidth="4" fill="none" strokeLinecap="round" strokeLinejoin="round"/></svg>
+          <svg viewBox="0 0 80 80" className="co-hook-icon" width="80" height="80"><circle cx="40" cy="40" r="36" stroke="var(--accent)" strokeWidth="3" fill="var(--accent-soft)"/><path d="M24 40l12 12 20-20" stroke="var(--accent)" strokeWidth="4" fill="none" strokeLinecap="round" strokeLinejoin="round"/></svg>
           <h1 className="co-title">證書套熱轉印訂製</h1>
           <p className="co-sub">想訂製獨一無二嘅證書套？等我介紹熱轉印技術同訂製流程。</p>
         </div>

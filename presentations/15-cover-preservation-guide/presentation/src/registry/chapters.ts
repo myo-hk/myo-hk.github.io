@@ -2,13 +2,13 @@ import type { ChapterDef } from "./types";
 
 import { Coldopen } from "../chapters/01-coldopen/Coldopen";
 import { NARRATIONS as N01 } from "../chapters/01-coldopen/narrations";
-import { Cleaning } from "../chapters/02-cleaning/cleaning";
+import { Cleaning } from "../chapters/02-cleaning/Cleaning.tsx";
 import { NARRATIONS as N02 } from "../chapters/02-cleaning/narrations";
-import { Storage } from "../chapters/03-storage/storage";
+import { Storage } from "../chapters/03-storage/Storage.tsx";
 import { NARRATIONS as N03 } from "../chapters/03-storage/narrations";
-import { Handling } from "../chapters/04-handling/handling";
+import { Handling } from "../chapters/04-handling/Handling.tsx";
 import { NARRATIONS as N04 } from "../chapters/04-handling/narrations";
-import { Materials } from "../chapters/05-materials/materials";
+import { Materials } from "../chapters/05-materials/Materials.tsx";
 import { NARRATIONS as N05 } from "../chapters/05-materials/narrations";
 import { CTA } from "../chapters/06-cta/CTA";
 import { NARRATIONS as N06 } from "../chapters/06-cta/narrations";

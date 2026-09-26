@@ -2,13 +2,13 @@ import type { ChapterDef } from "./types";
 
 import { Coldopen } from "../chapters/01-coldopen/Coldopen";
 import { NARRATIONS as N01 } from "../chapters/01-coldopen/narrations";
-import { Traditional } from "../chapters/02-traditional/traditional";
+import { Traditional } from "../chapters/02-traditional/Traditional.tsx";
 import { NARRATIONS as N02 } from "../chapters/02-traditional/narrations";
-import { Reportage } from "../chapters/03-reportage/reportage";
+import { Reportage } from "../chapters/03-reportage/Reportage.tsx";
 import { NARRATIONS as N03 } from "../chapters/03-reportage/narrations";
-import { Fashion } from "../chapters/04-fashion/fashion";
+import { Fashion } from "../chapters/04-fashion/Fashion.tsx";
 import { NARRATIONS as N04 } from "../chapters/04-fashion/narrations";
-import { Mix } from "../chapters/05-mix/mix";
+import { Mix } from "../chapters/05-mix/Mix.tsx";
 import { NARRATIONS as N05 } from "../chapters/05-mix/narrations";
 import { CTA } from "../chapters/06-cta/CTA";
 import { NARRATIONS as N06 } from "../chapters/06-cta/narrations";

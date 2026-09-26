@@ -8,7 +8,7 @@ export function Coldopen({ step }: Props) {
     return (
       <div className="co-scene">
         <div className="co-hook">
-          <svg viewBox="0 0 80 80" class="co-hook-icon" width="80" height="80"><circle cx="40" cy="40" r="36" stroke="var(--accent)" strokeWidth="3" fill="var(--accent-soft)"/><path d="M24 40l12 12 20-20" stroke="var(--accent)" strokeWidth="4" fill="none" strokeLinecap="round" strokeLinejoin="round"/></svg>
+          <svg viewBox="0 0 80 80" className="co-hook-icon" width="80" height="80"><circle cx="40" cy="40" r="36" stroke="var(--accent)" strokeWidth="3" fill="var(--accent-soft)"/><path d="M24 40l12 12 20-20" stroke="var(--accent)" strokeWidth="4" fill="none" strokeLinecap="round" strokeLinejoin="round"/></svg>
           <h1 className="co-title">婚紗相必影清單</h1>
           <p className="co-sub">婚紗相有咩一定要影？等我話你知必影shot list同拍攝貼士。</p>
         </div>

@@ -2,13 +2,13 @@ import type { ChapterDef } from "./types";
 
 import { Coldopen } from "../chapters/01-coldopen/Coldopen";
 import { NARRATIONS as N01 } from "../chapters/01-coldopen/narrations";
-import { Leather } from "../chapters/02-leather/leather";
+import { Leather } from "../chapters/02-leather/Leather";
 import { NARRATIONS as N02 } from "../chapters/02-leather/narrations";
-import { Linen } from "../chapters/03-linen/linen";
+import { Linen } from "../chapters/03-linen/Linen";
 import { NARRATIONS as N03 } from "../chapters/03-linen/narrations";
-import { Velvet } from "../chapters/04-velvet/velvet";
+import { Velvet } from "../chapters/04-velvet/Velvet";
 import { NARRATIONS as N04 } from "../chapters/04-velvet/narrations";
-import { Custom } from "../chapters/05-custom/custom";
+import { Custom } from "../chapters/05-custom/Custom";
 import { NARRATIONS as N05 } from "../chapters/05-custom/narrations";
 import { CTA } from "../chapters/06-cta/CTA";
 import { NARRATIONS as N06 } from "../chapters/06-cta/narrations";

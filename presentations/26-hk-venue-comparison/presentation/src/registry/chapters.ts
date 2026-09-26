@@ -2,13 +2,13 @@ import type { ChapterDef } from "./types";
 
 import { Coldopen } from "../chapters/01-coldopen/Coldopen";
 import { NARRATIONS as N01 } from "../chapters/01-coldopen/narrations";
-import { Hotel } from "../chapters/02-hotel/hotel";
+import { Hotel } from "../chapters/02-hotel/Hotel.tsx";
 import { NARRATIONS as N02 } from "../chapters/02-hotel/narrations";
-import { Restaurant } from "../chapters/03-restaurant/restaurant";
+import { Restaurant } from "../chapters/03-restaurant/Restaurant.tsx";
 import { NARRATIONS as N03 } from "../chapters/03-restaurant/narrations";
-import { Church } from "../chapters/04-church/church";
+import { Church } from "../chapters/04-church/Church.tsx";
 import { NARRATIONS as N04 } from "../chapters/04-church/narrations";
-import { Outdoor } from "../chapters/05-outdoor/outdoor";
+import { Outdoor } from "../chapters/05-outdoor/Outdoor.tsx";
 import { NARRATIONS as N05 } from "../chapters/05-outdoor/narrations";
 import { CTA } from "../chapters/06-cta/CTA";
 import { NARRATIONS as N06 } from "../chapters/06-cta/narrations";

@@ -2,13 +2,13 @@ import type { ChapterDef } from "./types";
 
 import { Coldopen } from "../chapters/01-coldopen/Coldopen";
 import { NARRATIONS as N01 } from "../chapters/01-coldopen/narrations";
-import { Technology } from "../chapters/02-technology/technology";
+import { Technology } from "../chapters/02-technology/Technology";
 import { NARRATIONS as N02 } from "../chapters/02-technology/narrations";
-import { Durability } from "../chapters/03-durability/durability";
+import { Durability } from "../chapters/03-durability/Durability";
 import { NARRATIONS as N03 } from "../chapters/03-durability/narrations";
-import { Colors } from "../chapters/04-colors/colors";
+import { Colors } from "../chapters/04-colors/Colors";
 import { NARRATIONS as N04 } from "../chapters/04-colors/narrations";
-import { Custom } from "../chapters/05-custom/custom";
+import { Custom } from "../chapters/05-custom/Custom";
 import { NARRATIONS as N05 } from "../chapters/05-custom/narrations";
 import { CTA } from "../chapters/06-cta/CTA";
 import { NARRATIONS as N06 } from "../chapters/06-cta/narrations";

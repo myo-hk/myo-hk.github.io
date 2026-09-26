@@ -399,7 +399,7 @@ export default function Eligibility({ step }: Props) {
                       <UnderageSvg />
                     ) : s.icon === "divorce" ? (
                       <DivorceSvg />
-                    ) : <span>:</span> (
+                    ) : (
                       <WidowedSvg />
                     )}
                   </div>
