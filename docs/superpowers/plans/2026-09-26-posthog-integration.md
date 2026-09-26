@@ -24,7 +24,7 @@ These are decisions, not preferences. Do not deviate without asking the user fir
 
 **Analytics configuration**
 - GA4 measurement ID `G-GQLW7LNP6H` stays exactly as-is. Never remove, rename, or reorder the `gtag` definition.
-- PostHog API host: `https://us.i.posthog.com` (US Cloud, chosen by default — user was never explicitly asked to pick a region).
+- PostHog API host: `https://us.i.posthog.com` (US Cloud — **confirmed by the user** on 2026-09-26; see Task 1 Step 0).
 - PostHog `defaults: '2026-05-30'` — the current SDK defaults version.
 - `capture_pageview: false` on init, followed by an explicit `posthog.capture('$pageview', {...})` after load. PostHog's own initial-pageview fires on `setTimeout(1)` after `init()`, which with lazy loading would timestamp the pageview at interaction time rather than page-load time.
 - `autocapture: true` (drives heatmaps, dead-click, and rage-click detection).
@@ -119,6 +119,7 @@ Expected: `project-get` reports the new project's name and id. If it still repor
 posthog_exec: call project-settings-update {
   "id": <PROJECT_ID>,
   "name": "MyO Cert Holder",
+  "description": "Deferred load: PostHog loads on first interaction or 3s, so $pageview is timestamped when array.js finishes loading, not at page load. Visitors who bounce within ~1.5s are not counted. This is an accepted trade-off, not a tracking bug.",
   "timezone": "Asia/Hong_Kong",
   "base_currency": "HKD",
   "anonymize_ips": true,
@@ -136,11 +137,14 @@ posthog_exec: call project-settings-update {
 }
 ```
 
+The `description` field satisfies **Review Focus #1** — the late-load pageview trade-off is recorded in PostHog itself, so a future maintainer reading the project does not "discover" it as a tracking bug. Do not guess its name: `project-get` reports the field as `product_description`, so if the schema check below rejects `description`, use the name the schema returns.
+
 Two fields are typed as union-of-1 and carry a `DO NOT GUESS` hint. Resolve them before calling:
 
 ```
 posthog_exec: schema project-settings-update app_urls
 posthog_exec: schema project-settings-update capture_dead_clicks
+posthog_exec: schema project-settings-update description
 ```
 
 Notes on the values chosen:
@@ -186,7 +190,7 @@ TRIGGER_EVENTS = ["touchstart", "click", "scroll", "keydown", "mouseover"]
 MAX_QUEUE = 50
 
 # --- Filesystem --------------------------------------------------------------
-ROOT = ROOT_DIR = __import__("pathlib").Path(__file__).resolve().parent.parent
+ROOT = Path(__file__).resolve().parent.parent
 BLOG_DIR = ROOT / "blog"
 PRESENTATIONS_DIR = ROOT / "presentations"
 SKIP_FILES = {"HTML-Artifacts.html"}
@@ -258,7 +262,7 @@ class TestPostHogConfig:
 **Step 5: Run tests**
 
 ```
-cd /Users/bubu/Documents/GitHub/myo-hk && python3 -m pytest scripts/test_posthog_config.py -v
+python3 -m pytest scripts/test_posthog_config.py -v
 ```
 
 Expected: 6 passed. `test_key_is_a_phc_token` fails until the real token from Step 1 replaces the placeholder — that failure is the signal that Task 1 Step 3 was not completed.
@@ -392,7 +396,7 @@ class TestAddPostHog:
 **Step 2: Run the test to confirm it fails**
 
 ```
-cd /Users/bubu/Documents/GitHub/myo-hk && python3 -m pytest scripts/test_add_posthog.py -v
+python3 -m pytest scripts/test_add_posthog.py -v
 ```
 
 Expected: collection error — `ModuleNotFoundError: No module named 'add_posthog'`. That is the correct red state.
@@ -622,7 +626,7 @@ if __name__ == "__main__":
 **Step 4: Run the test to confirm it passes**
 
 ```
-cd /Users/bubu/Documents/GitHub/myo-hk && python3 -m pytest scripts/test_add_posthog.py -v
+python3 -m pytest scripts/test_add_posthog.py -v
 ```
 
 Expected: 12 passed.
@@ -630,7 +634,7 @@ Expected: 12 passed.
 **Step 5: Run the dry run**
 
 ```
-cd /Users/bubu/Documents/GitHub/myo-hk && python3 scripts/add_posthog.py --test | tail -20
+python3 scripts/add_posthog.py --test | tail -20
 ```
 
 Expected: 430 files scanned (421 blog articles + `blog/index.html` + 7 root pages + `presentations/index.html`), 430 injected, 0 errors. Confirm the byte delta per file is roughly +3.5 KB and identical across files.
@@ -748,7 +752,7 @@ class TestAddPostHogCsp:
 **Step 2: Run the test to confirm it fails**
 
 ```
-cd /Users/bubu/Documents/GitHub/myo-hk && python3 -m pytest scripts/test_add_posthog_csp.py -v
+python3 -m pytest scripts/test_add_posthog_csp.py -v
 ```
 
 Expected: `ModuleNotFoundError: No module named 'add_posthog_csp'`.
@@ -873,7 +877,7 @@ if __name__ == "__main__":
 **Step 4: Run the test to confirm it passes**
 
 ```
-cd /Users/bubu/Documents/GitHub/myo-hk && python3 -m pytest scripts/test_add_posthog_csp.py -v
+python3 -m pytest scripts/test_add_posthog_csp.py -v
 ```
 
 Expected: 10 passed.
@@ -881,7 +885,7 @@ Expected: 10 passed.
 **Step 5: Run the dry run**
 
 ```
-cd /Users/bubu/Documents/GitHub/myo-hk && python3 scripts/add_posthog_csp.py --test
+python3 scripts/add_posthog_csp.py --test
 ```
 
 Expected: 4 files patched, no manual-review entries.
@@ -905,7 +909,7 @@ git commit -m "feat(analytics): add PostHog CSP allowlist script"
 **Step 1: Confirm the working tree is clean**
 
 ```
-cd /Users/bubu/Documents/GitHub/myo-hk && git status --porcelain
+git status --porcelain
 ```
 
 Expected: empty. Any modified HTML here means something outside this plan touched the tree — resolve it before continuing so the diff stays reviewable.
@@ -913,19 +917,19 @@ Expected: empty. Any modified HTML here means something outside this plan touche
 **Step 2: Dry run, then write**
 
 ```
-cd /Users/bubu/Documents/GitHub/myo-hk && python3 scripts/add_posthog.py --test | tail -5
-cd /Users/bubu/Documents/GitHub/myo-hk && python3 scripts/add_posthog.py | tail -5
-cd /Users/bubu/Documents/GitHub/myo-hk && python3 scripts/add_posthog_csp.py --test
-cd /Users/bubu/Documents/GitHub/myo-hk && python3 scripts/add_posthog_csp.py
+python3 scripts/add_posthog.py --test | tail -5
+python3 scripts/add_posthog.py | tail -5
+python3 scripts/add_posthog_csp.py --test
+python3 scripts/add_posthog_csp.py
 ```
 
 **Step 3: Verify counts and idempotency (Review Focus #4)**
 
 ```
-cd /Users/bubu/Documents/GitHub/myo-hk && grep -rl '__myoPostHog' blog/*.html | wc -l
-cd /Users/bubu/Documents/GitHub/myo-hk && grep -rl 'https://\*.posthog.com' *.html
-cd /Users/bubu/Documents/GitHub/myo-hk && python3 scripts/add_posthog.py --test | tail -3
-cd /Users/bubu/Documents/GitHub/myo-hk && python3 scripts/add_posthog_csp.py --test
+grep -rl '__myoPostHog' blog/*.html | wc -l
+grep -rl 'https://\*.posthog.com' *.html
+python3 scripts/add_posthog.py --test | tail -3
+python3 scripts/add_posthog_csp.py --test
 ```
 
 Expected:
@@ -938,9 +942,9 @@ The third and fourth commands are the idempotency proof. If they report any inje
 **Step 4: Confirm GA4 survived**
 
 ```
-cd /Users/bubu/Documents/GitHub/myo-hk && grep -c 'G-GQLW7LNP6H' "blog/婚禮攝影對焦技巧.html" index.html
-cd /Users/bubu/Documents/GitHub/myo-hk && grep -c "function gtag(){dataLayer.push(arguments);}" "blog/婚禮攝影對焦技巧.html"
-cd /Users/bubu/Documents/GitHub/myo-hk && git diff --stat -- "blog/婚禮攝影對焦技巧.html"
+grep -c 'G-GQLW7LNP6H' "blog/婚禮攝影對焦技巧.html" index.html
+grep -c "function gtag(){dataLayer.push(arguments);}" "blog/婚禮攝影對焦技巧.html"
+git diff --stat -- "blog/婚禮攝影對焦技巧.html"
 ```
 
 Expected: both greps return 1; the diff stat shows only additions inside `<head>`, no deletions in the body.
@@ -1039,13 +1043,13 @@ test.describe("PostHog loader", () => {
 `playwright.config.js` sets `baseURL: 'http://localhost:8080'` and has **no `webServer` block**, so the static server must already be listening on 8080. Start it in a separate terminal and leave it running:
 
 ```
-cd /Users/bubu/Documents/GitHub/myo-hk && python3 -m http.server 8080
+python3 -m http.server 8080
 ```
 
 Then, in a second terminal:
 
 ```
-cd /Users/bubu/Documents/GitHub/myo-hk && npm test
+npm test
 ```
 
 Expected: all existing tests still pass, plus the 10 new PostHog tests (4 pages × static assertions + 4 pages × CSP, plus the first-paint and gtag-bridge tests). Any pre-existing failure is unrelated — record it and move on, do not fix it here.
@@ -1053,7 +1057,7 @@ Expected: all existing tests still pass, plus the 10 new PostHog tests (4 pages 
 Also run the existing script suite to confirm nothing regressed:
 
 ```
-cd /Users/bubu/Documents/GitHub/myo-hk && python3 -m pytest scripts/ -q
+python3 -m pytest scripts/ -q
 ```
 
 **Step 7: Commit**
@@ -1185,7 +1189,7 @@ class TestAddPostHogPresentations:
 **Step 2: Run the test to confirm it fails**
 
 ```
-cd /Users/bubu/Documents/GitHub/myo-hk && python3 -m pytest scripts/test_add_posthog_presentations.py -v
+python3 -m pytest scripts/test_add_posthog_presentations.py -v
 ```
 
 Expected: `ModuleNotFoundError: No module named 'add_posthog_presentations'`.
@@ -1449,7 +1453,7 @@ if __name__ == "__main__":
 **Step 4: Run the test to confirm it passes**
 
 ```
-cd /Users/bubu/Documents/GitHub/myo-hk && python3 -m pytest scripts/test_add_posthog_presentations.py -v
+python3 -m pytest scripts/test_add_posthog_presentations.py -v
 ```
 
 Expected: 12 passed.
@@ -1457,8 +1461,8 @@ Expected: 12 passed.
 **Step 5: Dry run, then write**
 
 ```
-cd /Users/bubu/Documents/GitHub/myo-hk && python3 scripts/add_posthog_presentations.py --test | tail -8
-cd /Users/bubu/Documents/GitHub/myo-hk && python3 scripts/add_posthog_presentations.py | tail -8
+python3 scripts/add_posthog_presentations.py --test | tail -8
+python3 scripts/add_posthog_presentations.py | tail -8
 ```
 
 Expected: `projects=40 deps=40 modules=40 main=40 errors=0`.
@@ -1466,7 +1470,7 @@ Expected: `projects=40 deps=40 modules=40 main=40 errors=0`.
 **Step 6: Typecheck one project before installing all 40**
 
 ```
-cd /Users/bubu/Documents/GitHub/myo-hk/presentations/01-hong-kong-wedding-flow/presentation && npm install && npm run build
+cd presentations/01-hong-kong-wedding-flow/presentation && npm install && npm run build
 ```
 
 Expected: no errors. This is the gate — `erasableSyntaxOnly` and `noUnusedLocals` are enabled, and the generated module must satisfy both. Fix `render_analytics_ts()` before proceeding if tsc complains.
@@ -1474,7 +1478,7 @@ Expected: no errors. This is the gate — `erasableSyntaxOnly` and `noUnusedLoca
 **Step 7: Install and build all 40**
 
 ```
-cd /Users/bubu/Documents/GitHub/myo-hk && bash presentations/build-scripts/build-all.sh
+bash presentations/build-scripts/build-all.sh
 ```
 
 This script installs and builds sequentially. It is long-running (40 npm installs + 40 Vite builds). Expect 20–40 minutes.
@@ -1482,16 +1486,16 @@ This script installs and builds sequentially. It is long-running (40 npm install
 If the script fails partway, resume by iterating the remaining directories directly:
 
 ```
-cd /Users/bubu/Documents/GitHub/myo-hk/presentations && for d in */presentation; do (cd "$d" && npm install --silent && npm run build) || echo "FAILED: $d"; done
+cd presentations && for d in */presentation; do (cd "$d" && npm install --silent && npm run build) || echo "FAILED: $d"; done
 ```
 
 **Step 8: Verify the build output**
 
 ```
-cd /Users/bubu/Documents/GitHub/myo-hk && ls presentations/01-hong-kong-wedding-flow/presentation/dist/assets/ | grep -i posthog
-cd /Users/bubu/Documents/GitHub/myo-hk && grep -c 'G-GQLW7LNP6H' presentations/01-hong-kong-wedding-flow/presentation/index.html
-cd /Users/bubu/Documents/GitHub/myo-hk && for d in presentations/*/presentation; do [ -f "$d/index.html" ] || echo "MISSING: $d"; done
-cd /Users/bubu/Documents/GitHub/myo-hk && git status --porcelain presentations/ | wc -l
+ls presentations/01-hong-kong-wedding-flow/presentation/dist/assets/ | grep -i posthog
+grep -c 'G-GQLW7LNP6H' presentations/01-hong-kong-wedding-flow/presentation/index.html
+for d in presentations/*/presentation; do [ -f "$d/index.html" ] || echo "MISSING: $d"; done
+git status --porcelain presentations/ | wc -l
 ```
 
 Expected:
@@ -1613,9 +1617,9 @@ PostHog 的 lazy-load 把「載入成本」換成了「時間戳失真」與「�
 **Step 6: Run the full verification suite**
 
 ```
-cd /Users/bubu/Documents/GitHub/myo-hk && python3 -m pytest scripts/ -q
-cd /Users/bubu/Documents/GitHub/myo-hk && npm test
-cd /Users/bubu/Documents/GitHub/myo-hk && npm run build:css
+python3 -m pytest scripts/ -q
+npm test
+npm run build:css
 ```
 
 All three must pass before committing.
