@@ -2,7 +2,7 @@
 """
 Inject the deferred PostHog loader into all static HTML pages.
 
-The loader wraps the existing window.gtag so the 422 pages' current
+The loader wraps the existing window.gtag so the 429 pages' current
 onclick="gtag('event', ...)" calls forward to PostHog untouched.
 
  Usage:

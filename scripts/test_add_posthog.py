@@ -44,7 +44,8 @@ class TestAddPostHog:
         twice, changed = add_posthog.inject(once)
         assert changed is False
         assert twice == once
-        assert twice.count("__myoPostHog") >= 1
+        assert twice.count("__myoPostHog") == 2
+        assert twice.count("myo-posthog-script") == 1
 
     def test_preserves_ga4_measurement_id(self):
         out, _ = add_posthog.inject(SAMPLE)
