@@ -94,15 +94,48 @@ class TestAddPostHogCsp:
         assert changed is False
         assert out == odd
 
-    def test_repairs_partially_patched_page(self):
+    def test_repairs_script_src_only(self):
         """Host in script-src but absent from connect-src must still be repaired."""
-        patched_once = csp.add_csp(SAMPLE)[0]
-        # Simulate a hand-removed connect-src entry.
-        stripped = patched_once.replace(
-            "https://*.posthog.com", ""
-        )
-        out, changed = csp.add_csp(stripped)
+        policy = ("default-src 'self'; "
+                  "script-src 'self' https://www.googletagmanager.com https://*.posthog.com; "
+                  "style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; "
+                  "img-src 'self' data: https:; "
+                  "font-src 'self' https://fonts.gstatic.com; "
+                  "connect-src 'self' https://www.google-analytics.com;")
+        html = '<meta http-equiv="Content-Security-Policy" content="' + policy + '">'\
+               '</head><body></body></html>'
+        out, changed = csp.add_csp(html)
         assert changed is True
-        assert csp.get_directive(out, "script-src").count("posthog.com") == 1
+        assert out.count("posthog.com") == 2
         assert csp.get_directive(out, "connect-src").count("posthog.com") == 1
+
+    def test_repairs_missing_worker_src(self):
+        """Host in both directives but no worker-src must be repaired."""
+        policy = ("default-src 'self'; "
+                  "script-src 'self' https://www.googletagmanager.com https://*.posthog.com; "
+                  "style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; "
+                  "img-src 'self' data: https:; "
+                  "font-src 'self' https://fonts.gstatic.com; "
+                  "connect-src 'self' https://www.google-analytics.com https://*.posthog.com;")
+        html = '<meta http-equiv="Content-Security-Policy" content="' + policy + '">'\
+               '</head><body></body></html>'
+        out, changed = csp.add_csp(html)
+        assert changed is True
+        assert csp.get_directive(out, "worker-src") == "'self' blob: data:"
+        assert out.count("worker-src") == 1
+
+    def test_repairs_worker_src_without_blob_or_data(self):
+        """worker-src present but missing blob:/data: must be corrected."""
+        policy = ("default-src 'self'; "
+                  "script-src 'self' https://www.googletagmanager.com https://*.posthog.com; "
+                  "style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; "
+                  "img-src 'self' data: https:; "
+                  "font-src 'self' https://fonts.gstatic.com; "
+                  "connect-src 'self' https://www.google-analytics.com https://*.posthog.com; "
+                  "worker-src 'self';")
+        html = '<meta http-equiv="Content-Security-Policy" content="' + policy + '">'\
+               '</head><body></body></html>'
+        out, changed = csp.add_csp(html)
+        assert changed is True
+        assert csp.get_directive(out, "worker-src") == "'self' blob: data:"
         assert out.count("worker-src") == 1

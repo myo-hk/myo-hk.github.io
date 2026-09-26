@@ -62,27 +62,46 @@ def _patch_policy(policy: str):
         if policy is None:
             return None  # hand-rolled policy — refuse to guess
 
-    if not re.search(r"(?:^|;)\s*worker-src\s", policy):
-        policy = policy.rstrip().rstrip(";")
-        policy = f"{policy}; {WORKER_SRC}"
+    # Unconditionally normalise worker-src whenever we are patching.
+    # This handles: absent, present without blob:, present without data:, etc.
+    # Match from the preceding semicolon (or start) through the directive value.
+    policy, n = re.subn(
+        r"(?:^|;)\s*worker-src\s+[^;]*",
+        lambda m: WORKER_SRC if m.group().strip().startswith("worker-src") else "",
+        policy,
+    )
+    # Strip trailing semicolons left by the substitution, then append WORKER_SRC.
+    policy = policy.rstrip().rstrip(";")
+    policy = f"{policy}; {WORKER_SRC}"
     return policy
+
+
+def _has_worker_src(policy: str) -> bool:
+    """Return True when worker-src is present and contains both blob: and data:."""
+    match = re.search(r"(?:^|;)\s*worker-src\s+([^;]+)", policy)
+    if not match:
+        return False
+    sources = match.group(1).strip()
+    return "blob:" in sources and "data:" in sources
 
 
 def _needs_patch(html: str) -> bool:
     """Return True when the page needs patching; False when fully patched.
 
-    A page is considered fully patched only when the PostHog host is present
-    in *both* script-src and connect-src.  A partially-patched page (host in
-    one directive but not the other) must still be repaired — a coarse
-    substring check on the whole HTML would miss that case.
+    A page is fully patched only when all three conditions hold:
+    - the PostHog host is present in script-src,
+    - the PostHog host is present in connect-src,
+    - worker-src is present and contains both blob: and data:.
     """
-    policy = get_directive(html, "default-src")  # placeholder; checked below
     meta = META_RE.search(html)
     if not meta:
         return False
     policy = meta.group(2)
-    return not (_has_host_in_directive(policy, "script-src")
-                and _has_host_in_directive(policy, "connect-src"))
+    if not (_has_host_in_directive(policy, "script-src")
+            and _has_host_in_directive(policy, "connect-src")
+            and _has_worker_src(policy)):
+        return True
+    return False
 
 
 def add_csp(html: str):
