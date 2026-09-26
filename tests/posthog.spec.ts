@@ -9,6 +9,15 @@ const PAGES = [
   { path: "/blog/婚禮攝影對焦技巧.html", name: "blog article (CJK filename)" },
 ];
 
+// The four pages that carry a CSP <meta> header — these are the only pages
+// that must explicitly allow PostHog's rrweb recorder Worker via blob: data:.
+const CSP_PAGES = [
+  { path: "/index.html", name: "index" },
+  { path: "/v2.html", name: "v2" },
+  { path: "/poster.html", name: "poster" },
+  { path: "/heic-converter.html", name: "heic-converter" },
+];
+
 test.describe("PostHog loader", () => {
   // Static assertions use the `request` fixture, not a live page, so they can
   // never race the 3000ms lazy-load timer.
@@ -35,7 +44,10 @@ test.describe("PostHog loader", () => {
       // so a listener attached after goto() would miss them.
       page.on("console", (msg) => {
         const text = msg.text();
-        if (/Content Security Policy|Refused to/i.test(text)) {
+        // Broaden beyond Chrome's exact phrasing: Firefox drops the hyphen,
+        // Safari omits "Refused to", and Chromium sometimes uses
+        // "Refused to create allowlist for…". Match any variant case-insensitively.
+        if (/content.security.policy|refused.to/i.test(text)) {
           violations.push(text);
         }
       });
@@ -51,6 +63,28 @@ test.describe("PostHog loader", () => {
       expect(violations).toEqual([]);
     });
   }
+
+  // worker-src is the single most important CSP directive for PostHog session
+  // recordings: without 'self' blob: data:, rrweb cannot create its recorder
+  // Worker and recordings fail silently (no console error, no data).
+  //
+  // These assertions read raw HTML via the request fixture — no browser needed.
+  // They assert the FULL directive with blob: and data: sources; a malformed
+  // worker-src (present but missing blob:) is just as broken as an absent one.
+  for (const { path, name } of CSP_PAGES) {
+    test(`${name} has worker-src in CSP`, async ({ request }) => {
+      const html = await request.get(path).then((r) => r.text());
+      expect(html).toContain("worker-src 'self' blob: data:");
+    });
+  }
+
+  // Negative sanity check: a page without a CSP meta tag must NOT contain the
+  // directive, proving the assertion above is sensitive (would fail if dropped
+  // from a CSP page by a future edit).
+  test("non-CSP page does not carry worker-src", async ({ request }) => {
+    const html = await request.get("/privacy.html").then((r) => r.text());
+    expect(html).not.toContain("worker-src 'self' blob: data:");
+  });
 
   test("deferred loader does not block first paint", async ({ page }) => {
     const start = Date.now();
@@ -78,5 +112,16 @@ test.describe("PostHog loader", () => {
     });
     // The bridge must never throw, whether or not array.js has resolved yet.
     expect(result.threw).toBeNull();
+  });
+
+  // Static wiring check: the injected block must contain the pre-PostHog event
+  // queue and the drain-after-load flush function. If a future edit breaks the
+  // bridge structure, this fails before anyone notices in production.
+  // Runtime event forwarding is verified post-deployment against PostHog Live Events.
+  test("gtag bridge queue-and-flush structure is present", async ({ request }) => {
+    const html = await request.get("/index.html").then((r) => r.text());
+    expect(html).toContain("var queue = []");
+    expect(html).toContain("function flush()");
+    expect(html).toContain("original.apply(window, args)");
   });
 });
