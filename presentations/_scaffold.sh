@@ -56,7 +56,9 @@ mkdir -p "$DIR/presentation/src/assets"
 # Copy template files (excluding node_modules, chapters, and theme-specific)
 cp "$TEMPLATE/.gitignore" "$DIR/presentation/"
 cp "$TEMPLATE/eslint.config.js" "$DIR/presentation/"
-cp "$TEMPLATE/index.html" "$DIR/presentation/"
+# index.src.html is the Vite entry point (never a build artifact).
+# Do NOT copy index.html — it is the build output and will be overwritten by `npm run build`.
+cp "$TEMPLATE/index.src.html" "$DIR/presentation/"
 cp "$TEMPLATE/package.json" "$DIR/presentation/"
 cp "$TEMPLATE/tsconfig.app.json" "$DIR/presentation/"
 cp "$TEMPLATE/tsconfig.json" "$DIR/presentation/"
@@ -84,6 +86,7 @@ cp "$TEMPLATE/src/hooks/useAutoMode.ts" "$DIR/presentation/src/hooks/"
 cp "$TEMPLATE/src/hooks/useStageScale.ts" "$DIR/presentation/src/hooks/"
 cp "$TEMPLATE/src/hooks/useStepper.ts" "$DIR/presentation/src/hooks/"
 cp "$TEMPLATE/src/main.tsx" "$DIR/presentation/src/"
+cp "$TEMPLATE/src/analytics.ts" "$DIR/presentation/src/"
 cp "$TEMPLATE/src/registry/types.ts" "$DIR/presentation/src/registry/"
 cp "$TEMPLATE/src/styles/base.css" "$DIR/presentation/src/styles/"
 cp "$TEMPLATE/src/styles/fonts.css" "$DIR/presentation/src/styles/"

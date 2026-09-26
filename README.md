@@ -559,7 +559,7 @@ myo-makeyourown.pages.dev/
 ### PostHog
 
 產品分析 via PostHog（專案：MyO Cert Holder），與 GA4（`G-GQLW7LNP6H`）並行。
-GA4 仍是流量報告的來源；PostHog 提供 autocapture、熱圖、Session Replay 與 Web Vitals。
+GA4 提供主要的流量報告；PostHog 補充事件級分析（autocapture、熱圖、Session Replay、Web Vitals）。
 
 SDK 採用延遲載入——在首次使用者互動或 3 秒後才載入——因此不影響首屏繪製。
 設定集中於 `scripts/posthog_config.py`。

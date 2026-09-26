@@ -31,6 +31,8 @@ Spec 忽略 meta 形式的 `frame-ancestors` directive，看起來像修好了�
 - 一旦 `dist/` 被清除（CI 重跑、fresh clone），建構會失敗但舊的 `dist/` 殘留會掩蓋錯誤，讓失敗看起來像成功
 - 結果：40 個簡報的 `index.html` 全部引用了不存在的 JS bundle，生產環境全數空白
 
+**為什麼難以發現**：整個故障完全靜默——沒有 console 錯誤、沒有測試失敗、沒有執行階段異常。所有現有檢查（pytest、Playwright E2E、TypeScript 類型檢查）全部通過，但生產環境的 40 個簡報頁面全數空白。唯一能觀察到的錯誤是使用者實際看到空白頁，而所有自動化驗證都認為一切正常。
+
 ### 教訓
 
 PostHog 的 lazy-load 把「載入成本」換成了「時間戳失真」與「更多 CSP 依賴」。延遲載入時必須 `capture_pageview: false` + 手動補發 `$pageview`，且 `worker-src` 是 session replay 的硬性前提，不能靠錯誤訊號發現。
