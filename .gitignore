@@ -1,6 +1,9 @@
 # Dependencies
 node_modules/
 
+# Git worktrees (isolated feature workspaces)
+.worktrees/
+
 
 # IDE
 .idea/
