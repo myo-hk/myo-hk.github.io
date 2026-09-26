@@ -43,9 +43,14 @@ scripts/
 │   ├── expand_presentation_content.py  # 主控編排器
 │   └── test_expand_narrations.py  # pytest 測試套件
 │
-├── 分析追蹤（2 個）
+├── 分析追蹤（6 個）
 │   ├── add_social_tracking.py
-│   └── add_blog_social_tracking.py
+│   ├── add_blog_social_tracking.py
+│   ├── posthog_config.py              # PostHog 專案金鑰與 SDK 設定（單一來源）
+│   ├── add_posthog.py                 # 批次注入延遲載入的 PostHog loader（`--test` dry-run）
+│   ├── add_posthog_csp.py             # 為 4 個 CSP 頁面加入 PostHog allowlist
+│   ├── add_posthog_presentations.py   # 為 40 個 Vite 簡報加入 PostHog 模組
+│   └── test_posthog_config.py         # pytest 測試套件（idempotency + CSP directive）
 │
 ├── 其他（1 個）
 │   └── migrate_blog_urls.py
@@ -114,6 +119,12 @@ python3 -m pytest scripts/test_expand_narrations.py -v
 python3 add_sticky_bar.py
 python3 fix_json_ld_and_table.py
 python3 fix_medium_issues.py
+
+# PostHog 分析追蹤
+python3 -m pytest scripts/test_posthog_config.py -v
+python3 scripts/add_posthog.py --test
+python3 scripts/add_posthog_csp.py --test
+python3 scripts/add_posthog_presentations.py --test
 ```
 
 ## NOTES

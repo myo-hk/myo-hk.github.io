@@ -33,6 +33,10 @@ python3 scripts/optimize_blog_head.py
 python3 scripts/remove_unused_fa.py
 python3 scripts/add_pwa_tags.py
 
+python3 scripts/add_posthog.py --test
+python3 scripts/add_posthog_csp.py --test
+python3 scripts/add_posthog_presentations.py --test
+
 bash presentations/_scaffold.sh <NN> <slug> "<標題>" <theme>
 # 單個簡報：cd presentations/XX-slug/presentation && npx vite --base "" && npm run build
 ```
@@ -72,6 +76,10 @@ bash presentations/_scaffold.sh <NN> <slug> "<標題>" <theme>
 | `sw.js` + `manifest.json` | PWA 服務 worker |
 | `css/tailwind.min.css` | 生產 Tailwind CSS（`npm run build:css` 生成） |
 | `scripts/blog_index.json` | parse_blog.py 產物（58K 行結構化索引） |
+| `scripts/posthog_config.py` | PostHog 專案金鑰與 SDK 設定（單一來源） |
+| `scripts/add_posthog.py` | 批次注入延遲載入的 PostHog loader（`--test` dry-run） |
+| `scripts/add_posthog_csp.py` | 為 4 個 CSP 頁面加入 PostHog allowlist |
+| `scripts/add_posthog_presentations.py` | 為 40 個 Vite 簡報加入 PostHog 模組 |
 | `docs/top20_articles.json` | rank_articles.py 產物（高流量文章評分） |
 | `docs/superpowers/{plans,specs}/` | dated plan/spec 歸檔 |
 | `docs/lessons/*.md` | 踩坑教訓歸檔（按需讀取，見下方表格） |
@@ -93,6 +101,7 @@ bash presentations/_scaffold.sh <NN> <slug> "<標題>" <theme>
 | TTS 音訊生成 | `presentations/*/presentation/scripts/synthesize-audio.sh` | provider 選擇 |
 | 部落格→簡報管線 | `scripts/expand_presentation_content.py` | parse → match → expand → fallback |
 | poster.html PDF 列印 | `docs/lessons/poster-print.md` | scale(1.8898) 公式 |
+| PostHog 延遲載入陷阱 | `docs/lessons/posthog-deferred-load.md` | worker-src、frame-ancestors、index.src.html 修復 |
 | CLAUDE.md 注意事項 | `CLAUDE.md` | Presentation base path 陷阱 |
 | 內容 SOP 標準 | `common/coding-style.md` | KISS / DRY / YAGNI 原則 |
 
@@ -141,6 +150,9 @@ bash presentations/_scaffold.sh <NN> <slug> "<標題>" <theme>
 - 勿在 `.html` 中使用 CDN 載入 Tailwind（已改為本地 CSS）
 - 勿在文章模板外硬編碼絕對 URL — 全部動態解析
 - 勿跳過 `--test` 直接執行 Python 腳本 — 先確認 dry-run 結果
+- 勿在 CSP 中列舉 PostHog 特定子網域 — 一律用 `https://*.posthog.com`
+- 勿移除 PostHog 的 `worker-src 'self' blob: data:` — 缺少時 session replay 靜默失效
+- 勿在 `frame-ancestors` 上嘗試修 CSP — meta 標籤會忽略該 directive
 
 **非標準注意：**
 - `Users/baba/Documents/Github/myo-hk/` — 意外巢狀 repo 副本，應排除

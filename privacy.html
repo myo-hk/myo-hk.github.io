@@ -331,7 +331,27 @@
                 <h2>3. 資訊的保護</h2>
                 <p>我們採取合理的技術和組織措施保護您的個人資訊，防止未經授權的訪問、披露或濫用。</p>
                 <h2>4. 第三方服務</h2>
-                <p>本網站可能使用 Google Analytics 等第三方服務來分析網站流量。這些服務有其各自的隱私政策。</p>
+                <p>本網站使用 Google Analytics（GA4）及 PostHog 等第三方服務來分析網站流量與用戶行為。這些服務有其各自的隱私政策。</p>
+                <h3>4.1 Google Analytics（GA4）</h3>
+                <p>GA4 收集頁面瀏覽、點擊與_scroll_depth 等互動數據，用於流量報告。資料由 Google 在美國處理。</p>
+                <h3>4.2 PostHog（MyO Cert Holder）</h3>
+                <p>PostHog 是本網站主要的產品分析平台，用於以下目的：</p>
+                <ul>
+                    <li><strong>頁面瀏覽與點擊自動捕捉</strong>：記錄使用者瀏覽的頁面、點擊的按鈕與連結（autocapture）。</li>
+                    <li><strong>熱圖（Heatmaps）</strong>：記錄使用者在頁面各區域的點擊、滾動與滑鼠移動模式，用於分析內容吸引力。</li>
+                    <li><strong>Session Replay（會話重播）</strong>：錄製使用者瀏覽網站時的完整視窗畫面與操作序列，用於除錯與體驗分析。本網站<strong>未設置同意橫幅</strong>，所有訪客的會話均自動錄製，這是基於品牌方的明確決定——全開透明，無需額外同意機制。</li>
+                    <li><strong>Console 日誌捕捉</strong>：PostHog 會記錄瀏覽器控制台的錯誤與警告訊息，便於技術問題追蹤。</li>
+                    <li><strong>Web Vitals</strong>：記錄 LCP、INP、CLS 等核心網頁指標。</li>
+                </ul>
+                <p><strong>資料處理細節：</strong></p>
+                <ul>
+                    <li><strong>IP 地址匿名化</strong>：PostHog 在資料入站時即對 IP 地址進行匿名化處理（anonymize_ips: true），無法還原完整 IP。</li>
+                    <li><strong>採樣率</strong>：Session Replay 以 <strong>10%</strong> 的隨機採樣率運作，即平均每 10 位訪客中僅有 1 位的會話會被完整錄製。</li>
+                    <li><strong>資料保留期限</strong>：所有錄製與事件資料在 <strong>30 天</strong>後自動刪除。</li>
+                    <li><strong>資料處理地區</strong>：本專案使用 PostHog <strong>美國雲端（US Cloud）</strong>（主機：us.i.posthog.com）。依據香港《個人資料（私隱）條例》（PDPO），跨境傳輸需確保同等程度的資料保護。PostHog US Cloud 受美國隱私權框架約束，請參閱 PostHog 官方隱私政策以了解詳細保障。</li>
+                </ul>
+                <h3>4.3 如何退出追蹤</h3>
+                <p>若您不希望被 PostHog 追蹤，可在瀏覽器中啟用「不要追蹤」（Do Not Track）功能，或透過 PostHog 提供的 opt-out link 停用記錄（若您的瀏覽器支援 localStorage 持久化）。如需進一步查詢或請求刪除個人資料，請透過 WhatsApp（+852 6379 6410）或 Instagram（@myo.makeyourown）聯絡我們。</p>
                 <h2>5. 您的權利</h2>
                 <p>您有權要求查看、修改或刪除我們持有的您的個人資訊。請透過 WhatsApp 或 Instagram 聯絡我們。</p>
                 <h2>6. 聯絡我們</h2>

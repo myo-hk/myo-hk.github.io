@@ -60,6 +60,7 @@ presentations/
 | TTS 音訊生成 | `npm run extract-narrations && npm run synthesize-audio` |
 | 平行建構全部 | `bash presentations/build-scripts/build-all.sh` |
 | 批量修補 base | `bash presentations/build-scripts/patch-base.sh` |
+| PostHog 分析 | `src/analytics.ts`（由 `scripts/add_posthog_presentations.py` 生成） |
 
 ## CONVENTIONS
 - **檔名格式**：`NN-slug-name/presentation/`（2 位數字前綴）
@@ -102,6 +103,9 @@ bash presentations/build-scripts/patch-base.sh
 - 音訊提供者：內建 MiniMax mmx-cli + OpenAI TTS，可換 ElevenLabs / edge-tts / Azure
 - 40 個簡報目前無 shared node_modules（各專案獨立 install）
 - `public/` 目錄含音訊和靜態資源，`assets/` 存 build 後產物
+- **PostHog 分析**：每支簡報的 `src/analytics.ts` 由 `scripts/add_posthog_presentations.py` 批次生成，並透過 `src/main.tsx` 匯入啟用。`presentations/01-hong-kong-wedding-flow/presentation` 是 scaffold 模板，新增簡報會自動繼承 PostHog 模組。
+- **勿手動編輯 `presentation/index.html`** — Vite build 會覆蓋它；原始輸入在 `index.src.html`。
+- ⚠️ **操作陷阱**：`presentation/dist/` 受 `.gitignore` 保護，構建產物必須用 `git add -f` 強制加入版本庫。若只 push 新的 JS bundle hash 而未 force-add，生產環境會恢復空白頁故障（見 `docs/lessons/posthog-deferred-load.md`）。
 
 ## SELF-UPDATE
 

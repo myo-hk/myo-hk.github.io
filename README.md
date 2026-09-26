@@ -313,6 +313,7 @@ python3 -m pytest scripts/test_expand_narrations.py -v -k "tsx_bullets"
 - [內容分類](#內容分類)
 - [SEO 優化](#seo-優化)
 - [技術棧](#技術棧)
+- [PostHog 分析](#posthog-分析)
 - [自動化腳本](#自動化腳本)
 - [測試](#測試)
 - [部署指南](#部署指南)
@@ -550,6 +551,21 @@ myo-makeyourown.pages.dev/
 - 無構建步驟
 - 無框架依賴
 - 直接部署靜態文件
+
+---
+
+## PostHog 分析
+
+### PostHog
+
+產品分析 via PostHog（專案：MyO Cert Holder），與 GA4（`G-GQLW7LNP6H`）並行。
+GA4 仍是流量報告的來源；PostHog 提供 autocapture、熱圖、Session Replay 與 Web Vitals。
+
+SDK 採用延遲載入——在首次使用者互動或 3 秒後才載入——因此不影響首屏繪製。
+設定集中於 `scripts/posthog_config.py`。
+
+**重要限制**：Session Replay 以 10% 採樣率運作，資料保留 30 天，IP 匿名化，
+資料處理於 PostHog 美國雲端（US Cloud）。隱私政策頁（`privacy.html`）已完整揭露此機制。
 
 ---
 
