@@ -84,3 +84,25 @@ class TestAddPostHogCsp:
         out, changed = csp.add_csp(odd)
         assert changed is False
         assert out == odd
+
+    def test_aborts_when_connect_src_missing(self):
+        """A policy without connect-src means hand-rolled; do not guess."""
+        odd = SAMPLE.replace(
+            "connect-src 'self' https://www.google-analytics.com https://*.googletagmanager.com;", ""
+        )
+        out, changed = csp.add_csp(odd)
+        assert changed is False
+        assert out == odd
+
+    def test_repairs_partially_patched_page(self):
+        """Host in script-src but absent from connect-src must still be repaired."""
+        patched_once = csp.add_csp(SAMPLE)[0]
+        # Simulate a hand-removed connect-src entry.
+        stripped = patched_once.replace(
+            "https://*.posthog.com", ""
+        )
+        out, changed = csp.add_csp(stripped)
+        assert changed is True
+        assert csp.get_directive(out, "script-src").count("posthog.com") == 1
+        assert csp.get_directive(out, "connect-src").count("posthog.com") == 1
+        assert out.count("worker-src") == 1
