@@ -9,6 +9,56 @@
 
 ## 📝 更新日誌
 
+### 2026-09-27 — PostHog 全站分析整合 + 簡報空白頁事故修復
+
+**本次更新了以下內容：**
+
+#### 1. 40 支簡報全數空白（生產事故，已修復）⚠️
+
+**現象**：GitHub Pages 上 40 支簡報全部渲染空白，但沒有任何 console 錯誤、
+測試失敗或 runtime exception——所有檢查都通過，生產卻是黑的。
+
+**根因**：兩個獨立問題疊加。
+
+| # | 問題 | 說明 |
+|---|---|---|
+| 1 | **JS bundle 從未進入版權** | `presentation/dist/` 受各專案 `.gitignore` 保護（40 支簡報都有各自的 `.gitignore`）。40 個 CSS 靠當年 `git add -f` 強制加入而存活，**0 個 JS**。served `index.html` 卻指向這些不存在的 hashed 檔名 |
+| 2 | **建置腳本自我摧毀** | build 為 `vite build && cp dist/index.html index.html`，而 Vite 的輸入**就是** `index.html`。`cp` 用產物覆寫了自己的入口 → 第一次成功、第二次必失敗（解析不存在的 hashed asset），`&&` 短路使 `cp` 永不執行。**每支簡報只能成功建置一次** |
+
+第二個問題讓第一個**無法自我修復**：舊的 `dist/` 殘留在磁碟上，讓失敗的建置**看起來像成功**。
+
+**修復**：新增 `presentation/index.src.html` 作為獨立的 Vite 入口，
+`vite.config.ts` 以 `build.rollupOptions.input` 指向它，`index.html` 於是只承擔
+「被 GitHub Pages 服務的產物」單一角色。`cp` 保留（它是發布到該路徑的必要步驟）。
+GA4 改由 `transformIndexHtml` 於建置時注入，因此每次重建都只出現一次。
+
+#### 2. PostHog 產品分析整合
+
+429 個靜態頁 + 4 個 CSP 頁 + 40 支簡報全數接入，GA4 並行保留。詳見
+[PostHog 分析](#posthog-分析) 章節。
+
+**核心設計**：SDK 延遲載入（首次互動或 3 秒），且包裝既有的 `window.gtag`。
+頁面第一個 `click_whatsapp` 事件正好就是「點擊觸發載入」的同一瞬間，此時 PostHog 尚不存在——
+因此事件先進佇列（上限 50），SDK 載入後排空。**沒有這個 queue，全站最高意圖的事件會是
+唯一保證遺失的事件。**
+
+#### 3. 順帶修復 217 個 TSX 檔案
+
+`tsc -b` 在整合前就無法通過（`Eligibility.tsx` 有 TS1005 語法錯誤，該錯誤在型別檢查前中止，
+遮蔽了後續的 `class` vs `className` 錯誤）。這些是既有問題，與 PostHog 無關，
+但必須修好才能建置。
+
+#### 4. 新增 4 個腳本與 1 份教訓
+
+`scripts/posthog_config.py`（單一設定來源）、`add_posthog.py`、`add_posthog_csp.py`、
+`add_posthog_presentations.py`，全部支援 `--test` dry-run。
+教訓見 `docs/lessons/posthog-deferred-load.md`。
+
+**驗證**：`python3 -m pytest scripts/ -q` → 89 passed；
+`npx playwright test tests/posthog.spec.ts` → 7 passed。
+
+---
+
 ### 2026-07-21 — Lighthouse CLS 深度修復（0.223 → 0.037）
 
 **本次更新了以下內容：**
@@ -543,6 +593,9 @@ myo-makeyourown.pages.dev/
 | JSZip | ZIP 打包下載 | `js library/jszip.min.js` |
 | FileSaver | 檔案下載 | `js library/FileSaver.min.js` |
 | Playwright | 自動化測試 | npm 套件（v1.40） |
+| PostHog JS | 產品分析 SDK（靜態頁用 CDN） | CDN |
+| posthog-js | 產品分析 SDK（40 支簡報用 npm） | ^1.421.0 |
+| Google Analytics 4 | 流量報告（與 PostHog 並行） | `G-GQLW7LNP6H` |
 | Python 3 | 批次處理腳本 | — |
 
 ### 無需編譯
@@ -556,16 +609,99 @@ myo-makeyourown.pages.dev/
 
 ## PostHog 分析
 
-### PostHog
+### 概覽
 
-產品分析 via PostHog（專案：MyO Cert Holder），與 GA4（`G-GQLW7LNP6H`）並行。
-GA4 提供主要的流量報告；PostHog 補充事件級分析（autocapture、熱圖、Session Replay、Web Vitals）。
+產品分析 via PostHog（專案：`MyO Cert Holder`，id `630006`），與 GA4（`G-GQLW7LNP6H`）**並行**——
+GA4 未被移除或更動，兩套同時運作。GA4 提供主要的流量報告；PostHog 補充事件級分析
+（autocapture、熱圖、Session Replay、Web Vitals）。
 
-SDK 採用延遲載入——在首次使用者互動或 3 秒後才載入——因此不影響首屏繪製。
-設定集中於 `scripts/posthog_config.py`。
+| 覆蓋範圍 | 數量 | 方式 |
+|---|---|---|
+| 靜態頁面 | **429** | CDN 延遲載入（421 個 `blog/*.html` + 7 個根頁 + `presentations/index.html`） |
+| CSP 受保護頁 | 4 | 額外注入 allowlist |
+| Vite 簡報 | 40 | npm `posthog-js` ^1.421.0（非 CDN） |
 
-**重要限制**：Session Replay 以 10% 採樣率運作，資料保留 30 天，IP 匿名化，
-資料處理於 PostHog 美國雲端（US Cloud）。隱私政策頁（`privacy.html`）已完整揭露此機制。
+### 架構：三層，各自獨立測試
+
+1. **設定** — `scripts/posthog_config.py` 為單一來源，匯出 `POSTHOG_KEY`、`API_HOST`、
+   `SDK_DEFAULTS`、路徑常數與載入參數。**旋換金鑰只需改這一處。**
+2. **靜態 HTML** — `scripts/add_posthog.py` 注入延遲載入 loader，並包裝既有的 `window.gtag`，
+   讓頁面原有的 GA4 `onclick` 事件**零修改**地轉發到 PostHog。
+   `scripts/add_posthog_csp.py` 另外修補 4 個帶 CSP `<meta>` 的頁面。
+3. **簡報** — `scripts/add_posthog_presentations.py` 為 40 個專案產生型別安全的
+   `src/analytics.ts`，並在 `src/main.tsx` 加一行 import。
+
+### SDK 載入策略
+
+延遲載入：**首次使用者互動或 3 秒後**（`LOAD_DELAY_MS`）才載入，因此不佔用首屏。
+`capture_pageview: false`，改在載入後顯式補發 `$pageview`——否則 PostHog 自己的初始 pageview
+會在 `setTimeout(1)` 觸發，把時間戳記成互動時刻而非頁面載入時刻。
+
+**gtag bridge 是關鍵設計。** 頁面上第一個 `click_whatsapp` 事件發生的時機，
+正是「點擊觸發載入」的同一瞬間——此時 PostHog 還不存在。若不快取，全站最高意圖的事件
+會是唯一保證遺失的事件。因此 bridge 會先把事件存入佇列（上限 `MAX_QUEUE = 50`），
+SDK 載入完成後 `flush()` 排空。bridge 同時呼叫原始 `gtag(...)`，GA4 行為完全不受影響。
+
+### CSP（僅 4 個頁面）
+
+- 一律使用 wildcard `https://*.posthog.com`，**不得列舉** `us.i.posthog.com` 等子網域
+- 同時加入 `script-src` 與 `connect-src`
+- `worker-src 'self' blob: data:;` — **缺少時 Session Replay 靜默失效**，無任何錯誤訊號
+- 絕不在 `<meta>` CSP 中加 `frame-ancestors`（該指令在此形式下被忽略）
+
+### 腳本
+
+| 腳本 | 行數 | 用途 |
+|---|---|---|
+| `scripts/posthog_config.py` | 51 | 專案金鑰與 SDK 設定（單一來源） |
+| `scripts/add_posthog.py` | 215 | 批次注入 loader + gtag bridge |
+| `scripts/add_posthog_csp.py` | 158 | 為 4 個 CSP 頁加入 allowlist |
+| `scripts/add_posthog_presentations.py` | 249 | 為 40 個簡報產生 `analytics.ts` |
+
+全部支援 `--test` dry-run（唯讀），與 `AGENTS.md` 的專案慣例一致：
+
+```bash
+python3 scripts/add_posthog.py --test            # 掃描 429、注入 0（已套用）
+python3 scripts/add_posthog_csp.py --test        # patched=0
+python3 scripts/add_posthog_presentations.py --test
+```
+
+### 專案設定（現況）
+
+| 設定 | 值 |
+|---|---|
+| Session Replay | 開啟，**10% 採樣**，最短 2000ms，保留 30 天 |
+| Canvas 錄製 | 開啟 |
+| Autocapture / 熱圖 / dead-click | 開啟 |
+| Console log 捕捉 | 開啟 |
+| `anonymize_ips` | **false** — 保留完整 IP（見下方） |
+| `cookieless_server_hash_mode` | 2（Stateful） |
+| 內部流量排除 | `$device_id` + `$ip` 雙軌，insight 預設排除 |
+| 資料處理 | PostHog 美國雲端（US Cloud） |
+
+`anonymize_ips` 設為 `false` 是為了讓 `$ip` 內部流量過濾器能運作（IP 匿名化後事件上
+不存在 `$ip` 欄位）。此設定會保留訪客完整 IP。
+
+### 驗證
+
+```bash
+python3 -m pytest scripts/ -q                    # 89 passed（其中 48 為 PostHog 相關）
+npx playwright test tests/posthog.spec.ts         # 7 個測試定義，跨 3 種裝置共 48 次執行
+```
+
+E2E 以 `request` fixture 讀原始 HTML（避免與 3 秒載入計時器競態），
+CSP console listener 在 `page.goto()` **之前**註冊（初始載入的違規才不會被漏掉）。
+
+線上實測已確認 `click_whatsapp`、`click_instagram`、`$pageview`、`scroll_depth`、
+`$autocapture`、`$dead_swipe`、`$web_vitals` 皆有抵達。
+
+### ⚠️ 操作陷阱
+
+- **簡報構建產物需 `git add -f`**：`presentation/dist/` 受各專案 `.gitignore` 保護，
+  hashed bundle 不強制加入就不會進版權，served `index.html` 會指向不存在的檔案 →
+  **40 支簡報同時空白且沒有任何錯誤訊息**。詳見 `docs/lessons/posthog-deferred-load.md`。
+- **勿手動編輯 `presentation/index.html`**：那是構建產物，原始輸入在 `index.src.html`。
+- **勿移除 CSP 的 `worker-src`**：Session Replay 會靜默失效。
 
 ---
 
@@ -681,6 +817,24 @@ python3 scripts/optimize_openings.py
 
 **輸入數據：** `docs/top20_articles.json`（由 `scripts/rank_articles.py` 生成）
 
+### 11–14. PostHog 分析腳本
+
+| 腳本 | 用途 |
+|---|---|
+| `posthog_config.py` | 專案金鑰與 SDK 設定（單一來源，旋轉金鑰只需改此處） |
+| `add_posthog.py` | 批次注入延遲載入 loader + gtag bridge |
+| `add_posthog_csp.py` | 為 4 個 CSP 頁加入 PostHog allowlist |
+| `add_posthog_presentations.py` | 為 40 支 Vite 簡報產生 `src/analytics.ts` |
+
+**使用方法**（全部支援 `--test` dry-run，裸執行才寫入）：
+```bash
+python3 scripts/add_posthog.py --test
+python3 scripts/add_posthog_csp.py --test
+python3 scripts/add_posthog_presentations.py --test
+```
+
+三個注入器皆為冪等，重複執行不會產生差異。詳見 [PostHog 分析](#posthog-分析)。
+
 ---
 
 ## 測試
@@ -788,13 +942,24 @@ myo-hk/
 │
 ├── tests/
 │   ├── homepage.spec.ts        # 首頁 Playwright 測試
-│   └── mobile.spec.ts          # 手機版 Playwright 測試
+│   ├── mobile.spec.ts          # 手機版 Playwright 測試
+│   └── posthog.spec.ts         # PostHog loader / CSP 回歸測試
 │
 ├── docs/                       # 文件資源
+│   └── lessons/                # 踩坑教訓歸檔
 ├── presentations/              # 40 個婚禮視頻展示項目
 │   ├── index.html              # 視頻索引頁面
 │   ├── _scaffold.sh            # 腳手架生成腳本
 │   └── [01-40]-*/presentation/ # 40 個獨立 Vite + React 項目
+│       └── presentation/
+│           ├── index.src.html  # Vite 入口（勿手改 build 產物 index.html）
+│           └── src/analytics.ts # PostHog 模組（由腳本生成）
+│
+├── scripts/                    # 批次處理腳本
+│   ├── posthog_config.py       # PostHog 設定單一來源
+│   ├── add_posthog.py          # 注入 loader + gtag bridge
+│   ├── add_posthog_csp.py      # CSP allowlist
+│   └── add_posthog_presentations.py # 簡報 PostHog 模組
 │
 ├── fix_json_ld_and_table.py    # JSON-LD 合併 + 表格無障礙修復
 ├── fix_medium_issues.py        # SEO 中等問題批量修復
