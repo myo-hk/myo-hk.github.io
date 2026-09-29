@@ -145,6 +145,18 @@ class TestExclusions:
         assert rb.is_excluded('scripts/rename_brand.py') is True
         assert rb.is_excluded('scripts/test_rename_brand.py') is True
 
+    def test_lesson_doc_excluded_because_it_quotes_the_old_string(self):
+        """教訓文件必須引用舊字串才能說明陷阱，改寫它會讓範例失效。"""
+        assert rb.is_excluded('docs/lessons/brand-rename.md') is True
+        import os
+        lesson = os.path.join(
+            os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
+            'docs', 'lessons', 'brand-rename.md',
+        )
+        if os.path.exists(lesson):
+            src = open(lesson, encoding='utf-8').read()
+            assert 'My O!' in src, "教訓文件應保留舊字串作為退化範例"
+
     def test_self_scan_would_corrupt_regex_patterns(self):
         """守恆式測試：證明排除是必要的，而非多餘。"""
         import os

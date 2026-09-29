@@ -37,6 +37,9 @@ EXCLUDE_PATH_SUBSTR = (
     'docs/superpowers/',             # 歷史決策紀錄
     'docs/PageSpeed Insights.html',  # 工具產出報告
     'docs/architecture-diagram.html',
+    # 記錄本次更名陷阱的教訓文件：必須引用舊字串（如 PHASE2 regex 的退化原文）
+    # 才能說明陷阱，與 docs/superpowers/ 同屬「保留當時原文」的歷史紀錄類別
+    'docs/lessons/brand-rename.md',
     # 取代工具自身：這兩檔自含 `My O!` 字面。若不排除，Phase 2 會把本檔的
     # PHASE2 regex 從 `My O!` 改寫成 `MyO`（變成 no-op），且測試的
     # src / expected 會同步崩壞。兩檔為工具，非品牌內容。
