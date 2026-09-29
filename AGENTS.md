@@ -1,4 +1,4 @@
-# PROJECT KNOWLEDGE BASE — My O! Hong Kong Wedding Site
+# PROJECT KNOWLEDGE BASE — MyO Hong Kong Wedding Site
 
 > **語言偏好**：所有輸出與說明請使用繁體中文（Traditional Chinese）。用戶可用英文回覆，Agent 以繁體中文回應。
 >

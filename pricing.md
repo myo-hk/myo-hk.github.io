@@ -1,4 +1,4 @@
-# My O! 專屬結婚證書套 — Pricing & Product Information
+# MyO 專屬結婚證書套 — Pricing & Product Information
 
 **Last updated:** 2026-07-12 | **Currency:** HKD
 

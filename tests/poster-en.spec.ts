@@ -36,7 +36,7 @@ test.describe("poster-en.html — English flyer", () => {
     expect(cjk).toEqual(["中", "文"]);
 
     await expect(page).toHaveTitle(
-      "My O! Wedding Certificate Holder — Printable A5 Flyer"
+      "MyO Wedding Certificate Holder — Printable A5 Flyer"
     );
     await expect(page.locator(".brand-sub")).toHaveText(
       "Wedding Certificate Holder"

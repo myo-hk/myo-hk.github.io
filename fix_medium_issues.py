@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-My O! 網站修復腳本 - 中等問題批量處理
+MyO 網站修復腳本 - 中等問題批量處理
 處理: 硬編碼 URL、meta robots、lazy loading
 用法: python3 fix_medium_issues.py [--test]
 """

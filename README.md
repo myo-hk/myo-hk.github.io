@@ -1,4 +1,4 @@
-# My O! — 香港婚慶教學指南網站
+# MyO — 香港婚慶教學指南網站
 
 > 為您的結婚證書打造設計師級專屬證書套，讓這份愛情的見證永恆閃耀。
 
@@ -377,7 +377,7 @@ python3 -m pytest scripts/test_expand_narrations.py -v -k "tsx_bullets"
 
 ## 項目概述
 
-My O! 是一家專注於客製化結婚證書套的香港品牌。本項目是品牌的官方靜態網站，提供：
+MyO 是一家專注於客製化結婚證書套的香港品牌。本項目是品牌的官方靜態網站，提供：
 
 - **品牌展示** — 產品介紹、材質選擇、客製化選項（`index.html` / `v2.html`）
 - **宣傳單張** — A5 尺寸海報，支援瀏覽器原生 PDF 列印（`poster.html`）
@@ -1144,7 +1144,7 @@ mkdir -p presentations/XX-topic-slug/presentation/src/{chapters,registry,hooks}
 
 | 項目 | 詳情 |
 |------|------|
-| **品牌名稱** | My O! 專屬結婚證書套 |
+| **品牌名稱** | MyO 專屬結婚證書套 |
 | **WhatsApp** | +852 6379 6410 |
 | **Instagram** | [@myo.makeyourown](https://www.instagram.com/myo.makeyourown/) |
 | **網站** | [myo-makeyourown.pages.dev](https://myo-makeyourown.pages.dev) |
@@ -1155,7 +1155,7 @@ mkdir -p presentations/XX-topic-slug/presentation/src/{chapters,registry,hooks}
 
 ## 授權
 
-© 2026 My O! 版權所有。
+© 2026 MyO 版權所有。
 
 ---
 
