@@ -102,6 +102,7 @@ bash presentations/_scaffold.sh <NN> <slug> "<標題>" <theme>
 | 部落格→簡報管線 | `scripts/expand_presentation_content.py` | parse → match → expand → fallback |
 | poster.html PDF 列印 | `docs/lessons/poster-print.md` | scale(1.8898) 公式 |
 | PostHog 延遲載入陷阱 | `docs/lessons/posthog-deferred-load.md` | worker-src、frame-ancestors、index.src.html 修復 |
+| 批次更名／批次取代 | `docs/lessons/brand-rename.md` | 工具自我排除、產物重生成、正則一致性驗證 |
 | CLAUDE.md 注意事項 | `CLAUDE.md` | Presentation base path 陷阱 |
 | 內容 SOP 標準 | `common/coding-style.md` | KISS / DRY / YAGNI 原則 |
 
