@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test';
 
-test.describe('My O! 手機版 UX/UI 測試', () => {
+test.describe('MyO 手機版 UX/UI 測試', () => {
 
   test.beforeEach(async ({ page }) => {
     await page.goto('/');

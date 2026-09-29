@@ -1,5 +1,5 @@
-// My O! Service Worker — network-first for pages, stale-while-revalidate for assets
-const CACHE_NAME = 'myo-cache-v2';
+// MyO Service Worker — network-first for pages, stale-while-revalidate for assets
+const CACHE_NAME = 'myo-cache-v3';
 const STATIC_ASSETS = [
   '/',
   '/v2.html',

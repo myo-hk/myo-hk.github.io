@@ -1,10 +1,10 @@
 import { test, expect } from '@playwright/test';
 
-test.describe('My O! 首頁功能測試', () => {
+test.describe('MyO 首頁功能測試', () => {
 
   test('首頁應該正確載入', async ({ page }) => {
     await page.goto('/');
-    await expect(page).toHaveTitle(/My O/);
+    await expect(page).toHaveTitle(/MyO/);
   });
 
   test('主要區塊應該存在', async ({ page }) => {

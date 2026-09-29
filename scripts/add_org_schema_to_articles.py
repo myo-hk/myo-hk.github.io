@@ -13,7 +13,7 @@ ORG_SCHEMA = '''    <script type="application/ld+json">
 {
     "@context": "https://schema.org",
     "@type": "Organization",
-    "name": "My O! 專屬結婚證書套",
+    "name": "MyO 專屬結婚證書套",
     "url": "https://myo-makeyourown.pages.dev",
     "logo": "https://myo-makeyourown.pages.dev/image/01_company_logo.png",
     "sameAs": [

@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Batch image optimizer for My O! static site.
+Batch image optimizer for MyO static site.
 Compresses JPEG/WebP images in image/ directory.
 
 Usage:

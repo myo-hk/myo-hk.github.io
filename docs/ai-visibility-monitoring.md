@@ -1,4 +1,4 @@
-# AI Visibility Monitoring Checklist — My O!
+# AI Visibility Monitoring Checklist — MyO
 
 **Purpose:** Monthly check for AI search engine citations
 **Start Date:** 2026-07-12

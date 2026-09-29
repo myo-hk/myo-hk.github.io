@@ -1,5 +1,5 @@
 #!/bin/bash
-# Lighthouse score checker for My O!
+# Lighthouse score checker for MyO
 # Usage: ./tests/lighthouse-check.sh [mobile|desktop] [url]
 set -euo pipefail
 

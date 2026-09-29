@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-My O! 網站修復腳本 - JSON-LD 合併 + 表格無障礙
+MyO 網站修復腳本 - JSON-LD 合併 + 表格無障礙
 用法: python3 fix_json_ld_and_table.py [--test]
 """
 

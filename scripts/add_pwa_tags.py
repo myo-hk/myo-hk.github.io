@@ -16,14 +16,14 @@ PWA_HEAD_TAGS = """<link rel="manifest" href="/manifest.json">
 <meta name="theme-color" content="#CD853F">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
-<meta name="apple-mobile-web-app-title" content="My O!">
+<meta name="apple-mobile-web-app-title" content="MyO!">
 <link rel="apple-touch-icon" href="/image/icon-192x192.png">"""
 
 PWA_HEAD_TAGS_BLOG = """<link rel="manifest" href="../manifest.json">
 <meta name="theme-color" content="#CD853F">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
-<meta name="apple-mobile-web-app-title" content="My O!">
+<meta name="apple-mobile-web-app-title" content="MyO!">
 <link rel="apple-touch-icon" href="../image/icon-192x192.png">"""
 
 SW_SCRIPT = """

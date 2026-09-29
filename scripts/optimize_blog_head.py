@@ -69,11 +69,11 @@ FA_NO_INTEGRITY = re.compile(
 
 FOOTER_LOGO = re.compile(
     r'<img\s+src="\.\./image/01_company_logo\.png"\s+'
-    r'alt="My O! Logo"\s+'
+    r'alt="MyO! Logo"\s+'
     r'class="logo"\s*>'
 )
 FOOTER_LOGO_REPLACEMENT = (
-    '<img src="../image/01_company_logo.png" alt="My O! Logo" '
+    '<img src="../image/01_company_logo.png" alt="MyO! Logo" '
     'width="24" height="24" loading="lazy" class="logo">'
 )
 

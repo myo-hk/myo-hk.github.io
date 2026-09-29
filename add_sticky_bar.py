@@ -157,9 +157,9 @@ def get_sticky_bar_html(image_path='image/01_company_logo.png'):
     <!-- Mobile Sticky Conversion Bar -->
     <div class="sticky-conversion-bar" id="sticky-conversion-bar">
         <div class="brand-section">
-            <img src="{image_path}" alt="My O! Logo" class="logo">
+            <img src="{image_path}" alt="MyO! Logo" class="logo">
             <div class="brand-name">
-                <span>My O!</span>
+                <span>MyO!</span>
                 <span>myo.makeyourown</span>
             </div>
         </div>
