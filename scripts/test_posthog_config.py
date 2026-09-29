@@ -59,11 +59,12 @@ class TestPostHogConfig:
 
     def test_root_pages_exact_contents(self):
         """Every root-level page must appear — a missing entry silently skips loader injection."""
-        assert len(posthog_config.ROOT_PAGES) == 7
+        assert len(posthog_config.ROOT_PAGES) == 8
         assert posthog_config.ROOT_PAGES == [
             "index.html",
             "v2.html",
             "poster.html",
+            "poster-en.html",
             "heic-converter.html",
             "faq.html",
             "privacy.html",

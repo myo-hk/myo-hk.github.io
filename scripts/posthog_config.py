@@ -41,11 +41,12 @@ ROOT_PAGES = [
     "index.html",
     "v2.html",
     "poster.html",
+    "poster-en.html",
     "heic-converter.html",
     "faq.html",
     "privacy.html",
     "terms.html",
 ]
 
-# Only these four carry a Content-Security-Policy <meta>.
-CSP_PAGES = ["index.html", "v2.html", "poster.html", "heic-converter.html"]
+# Only these five carry a Content-Security-Policy <meta>.
+CSP_PAGES = ["index.html", "v2.html", "poster.html", "poster-en.html", "heic-converter.html"]

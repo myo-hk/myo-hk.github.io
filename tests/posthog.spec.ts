@@ -15,6 +15,7 @@ const CSP_PAGES = [
   { path: "/index.html", name: "index" },
   { path: "/v2.html", name: "v2" },
   { path: "/poster.html", name: "poster" },
+  { path: "/poster-en.html", name: "poster-en" },
   { path: "/heic-converter.html", name: "heic-converter" },
 ];
 
