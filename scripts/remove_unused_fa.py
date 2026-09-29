@@ -74,8 +74,9 @@ def main():
     changed = 0
 
     # Root pages
-    for name in ['index.html', 'v2.html', 'poster.html', 'heic-converter.html',
-                 'faq.html', 'privacy.html', 'terms.html', 'HTML-Artifacts.html']:
+    for name in ['index.html', 'v2.html', 'poster.html', 'poster-en.html',
+                 'heic-converter.html', 'faq.html', 'privacy.html', 'terms.html',
+                 'HTML-Artifacts.html']:
         fpath = ROOT / name
         if fpath.exists():
             if process_file(fpath, test_mode):

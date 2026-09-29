@@ -21,6 +21,7 @@ PAGES_TO_FIX = [
     ("v2.html", "robots"),
     ("blog/index.html", "robots"),
     ("poster.html", "og_image"),
+    ("poster-en.html", "og_image"),
 ]
 
 
