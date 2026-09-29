@@ -52,3 +52,55 @@
 - 任何涉及 `window.print()` 的列印功能，優先測試 `position: absolute` + 硬編碼 `scale()`
 - 勿用 `html2canvas` 處理現代 CSS 佈局（flexbox、gap、object-fit）
 - 勿用 `window.open()` 重建 DOM 做列印 —— 圖片資源會斷
+
+---
+
+## 教訓：翻譯文案會撐破 A5 單頁高度上限
+
+> **日期**：2026-09-29
+> **關聯變更**：新增 `poster-en.html`（英文版）
+> **狀態**：已解決
+
+### 問題
+
+`poster.html` 是固定寬度（420px）、高度由內容決定的海報。列印時整體 `scale(1.8898)`，
+因此**高度預算 = `1123 / 1.8898 = 594px`**（設計稿 px）。超出就會印成兩頁，第二頁是空白。
+
+把同一版面翻成英文後（英文通常比中文長 1.5–2 倍），`.a5-flyer` 從 578px 變成 **620px**，
+溢出差 26px —— 下載的 PDF 多出一張空白頁。
+
+量測結果（`getBoundingClientRect`）：
+
+| 區塊 | 中文版 | 英文版（修前） | 英文版（修後） |
+|------|--------|----------------|----------------|
+| `.highlights-section` | 159px | **206px** | 135px |
+| `.personalize-section` | — | 69px | 47px |
+| `.a5-flyer` 總高 | 578px | **620px** ❌ | 527px ✅ |
+
+主因是 `.highlight-item` 欄寬僅 101px，約 21 個英文字元就換行：
+「Secure Protection」（17 字元）標題爆成兩行、四個說明文各多佔一行。
+
+### 解法
+
+1. **改文案而非改版面**。固定寬度的列印版面不可用「放大字體」救場——
+   欄寬 101px 是硬上限，標題字級一放大就重新換行。改用更短的英文字串：
+   - `Secure Protection` → `Safe Protection`
+   - `Fits the HK Registry of Marriages` → `Fits HK A4 certificate`
+   - 說明文重寫成每行 ≤ 21 字元，並保留 `<br>` 控制斷行位置
+2. **量測驗證，不要目視**。判斷標準是 `.a5-flyer.offsetHeight ≤ 594`。
+3. 把這條上限寫成回歸測試（`tests/poster-en.spec.ts`）：
+
+```ts
+const A4_HEIGHT_PX = 1123;
+const PRINT_SCALE = 1.8898;
+expect(height * PRINT_SCALE).toBeLessThanOrEqual(A4_HEIGHT_PX);
+```
+
+### 預防
+
+- **任何要新增翻譯版本的固定版面頁面，先量高度預算再動手。**
+  高度上限 = `A4 高度px ÷ scale`，不是看起來「排得下」。
+- 翻譯後必量 `.a5-flyer.offsetHeight`，並與原版對比；
+  差異超過 10% 就會明顯改變成品比例。
+- 欄寬固定時，`<br>` 必須按目標語言的字元數重新定位，照抄原版的斷行點會炸。
+
