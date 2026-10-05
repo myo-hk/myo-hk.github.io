@@ -1,0 +1,317 @@
+/* Ceremony component styles – all classes prefixed with .ce- */
+
+.ce-scene {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: var(--stage-pad-y) var(--stage-pad-x);
+  background: var(--surface);
+  color: var(--text);
+  font-family: var(--font-display-cn);
+  gap: 2rem;
+}
+
+/* Flow diagram (step 0) */
+.ce-flow {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.ce-flow-row {
+  display: flex;
+  align-items: center;
+}
+
+.ce-node {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  border: 2px solid var(--text);
+  border-radius: var(--r-card);
+  background: var(--card-glass-bg);
+  box-shadow: var(--card-shadow);
+  transition: background 0.3s, border-color 0.3s, color 0.3s;
+}
+
+.ce-node--lit {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+}
+
+.ce-node-num {
+  font-size: clamp(1.2rem, 4vw, 1.8rem);
+  font-weight: bold;
+}
+
+.ce-node-label {
+  font-size: clamp(1rem, 3vw, 1.4rem);
+  margin-top: 0.2rem;
+}
+
+.ce-node-sub {
+  font-size: 0.9rem;
+  opacity: 0.8;
+}
+
+.ce-arrow {
+  width: 2rem;
+  height: 2rem;
+  border-top: 2px solid var(--text);
+  border-right: 2px solid var(--text);
+  transform: rotate(45deg);
+  margin: 0 0.5rem;
+  transition: border-color 0.3s;
+}
+
+.ce-arrow--lit {
+  border-color: var(--accent);
+}
+
+.ce-hint {
+  font-size: 0.9rem;
+  opacity: 0.7;
+}
+
+/* Witness card (step 1) */
+.ce-card {
+  background: var(--card-glass-bg);
+  border-radius: var(--r-card);
+  padding: 1.5rem;
+  box-shadow: var(--card-shadow);
+  text-align: center;
+  max-width: 20rem;
+}
+
+.ce-card--witness .ce-card-icon svg {
+  width: 48px;
+  height: 48px;
+  color: var(--accent);
+}
+
+.ce-witness-numbers {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0.8rem 0;
+}
+
+.ce-big-num {
+  font-size: clamp(2rem, 6vw, 4rem);
+  color: var(--accent);
+  line-height: 1;
+}
+
+.ce-big-num-label {
+  font-size: 1.2rem;
+  margin-top: 0.2rem;
+}
+
+.ce-witness-age {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.ce-age-badge {
+  background: var(--accent);
+  color: #fff;
+  padding: 0.2rem 0.5rem;
+  border-radius: var(--r-card);
+  font-weight: bold;
+  font-size: 0.9rem;
+}
+
+.ce-age-text {
+  font-size: 0.9rem;
+}
+
+.ce-witness-note {
+  margin-top: 0.8rem;
+  font-size: 0.9rem;
+  opacity: 0.8;
+}
+
+/* Certificate reveal (step 2) */
+.ce-cert-wrap {
+  position: relative;
+  width: 210mm;
+  max-width: 90vw;
+  aspect-ratio: 209 / 298;
+  background: var(--card-glass-bg);
+  border: 2px solid var(--text);
+  border-radius: var(--r-card);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ce-cert {
+  width: 90%;
+  height: 90%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ce-cert-inner {
+  width: 100%;
+  height: 100%;
+  border: 1px solid var(--text);
+  background: var(--surface);
+  padding: 1rem;
+  box-sizing: border-box;
+}
+
+.ce-cert-header {
+  font-size: clamp(1.5rem, 4vw, 2rem);
+  text-align: center;
+  margin-bottom: 0.5rem;
+}
+
+.ce-cert-body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.ce-cert-line {
+  height: 2px;
+  background: var(--text);
+  width: 100%;
+}
+
+.ce-cert-line--short {
+  width: 60%;
+  align-self: flex-end;
+}
+
+.ce-cert-seal {
+  position: absolute;
+  bottom: 0.5rem;
+  right: 0.5rem;
+  font-size: 0.8rem;
+  opacity: 0.5;
+}
+
+.ce-dim-badge {
+  position: absolute;
+  bottom: 0.5rem;
+  left: 0.5rem;
+  background: var(--accent);
+  color: #fff;
+  padding: 0.2rem 0.4rem;
+  border-radius: var(--r-card);
+  font-size: 0.8rem;
+  display: flex;
+  gap: 0.1rem;
+  align-items: baseline;
+}
+
+.ce-dim-w,
+.ce-dim-h {
+  font-weight: bold;
+}
+
+.ce-dim-x {
+  margin: 0 0.1rem;
+}
+
+.ce-cert-note {
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+  opacity: 0.8;
+}
+
+/* Certificate into cover (step 3) */
+.ce-cover-wrap {
+  position: relative;
+  width: 210mm;
+  max-width: 90vw;
+  aspect-ratio: 209 / 298;
+  background: var(--card-glass-bg);
+  border: 2px solid var(--text);
+  border-radius: var(--r-card);
+  overflow: hidden;
+}
+
+.ce-cover {
+  width: 100%;
+  height: 100%;
+  background: var(--surface);
+  position: relative;
+}
+
+.ce-cover-spine {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 2rem;
+  background: var(--accent);
+}
+
+.ce-cover-pocket {
+  position: absolute;
+  left: 2rem;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ce-cert-slide {
+  width: 80%;
+  height: 80%;
+  background: var(--card-glass-bg);
+  border: 1px solid var(--text);
+  border-radius: var(--r-card);
+  overflow: hidden;
+  animation: slideIn 1s forwards;
+}
+
+@keyframes slideIn {
+  from { transform: translateX(100%); }
+  to { transform: translateX(0); }
+}
+
+.ce-cert-slide-inner {
+  padding: 0.8rem;
+  box-sizing: border-box;
+}
+
+.ce-cert-slide-header {
+  font-size: clamp(1.2rem, 3vw, 1.6rem);
+  text-align: center;
+  margin-bottom: 0.4rem;
+}
+
+.ce-cert-slide-lines {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.ce-cert-slide-line {
+  height: 2px;
+  background: var(--text);
+  width: 100%;
+}
+
+.ce-cert-slide-line--short {
+  width: 60%;
+  align-self: flex-end;
+}
+
+.ce-cover-hint {
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+  opacity: 0.7;
+}

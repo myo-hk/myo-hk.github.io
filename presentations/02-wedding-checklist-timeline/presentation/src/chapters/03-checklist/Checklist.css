@@ -1,0 +1,115 @@
+/* ─── Checklist ─── */
+.cl-scene {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  padding: var(--stage-pad-y) var(--stage-pad-x);
+  text-align: center;
+  overflow: hidden;
+}
+
+.cl-category {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  animation: cl-fade-in 600ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  max-width: 500px;
+}
+
+.cl-icon-wrap {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: var(--card-glass-bg);
+  backdrop-filter: blur(8px);
+  border: 1px solid var(--card-glass-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--card-shadow);
+}
+
+.cl-svg {
+  width: 40px;
+  height: 40px;
+}
+
+.cl-title {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--accent);
+  font-family: var(--font-display-cn);
+}
+
+.cl-items {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+}
+
+.cl-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: var(--card-glass-bg);
+  backdrop-filter: blur(6px);
+  border: 1px solid var(--card-glass-border);
+  border-radius: var(--r-card, 16px);
+  padding: 14px 20px;
+  font-size: 16px;
+  color: var(--text);
+  font-weight: 500;
+  animation: cl-item-in 500ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  font-family: var(--font-display-cn);
+}
+
+.cl-check {
+  flex-shrink: 0;
+}
+
+/* final */
+.cl-final {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  animation: cl-fade-in 600ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.cl-final-icon {
+  animation: cl-scale-in 500ms cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+.cl-final h2 {
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--text);
+  font-family: var(--font-display-cn);
+}
+
+.cl-final p {
+  font-size: 18px;
+  color: var(--text-mute);
+  line-height: 1.6;
+  font-family: var(--font-display-cn);
+}
+
+@keyframes cl-fade-in {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes cl-item-in {
+  from { opacity: 0; transform: translateX(-20px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes cl-scale-in {
+  from { opacity: 0; transform: scale(0.5); }
+  to { opacity: 1; transform: scale(1); }
+}

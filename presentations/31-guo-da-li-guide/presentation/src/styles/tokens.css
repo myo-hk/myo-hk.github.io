@@ -1,0 +1,15 @@
+:root {
+  --bg: #f0ede6;
+  --bg-card: #faf8f2;
+  --text: #2a3a2a;
+  --text-muted: #6a7a6a;
+  --accent: #4a6b3a;
+  --accent-light: #d0dcc8;
+  --accent2: #7a5a3a;
+  --accent2-light: #d8d0c4;
+  --border: #d4cec2;
+  --shadow: 0 2px 12px rgba(0,0,0,0.06);
+  --radius: 8px;
+  --radius-sm: 6px;
+  --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}

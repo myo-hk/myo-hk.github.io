@@ -1,9 +1,35 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GQLW7LNP6H"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-GQLW7LNP6H');
+</script>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title id="pageTitle">HEIC/HEIF 轉圖片工具</title>
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data: https:; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://cdnjs.cloudflare.com https://unpkg.com https://static.cloudflareinsights.com https://*.posthog.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com https://unpkg.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; connect-src 'self' https://www.google-analytics.com https://static.cloudflareinsights.com https://cloudflareinsights.com https://*.posthog.com; frame-src 'none'; object-src 'none'; base-uri 'self'; worker-src 'self' blob: data:;">
+    <meta name="description" content="免費線上 HEIC/HEIF 轉 PNG/JPG 工具，支援批量轉換與 ZIP 打包下載。無需上傳伺服器，所有轉換在瀏覽器端完成，保障隱私。">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://myo-makeyourown.pages.dev/heic-converter.html">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="HEIC/HEIF 轉圖片工具 — 免費線上批量轉換">
+    <meta property="og:description" content="免費線上 HEIC/HEIF 轉 PNG/JPG，支援批量轉換與 ZIP 打包下載。所有轉換在瀏覽器端完成，保障隱私。">
+    <meta property="og:image" content="https://myo-makeyourown.pages.dev/image/01_company_logo.webp">
+    <meta property="og:url" content="https://myo-makeyourown.pages.dev/heic-converter.html">
+    <meta property="og:site_name" content="MyO 專屬結婚證書套">
+    <meta property="og:locale" content="zh_HK">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="dns-prefetch" href="https://www.googletagmanager.com">
     <style>
         /* --- CSS 樣式開始 --- */
         body {
@@ -242,6 +268,125 @@
         }
         /* --- CSS 樣式結束 --- */
     </style>
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "HEIC/HEIF 轉圖片工具",
+  "description": "免費線上 HEIC/HEIF 轉 PNG/JPG 工具，支援批量轉換與 ZIP 打包下載。",
+  "url": "https://myo-makeyourown.pages.dev/heic-converter.html",
+  "operatingSystem": "All",
+  "applicationCategory": "Multimedia",
+  "browserRequirements": "Requires JavaScript",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "HKD"
+  },
+  "author": {
+    "@type": "Organization",
+    "name": "MyO 專屬結婚證書套",
+    "url": "https://myo-makeyourown.pages.dev"
+  }
+}
+</script>
+<link rel="manifest" href="/manifest.json">
+<meta name="theme-color" content="#CD853F">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="MyO!">
+<link rel="apple-touch-icon" href="/image/icon-192x192.png">
+<!-- PostHog: lazy load on first interaction or 3000ms. See scripts/add_posthog.py -->
+<script>
+(function () {
+  if (window.__myoPostHog) return;
+  window.__myoPostHog = true;
+  var KEY = "phc_Bh9JEckmeRh3GGbBNyV45tj44L6NqxmeBqAxRPRtdzK5";
+  var API_HOST = "https://us.i.posthog.com";
+  var DEFAULTS = "2026-05-30";
+  var queue = [];
+  var loaded = false;
+  var injected = false;
+
+  function client() {
+    var c = window.posthog;
+    return c && typeof c.capture === "function" ? c : null;
+  }
+
+  function enqueue(name, props) {
+    if (loaded) {
+      var c = client();
+      if (c) c.capture(name, props);
+      return;
+    }
+    if (queue.length < 50) queue.push([name, props]);
+  }
+
+  function flush() {
+    var c = client();
+    if (!loaded || !c) return;
+    while (queue.length) {
+      var item = queue.shift();
+      c.capture(item[0], item[1]);
+    }
+  }
+
+  function start() {
+    if (injected) return;
+    injected = true;
+    var s = document.createElement("script");
+    s.id = "myo-posthog-script";
+    s.type = "text/javascript";
+    s.crossOrigin = "anonymous";
+    s.async = true;
+    s.src = API_HOST.replace(".i.posthog.com", "-assets.i.posthog.com") + "/static/array.js";
+    s.onload = function () {
+      var c = client();
+      if (!c) return;
+      c.init(KEY, { api_host: API_HOST, defaults: DEFAULTS, capture_pageview: false, autocapture: true });
+      loaded = true;
+      c.capture("$pageview", {
+        $current_url: window.location.href,
+        $referrer: document.referrer
+      });
+      flush();
+    };
+    document.head.appendChild(s);
+  }
+
+  // Bridge existing gtag('event', name, params) calls into PostHog.
+  // The original still runs first, so GA4 behaviour is unchanged.
+  if (typeof window.gtag === "function") {
+    var original = window.gtag;
+    window.gtag = function () {
+      var args = Array.prototype.slice.call(arguments);
+      original.apply(window, args);
+      if (args[0] !== "event" || typeof args[1] !== "string") return;
+      var p = args[2] || {};
+      var props = {};
+      if (p.event_category !== undefined) props.category = p.event_category;
+      if (p.event_label !== undefined) props.label = p.event_label;
+      if (p.value !== undefined) props.value = p.value;
+      if (p.non_interaction !== undefined) props.non_interaction = p.non_interaction;
+      enqueue(args[1], props);
+      if (!loaded) start();
+    };
+  }
+
+  function onFirstInteraction() {
+    start();
+    for (var i = 0; i < ["touchstart", "click", "scroll", "keydown", "mouseover"].length; i++) {
+      document.removeEventListener(["touchstart", "click", "scroll", "keydown", "mouseover"][i], onFirstInteraction, true);
+    }
+  }
+
+  var TRIGGERS = ["touchstart", "click", "scroll", "keydown", "mouseover"];
+  for (var j = 0; j < TRIGGERS.length; j++) {
+    document.addEventListener(TRIGGERS[j], onFirstInteraction, { capture: true, passive: true });
+  }
+  setTimeout(start, 3000);
+})();
+</script>
 </head>
 <body>
     <div class="container">
@@ -667,5 +812,45 @@
         });
         /* --- JavaScript 程式碼結束 --- */
     </script>
+
+<script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', function() {
+    navigator.serviceWorker.register('/sw.js').catch(function(err) {
+      console.warn('SW registration failed:', err);
+    });
+  });
+}
+</script>
+
+<script>
+(function() {
+  if (typeof gtag === 'undefined') return;
+  var scrollDepths = {25: true, 50: true, 75: true, 90: true};
+  var firedDepths = {};
+  var scrollHandler = function() {
+    var scrollTop = window.scrollY || window.pageYOffset;
+    var docHeight = Math.max(
+      document.body.scrollHeight, document.documentElement.scrollHeight,
+      document.body.offsetHeight, document.documentElement.offsetHeight,
+      document.body.clientHeight, document.documentElement.clientHeight
+    );
+    var windowHeight = window.innerHeight;
+    var scrollPercent = Math.round((scrollTop + windowHeight) / docHeight * 100);
+    Object.keys(scrollDepths).forEach(function(depth) {
+      if (scrollPercent >= parseInt(depth) && !firedDepths[depth]) {
+        firedDepths[depth] = true;
+        gtag('event', 'scroll_depth', {
+          'event_category': 'engagement',
+          'event_label': depth + '%',
+          'value': parseInt(depth),
+          'non_interaction': true
+        });
+      }
+    });
+  };
+  window.addEventListener('scroll', scrollHandler, {passive: true});
+})();
+</script>
 </body>
 </html>

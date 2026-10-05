@@ -1,0 +1,8 @@
+.Ucost4Ubanquet { min-height: 100vh; background: var(--bg); color: var(--text); display: flex; align-items: center; justify-content: center; padding: 48px 32px; }
+.step-0 { flex-direction: column; text-align: center; gap: 16px; }
+.step-0 h2 { font-size: 2.5rem; font-weight: 700; }
+.step-1 { flex-direction: column; text-align: center; gap: 16px; max-width: 400px; }
+.step-2 { flex-direction: column; text-align: center; gap: 16px; max-width: 400px; }
+.final { flex-direction: column; text-align: center; gap: 16px; max-width: 400px; }
+.big-number { font-size: 5rem; font-weight: 800; color: var(--accent); }
+.card { background: var(--bg-card, #fff); border: 1px solid var(--border); border-radius: var(--radius); padding: 20px; margin: 8px 0; }

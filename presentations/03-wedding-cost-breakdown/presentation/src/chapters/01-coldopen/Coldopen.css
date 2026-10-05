@@ -1,0 +1,126 @@
+/* ─── Coldopen ─── */
+.co-scene {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  padding: var(--stage-pad-y) var(--stage-pad-x);
+  text-align: center;
+  overflow: hidden;
+}
+
+.co-hook {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  animation: co-fade-in 600ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.co-hook-icon {
+  animation: co-scale-in 500ms cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+.co-title {
+  font-size: clamp(40px, 4.5vw, 72px);
+  font-weight: 700;
+  color: var(--text);
+  font-family: var(--font-display-cn);
+}
+
+.co-sub {
+  font-size: 20px;
+  color: var(--text-mute);
+  font-family: var(--font-display-cn);
+}
+
+.co-number-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  animation: co-fade-in 600ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.co-highlight-bar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.co-highlight-bar .co-rule {
+  width: 40px;
+  height: 4px;
+  background: var(--accent);
+  border-radius: 2px;
+}
+
+.co-number-appear {
+  font-size: clamp(56px, 8vw, 100px);
+  font-weight: var(--hero-num-weight);
+  letter-spacing: var(--hero-num-track);
+  color: var(--accent);
+  font-family: var(--font-display-en);
+  animation: co-bump 500ms cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+.co-number-label {
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--text);
+  font-family: var(--font-display-cn);
+}
+
+.co-number-sub {
+  font-size: 16px;
+  color: var(--text-mute);
+  font-family: var(--font-display-cn);
+}
+
+.co-preview-title {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--text);
+  font-family: var(--font-display-cn);
+  margin-bottom: 24px;
+  animation: co-fade-in 500ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.co-preview-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+  max-width: 440px;
+}
+
+.co-preview-card {
+  background: var(--card-glass-bg);
+  backdrop-filter: blur(8px);
+  border: 1px solid var(--card-glass-border);
+  border-radius: var(--r-card, 12px);
+  padding: 16px 28px;
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--text);
+  font-family: var(--font-display-cn);
+  box-shadow: var(--card-shadow);
+  animation: co-fade-in 500ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes co-fade-in {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes co-scale-in {
+  from { opacity: 0; transform: scale(0.5); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes co-bump {
+  from { opacity: 0; transform: scale(0.5); }
+  to { opacity: 1; transform: scale(1); }
+}

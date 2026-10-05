@@ -1,0 +1,177 @@
+.c3-scene {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  padding: var(--stage-pad-y) var(--stage-pad-x);
+  text-align: center;
+  overflow: hidden;
+}
+.c3-hook {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  animation: c3-fade-in 600ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+.c3-hook-icon {
+  animation: c3-scale-in 500ms cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+.c3-title {
+  font-size: clamp(40px, 4.5vw, 72px);
+  font-weight: 700;
+  color: var(--text);
+  font-family: var(--font-display-cn);
+}
+.c3-sub {
+  font-size: 20px;
+  color: var(--text-mute);
+  font-family: var(--font-display-cn);
+}
+.c3-number-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  animation: c3-fade-in 600ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+.c3-highlight-bar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.c3-highlight-bar .c3-rule {
+  width: 40px;
+  height: 4px;
+  background: var(--accent);
+  border-radius: 2px;
+}
+.c3-number-appear {
+  font-size: clamp(40px, 5vw, 72px);
+  font-weight: var(--hero-num-weight);
+  letter-spacing: var(--hero-num-track);
+  color: var(--accent);
+  font-family: var(--font-display-en);
+  animation: c3-bump 500ms cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+.c3-number-label {
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--text);
+  font-family: var(--font-display-cn);
+}
+.c3-number-sub {
+  font-size: 16px;
+  color: var(--text-mute);
+  font-family: var(--font-display-cn);
+}
+.c3-preview-title {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--text);
+  font-family: var(--font-display-cn);
+  margin-bottom: 24px;
+  animation: c3-fade-in 500ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+.c3-preview-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+  max-width: 460px;
+}
+.c3-preview-card {
+  background: var(--card-glass-bg);
+  backdrop-filter: blur(8px);
+  border: 1px solid var(--card-glass-border);
+  border-radius: var(--r-card, 14px);
+  padding: 14px 24px;
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--text);
+  font-family: var(--font-display-cn);
+  box-shadow: var(--card-shadow);
+  animation: c3-fade-in 600ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+.c3-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  background: var(--card-glass-bg);
+  backdrop-filter: blur(8px);
+  border: 1px solid var(--card-glass-border);
+  border-radius: var(--r-card, 24px);
+  padding: 32px 40px;
+  max-width: 420px;
+  box-shadow: var(--card-shadow);
+  animation: c3-fade-in 600ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+.c3-card-title {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--text);
+  font-family: var(--font-display-cn);
+}
+.c3-card-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+  max-width: 420px;
+}
+.c3-card-label {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--text);
+  font-family: var(--font-display-cn);
+}
+.c3-card-desc {
+  font-size: 14px;
+  color: var(--text-mute);
+  font-family: var(--font-display-cn);
+}
+.c3-compare {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+}
+.c3-compare-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  justify-content: space-between;
+}
+.c3-compare-label {
+  font-size: 18px;
+  color: var(--text-2);
+  font-family: var(--font-display-cn);
+}
+.c3-compare-value {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--accent);
+  font-family: var(--font-display-en);
+}
+.c3-compare-divider {
+  height: 1px;
+  background: var(--card-glass-border);
+}
+.c3-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+}
+.c3-list-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 18px;
+  color: var(--text-2);
+  font-family: var(--font-display-cn);
+  animation: c3-fade-in 500ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}

@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GQLW7LNP6H"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-GQLW7LNP6H');
+</script>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MyO 婚禮教學影片 — 40 個主題</title>
+<style>
+  :root {
+    --bg: #faf8f5;
+    --card-bg: #fff;
+    --text: #2d1f1a;
+    --text-mute: #8a7a72;
+    --accent: #c17f5e;
+    --accent-light: #e8d5c8;
+    --border: #e5ddd6;
+    --status-planned: #d4d4d4;
+    --status-progress: #f0b27a;
+    --status-done: #7fb07f;
+    --shadow: 0 2px 8px rgba(0,0,0,0.06);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: "Noto Sans TC", -apple-system, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    padding: 40px 24px;
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+  .header {
+    text-align: center;
+    margin-bottom: 48px;
+  }
+  .header h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    margin-bottom: 8px;
+  }
+  .header p {
+    color: var(--text-mute);
+    font-size: 0.95rem;
+  }
+  .header .badge {
+    display: inline-block;
+    margin-top: 12px;
+    padding: 4px 16px;
+    border-radius: 20px;
+    background: var(--accent-light);
+    color: var(--accent);
+    font-size: 0.85rem;
+    font-weight: 500;
+  }
+  .filters {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 36px;
+  }
+  .filters button {
+    padding: 6px 18px;
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    background: var(--card-bg);
+    cursor: pointer;
+    font-size: 0.85rem;
+    color: var(--text-mute);
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .filters button:hover {
+    border-color: var(--accent);
+    color: var(--text);
+  }
+  .filters button.active {
+    background: var(--accent);
+    color: #fff;
+    border-color: var(--accent);
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 16px;
+  }
+  .card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: var(--shadow);
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.15s, box-shadow 0.15s;
+    text-decoration: none;
+    color: inherit;
+  }
+  .card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+  }
+  .card .num {
+    font-size: 0.8rem;
+    color: var(--text-mute);
+    margin-bottom: 4px;
+    font-weight: 500;
+  }
+  .card .title {
+    font-size: 1rem;
+    font-weight: 600;
+    line-height: 1.4;
+    margin-bottom: 10px;
+  }
+  .card .meta {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-top: auto;
+  }
+  .wave-tag {
+    font-size: 0.72rem;
+    padding: 2px 10px;
+    border-radius: 10px;
+    background: #f0ede8;
+    color: var(--text-mute);
+    font-weight: 500;
+  }
+  .theme-tag {
+    font-size: 0.7rem;
+    padding: 2px 8px;
+    border-radius: 8px;
+    background: var(--accent-light);
+    color: var(--accent);
+  }
+  .status {
+    margin-left: auto;
+    font-size: 0.7rem;
+    padding: 2px 10px;
+    border-radius: 10px;
+    font-weight: 500;
+  }
+  .status.planned {
+    background: var(--status-planned);
+    color: #666;
+  }
+  .status.in-progress {
+    background: var(--status-progress);
+    color: #7a5600;
+  }
+  .status.completed {
+    background: var(--status-done);
+    color: #fff;
+  }
+  .card.disabled {
+    opacity: 0.5;
+    pointer-events: none;
+  }
+  .stats {
+    display: flex;
+    gap: 24px;
+    justify-content: center;
+    margin-bottom: 32px;
+    font-size: 0.85rem;
+    color: var(--text-mute);
+  }
+  .stats span { display: flex; align-items: center; gap: 4px; }
+  .stats strong { color: var(--text); }
+</style>
+<!-- PostHog: lazy load on first interaction or 3000ms. See scripts/add_posthog.py -->
+<script>
+(function () {
+  if (window.__myoPostHog) return;
+  window.__myoPostHog = true;
+  var KEY = "phc_Bh9JEckmeRh3GGbBNyV45tj44L6NqxmeBqAxRPRtdzK5";
+  var API_HOST = "https://us.i.posthog.com";
+  var DEFAULTS = "2026-05-30";
+  var queue = [];
+  var loaded = false;
+  var injected = false;
+
+  function client() {
+    var c = window.posthog;
+    return c && typeof c.capture === "function" ? c : null;
+  }
+
+  function enqueue(name, props) {
+    if (loaded) {
+      var c = client();
+      if (c) c.capture(name, props);
+      return;
+    }
+    if (queue.length < 50) queue.push([name, props]);
+  }
+
+  function flush() {
+    var c = client();
+    if (!loaded || !c) return;
+    while (queue.length) {
+      var item = queue.shift();
+      c.capture(item[0], item[1]);
+    }
+  }
+
+  function start() {
+    if (injected) return;
+    injected = true;
+    var s = document.createElement("script");
+    s.id = "myo-posthog-script";
+    s.type = "text/javascript";
+    s.crossOrigin = "anonymous";
+    s.async = true;
+    s.src = API_HOST.replace(".i.posthog.com", "-assets.i.posthog.com") + "/static/array.js";
+    s.onload = function () {
+      var c = client();
+      if (!c) return;
+      c.init(KEY, { api_host: API_HOST, defaults: DEFAULTS, capture_pageview: false, autocapture: true });
+      loaded = true;
+      c.capture("$pageview", {
+        $current_url: window.location.href,
+        $referrer: document.referrer
+      });
+      flush();
+    };
+    document.head.appendChild(s);
+  }
+
+  // Bridge existing gtag('event', name, params) calls into PostHog.
+  // The original still runs first, so GA4 behaviour is unchanged.
+  if (typeof window.gtag === "function") {
+    var original = window.gtag;
+    window.gtag = function () {
+      var args = Array.prototype.slice.call(arguments);
+      original.apply(window, args);
+      if (args[0] !== "event" || typeof args[1] !== "string") return;
+      var p = args[2] || {};
+      var props = {};
+      if (p.event_category !== undefined) props.category = p.event_category;
+      if (p.event_label !== undefined) props.label = p.event_label;
+      if (p.value !== undefined) props.value = p.value;
+      if (p.non_interaction !== undefined) props.non_interaction = p.non_interaction;
+      enqueue(args[1], props);
+      if (!loaded) start();
+    };
+  }
+
+  function onFirstInteraction() {
+    start();
+    for (var i = 0; i < ["touchstart", "click", "scroll", "keydown", "mouseover"].length; i++) {
+      document.removeEventListener(["touchstart", "click", "scroll", "keydown", "mouseover"][i], onFirstInteraction, true);
+    }
+  }
+
+  var TRIGGERS = ["touchstart", "click", "scroll", "keydown", "mouseover"];
+  for (var j = 0; j < TRIGGERS.length; j++) {
+    document.addEventListener(TRIGGERS[j], onFirstInteraction, { capture: true, passive: true });
+  }
+  setTimeout(start, 3000);
+})();
+</script>
+</head>
+<body>
+
+<div class="header">
+  <h1>🎬 MyO 婚禮教學影片</h1>
+  <p>40 個主題 · 8 大篇章 · 涵蓋香港婚禮籌備全流程</p>
+  <div class="badge">✅ 全部 40 個已完成</div>
+</div>
+
+<div class="stats">
+  <span>✅ 已完成：<strong id="count-done">40</strong></span>
+  <span>🔄 製作中：<strong id="count-progress">0</strong></span>
+  <span>📋 待開始：<strong id="count-planned">0</strong></span>
+</div>
+
+<div class="filters" id="filters">
+  <button class="active" data-wave="all">全部 40</button>
+  <button data-wave="1">W1 婚前準備</button>
+  <button data-wave="2">W2 註冊法律</button>
+  <button data-wave="3">W3 證書套</button>
+  <button data-wave="4">W4 婚戒珠寶</button>
+  <button data-wave="5">W5 婚紗造型</button>
+  <button data-wave="6">W6 場地攝影</button>
+  <button data-wave="7">W7 傳統習俗</button>
+  <button data-wave="8">W8 婚後生活</button>
+</div>
+
+<div class="grid" id="grid"></div>
+
+<script>
+const VIDEOS = [
+  // Wave 1 — Pre-wedding Prep (warm-keynote)
+  { id: "01-hong-kong-wedding-flow", title: "香港結婚流程完整圖解", wave: 1, theme: "warm-keynote", status: "completed" },
+  { id: "02-wedding-checklist-timeline", title: "婚前準備清單：倒數 6 個月時間表", wave: 1, theme: "warm-keynote", status: "completed" },
+  { id: "03-wedding-cost-breakdown", title: "香港結婚費用大拆解", wave: 1, theme: "warm-keynote", status: "completed" },
+  { id: "04-auspicious-date-guide", title: "擇吉日結婚指南", wave: 1, theme: "warm-keynote", status: "completed" },
+  { id: "05-overseas-marriage-guide", title: "海外人士在香港結婚指南", wave: 1, theme: "warm-keynote", status: "completed" },
+
+  // Wave 2 — Registration & Legal (paper-press)
+  { id: "06-notice-of-intended-marriage", title: "遞交擬結婚通知書完整教學", wave: 2, theme: "paper-press", status: "completed" },
+  { id: "07-marriage-officer-vs-registry", title: "婚姻監禮人 vs 婚姻登記處", wave: 2, theme: "paper-press", status: "completed" },
+  { id: "08-certificate-size-specs", title: "結婚證書尺寸與規格全攻略", wave: 2, theme: "paper-press", status: "completed" },
+  { id: "09-marriage-legal-property", title: "結婚法律知識：財產協議", wave: 2, theme: "paper-press", status: "completed" },
+  { id: "10-name-change-after-marriage", title: "婚後改名與身份證更新", wave: 2, theme: "paper-press", status: "completed" },
+
+  // Wave 3 — Certificate Covers (kraft-paper)
+  { id: "11-certificate-cover-comparison", title: "結婚證書套推薦與比較", wave: 3, theme: "kraft-paper", status: "completed" },
+  { id: "12-customization-heat-transfer", title: "客製化證書套：燙印工藝解說", wave: 3, theme: "kraft-paper", status: "completed" },
+  { id: "13-cover-sizing-guide", title: "證書套尺寸指南", wave: 3, theme: "kraft-paper", status: "completed" },
+  { id: "14-velvet-vs-linen-cover", title: "絲絨 vs 亞麻布證書套對決", wave: 3, theme: "kraft-paper", status: "completed" },
+  { id: "15-cover-preservation-guide", title: "證書套保養指南", wave: 3, theme: "kraft-paper", status: "completed" },
+
+  // Wave 4 — Rings & Jewelry (midnight-press)
+  { id: "16-diamond-4c-guide", title: "鑽石 4C 選購指南", wave: 4, theme: "midnight-press", status: "completed" },
+  { id: "17-hk-ring-brands-comparison", title: "香港婚戒品牌比較", wave: 4, theme: "midnight-press", status: "completed" },
+  { id: "18-proposal-guide", title: "求婚攻略：戒指場地台詞", wave: 4, theme: "midnight-press", status: "completed" },
+  { id: "19-ring-care-guide", title: "婚戒保養指南", wave: 4, theme: "midnight-press", status: "completed" },
+  { id: "20-engagement-vs-wedding-ring", title: "結婚戒指 vs 訂婚戒指", wave: 4, theme: "midnight-press", status: "completed" },
+
+  // Wave 5 — Wedding Attire (vintage-editorial)
+  { id: "21-rent-vs-buy-wedding-dress", title: "婚紗租賃 vs 購買", wave: 5, theme: "vintage-editorial", status: "completed" },
+  { id: "22-bridal-skincare-timeline", title: "新娘婚前護膚時間表", wave: 5, theme: "vintage-editorial", status: "completed" },
+  { id: "23-groom-suit-guide", title: "新郎西裝選擇指南", wave: 5, theme: "vintage-editorial", status: "completed" },
+  { id: "24-bridal-hair-makeup", title: "新娘髮型與化妝指南", wave: 5, theme: "vintage-editorial", status: "completed" },
+  { id: "25-dress-preservation", title: "婚紗保養與保存指南", wave: 5, theme: "vintage-editorial", status: "completed" },
+
+  // Wave 6 — Venue & Photography (indigo-porcelain)
+  { id: "26-hk-venue-comparison", title: "香港婚宴場地推薦與比較", wave: 6, theme: "indigo-porcelain", status: "completed" },
+  { id: "27-photography-style-guide", title: "婚禮攝影風格完全指南", wave: 6, theme: "indigo-porcelain", status: "completed" },
+  { id: "28-wedding-photo-shotlist", title: "婚禮攝影必拍清單", wave: 6, theme: "indigo-porcelain", status: "completed" },
+  { id: "29-church-wedding-guide", title: "教堂婚禮完整指南", wave: 6, theme: "indigo-porcelain", status: "completed" },
+  { id: "30-outdoor-wedding-tips", title: "戶外婚禮注意事項", wave: 6, theme: "indigo-porcelain", status: "completed" },
+
+  // Wave 7 — Traditions & Ceremony (forest-ink)
+  { id: "31-guo-da-li-guide", title: "過大禮完整指南", wave: 7, theme: "forest-ink", status: "completed" },
+  { id: "32-shang-tou-ceremony", title: "上頭儀式：時間流程禁忌", wave: 7, theme: "forest-ink", status: "completed" },
+  { id: "33-tea-ceremony-guide", title: "敬茶儀式完整教學", wave: 7, theme: "forest-ink", status: "completed" },
+  { id: "34-chinese-wedding-flow", title: "中式婚禮流程大全", wave: 7, theme: "forest-ink", status: "completed" },
+  { id: "35-wedding-taboos", title: "香港婚禮習俗禁忌大全", wave: 7, theme: "forest-ink", status: "completed" },
+
+  // Wave 8 — Post-wedding & Married Life (sunset-zine)
+  { id: "36-anniversary-gift-guide", title: "結婚週年紀念禮物指南", wave: 8, theme: "sunset-zine", status: "completed" },
+  { id: "37-honeymoon-destination", title: "蜜月旅行目的地推薦", wave: 8, theme: "sunset-zine", status: "completed" },
+  { id: "38-post-wedding-finance", title: "婚後理財規劃", wave: 8, theme: "sunset-zine", status: "completed" },
+  { id: "39-marriage-communication", title: "婚後溝通與關係維護", wave: 8, theme: "sunset-zine", status: "completed" },
+  { id: "40-wedding-favor-ideas", title: "婚禮回禮創意推薦", wave: 8, theme: "sunset-zine", status: "completed" },
+];
+
+const WAVE_NAMES = { 1: "婚前準備", 2: "註冊法律", 3: "證書套", 4: "婚戒珠寶", 5: "婚紗造型", 6: "場地攝影", 7: "傳統習俗", 8: "婚後生活" };
+const STATUS_LABELS = { planned: "待製作", "in-progress": "製作中", completed: "已完成" };
+const THEME_ZH = {
+  "warm-keynote": "暖色 Keynote",
+  "paper-press": "紙質編排",
+  "kraft-paper": "牛皮紙",
+  "midnight-press": "深夜印刷",
+  "vintage-editorial": "復古編排",
+  "indigo-porcelain": "靛藍瓷",
+  "forest-ink": "森林墨",
+  "sunset-zine": "夕陽 Zine"
+};
+
+let currentWave = "all";
+
+function render() {
+  const filtered = currentWave === "all" ? VIDEOS : VIDEOS.filter(v => v.wave === parseInt(currentWave));
+  const grid = document.getElementById("grid");
+  grid.innerHTML = filtered.map(v => {
+    const link = v.status === "planned" ? "#" : `./${v.id}/presentation/`;
+    const cls = v.status === "planned" ? "card disabled" : "card";
+    return `<a href="${link}" class="${cls}" data-wave="${v.wave}">
+      <div class="num">#${String(VIDEOS.indexOf(v) + 1).padStart(2, "0")}</div>
+      <div class="title">${v.title}</div>
+      <div class="meta">
+        <span class="wave-tag">W${v.wave} ${WAVE_NAMES[v.wave]}</span>
+        <span class="theme-tag">${THEME_ZH[v.theme] || v.theme}</span>
+        <span class="status ${v.status}">${STATUS_LABELS[v.status]}</span>
+      </div>
+    </a>`;
+  }).join("");
+}
+
+// Filters
+document.querySelectorAll(".filters button").forEach(btn => {
+  btn.addEventListener("click", () => {
+    document.querySelectorAll(".filters button").forEach(b => b.classList.remove("active"));
+    btn.classList.add("active");
+    currentWave = btn.dataset.wave;
+    render();
+  });
+});
+
+render();
+</script>
+</body>
+</html>

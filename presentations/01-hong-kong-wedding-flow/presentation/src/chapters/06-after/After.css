@@ -1,0 +1,273 @@
+/* ─── After — 婚後事項 ─── */
+.af-scene {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  padding: var(--stage-pad-y) var(--stage-pad-x);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* step 0 — 4 to-do cards */
+.af-label {
+  font-size: 14px;
+  font-family: var(--font-display-en);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--accent);
+  font-weight: 600;
+  margin-bottom: 24px;
+}
+.af-cards-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  max-width: 600px;
+  width: 100%;
+}
+.af-card {
+  background: var(--card-glass-bg);
+  backdrop-filter: blur(8px);
+  border: 1px solid var(--card-glass-border);
+  border-radius: var(--r-card, 24px);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  box-shadow: var(--card-shadow);
+  opacity: 0;
+  animation: af-card-in 500ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+.af-card-icon svg {
+  width: 40px;
+  height: 40px;
+}
+.af-card-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+.af-card-label {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text);
+  font-family: var(--font-display-cn);
+}
+.af-card-detail {
+  font-size: 22px;
+  font-weight: var(--hero-num-weight);
+  color: var(--accent);
+  font-family: var(--font-display-en);
+  letter-spacing: var(--hero-num-track);
+}
+.af-card-sub {
+  font-size: 12px;
+  color: var(--text-mute);
+  font-family: var(--font-display-cn);
+}
+
+/* step 1 — numbers */
+.af-numbers-row {
+  display: flex;
+  gap: 32px;
+  animation: af-fade-in 600ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+.af-number-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  background: var(--card-glass-bg);
+  backdrop-filter: blur(8px);
+  border: 1px solid var(--card-glass-border);
+  border-radius: var(--r-card, 24px);
+  padding: 32px 40px;
+  box-shadow: var(--card-shadow);
+  min-width: 220px;
+}
+.af-number-card-late {
+  animation-delay: 200ms;
+}
+.af-num-label {
+  font-size: 14px;
+  color: var(--text-mute);
+  font-family: var(--font-display-cn);
+  font-weight: 500;
+}
+.af-num-value {
+  font-size: 64px;
+  line-height: 1;
+}
+.af-num-sub {
+  font-size: 13px;
+  color: var(--text-faint);
+  font-family: var(--font-display-cn);
+}
+
+/* step 2 — cert usage scenes */
+.af-scenes-row {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+  justify-content: center;
+  animation: af-fade-in 600ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+.af-scene-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  background: var(--card-glass-bg);
+  backdrop-filter: blur(8px);
+  border: 1px solid var(--card-glass-border);
+  border-radius: var(--r-card, 24px);
+  padding: 28px 24px;
+  min-width: 160px;
+  box-shadow: var(--card-shadow);
+}
+.af-scene-icon {
+  width: 64px;
+  height: 64px;
+}
+.af-scene-label {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text);
+  font-family: var(--font-display-cn);
+}
+.af-scene-sub {
+  font-size: 12px;
+  color: var(--text-mute);
+  font-family: var(--font-display-cn);
+}
+
+/* step 3 — finale + CTA */
+.af-finale {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+  animation: af-fade-in 600ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+.af-total-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+.af-total-label {
+  font-size: 14px;
+  color: var(--text-mute);
+  font-family: var(--font-display-cn);
+}
+.af-total-value {
+  font-size: 96px;
+  line-height: 1;
+  color: var(--accent);
+}
+.af-total-breakdown {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 16px;
+  color: var(--text-mute);
+  font-family: var(--font-display-cn);
+}
+.af-plus {
+  color: var(--accent);
+  font-weight: 700;
+  font-family: var(--font-display-en);
+}
+
+.af-recap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+.af-recap-label {
+  font-size: 14px;
+  color: var(--text-mute);
+  font-family: var(--font-display-cn);
+  font-weight: 500;
+}
+.af-recap-steps {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.af-recap-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  background: var(--card-glass-bg);
+  backdrop-filter: blur(8px);
+  border: 1px solid var(--card-glass-border);
+  border-radius: 16px;
+  padding: 12px 16px;
+  box-shadow: var(--card-shadow);
+  min-width: 80px;
+}
+.af-recap-num {
+  font-size: 20px;
+  font-weight: var(--hero-num-weight);
+  color: var(--accent);
+  font-family: var(--font-display-en);
+}
+.af-recap-name {
+  font-size: 12px;
+  color: var(--text-2);
+  font-family: var(--font-display-cn);
+}
+
+.af-cta {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  margin-top: 8px;
+}
+.af-cta-text {
+  font-size: 14px;
+  color: var(--text-mute);
+  font-family: var(--font-display-cn);
+}
+.af-cta-link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 28px;
+  background: var(--accent);
+  color: #fff;
+  border-radius: 999px;
+  font-size: 18px;
+  font-weight: 700;
+  font-family: var(--font-display-cn);
+  text-decoration: none;
+  transition: transform 0.2s;
+  box-shadow: 0 4px 20px var(--accent-glow);
+}
+.af-cta-link:hover {
+  transform: scale(1.05);
+}
+.af-cta-arrow {
+  width: 20px;
+  height: 20px;
+}
+
+@keyframes af-card-in {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes af-fade-in {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}

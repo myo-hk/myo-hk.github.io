@@ -1,618 +1,385 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-GQLW7LNP6H');
+
+  var _gtmLoaded = false;
+  function _loadGTM() {
+    if (_gtmLoaded) return;
+    _gtmLoaded = true;
+    var s = document.createElement('script');
+    s.async = true;
+    s.src = 'https://www.googletagmanager.com/gtag/js?id=G-GQLW7LNP6H';
+    document.head.appendChild(s);
+  }
+  var _gtmEvents = ['touchstart', 'click', 'scroll', 'keydown', 'mouseover'];
+  function _gtmOnInteraction() {
+    _loadGTM();
+    _gtmEvents.forEach(function(ev) {
+      document.removeEventListener(ev, _gtmOnInteraction, {capture: true});
+    });
+  }
+  _gtmEvents.forEach(function(ev) {
+    document.addEventListener(ev, _gtmOnInteraction, {capture: true, passive: true});
+  });
+  setTimeout(_loadGTM, 3000);
+</script>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My O!專屬證書套</title>
-    <meta property="og:image" content="https://myo-hk.github.io/image/01_company_logo.png">
-    <meta property="og:image:alt" content="My O! 證書套公司 Logo">
-    <meta property="og:title" content="My O!專屬證書套">
-    <meta property="og:description" content="為您的結婚證書打造設計師級專屬證書套，讓這份愛情的見證永恆閃耀。">
-    <meta property="og:url" content="https://myo-hk.github.io">
+    <title>MyO 專屬結婚證書套：設計師級證書套訂製 | 香港</title>
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data: https:; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://cdnjs.cloudflare.com https://unpkg.com https://static.cloudflareinsights.com https://*.posthog.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com https://unpkg.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; connect-src 'self' https://www.google-analytics.com https://static.cloudflareinsights.com https://cloudflareinsights.com https://*.posthog.com; frame-src 'none'; object-src 'none'; base-uri 'self'; worker-src 'self' blob: data:;">
+    <meta name="description" content="MyO 為您的結婚證書打造設計師級專屬證書套，採用熱轉印工藝印上新人名字與結婚日期。多款顏色材質可選，米色亞麻布與藍色磨砂珠光，讓愛情見證永恆閃耀。">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://myo-makeyourown.pages.dev/">
+    <meta property="og:image" content="https://myo-makeyourown.pages.dev/image/01_company_logo.webp">
+    <meta property="og:image:alt" content="MyO! 證書套公司 Logo">
+    <meta property="og:title" content="MyO 專屬結婚證書套：設計師級證書套訂製 | 香港">
+    <meta property="og:description" content="MyO 為您的結婚證書打造設計師級專屬證書套，採用熱轉印印刷印上客人名字與結婚日期。多款顏色材質可選，讓愛情見證永恆閃耀。">
+    <meta property="og:url" content="https://myo-makeyourown.pages.dev">
     <meta property="og:type" content="website">
+    <meta property="og:site_name" content="MyO 專屬結婚證書套">
+    <meta property="og:locale" content="zh_HK">
     
     <link rel="icon" href="image/01_company_logo.png" type="image/png">
     <link rel="shortcut icon" href="image/01_company_logo.png" type="image/png">
 
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="dns-prefetch" href="https://www.googletagmanager.com">
 
-    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+    <link rel="preload" href="https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7.woff2" as="font" type="font/woff2" crossorigin fetchpriority="high">
+    <link rel="preload" href="https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa25L7SUc.woff2" as="font" type="font/woff2" crossorigin fetchpriority="high">
 
-    <style>
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #fdfaf6;
-            color: #333;
-        }
-        /* 縮減 Hero Section 間距 */
-        .hero-section {
-            background: linear-gradient(to bottom right, #fdfaf6, #ffece6);
-            padding: 2.5rem 0; /* 縮減間距 */
-            text-align: center;
-        }
-        .section-title {
-            color: #8B4513;
-            font-size: 2.2rem;
-            font-weight: 700;
-            margin-bottom: 1.5rem;
-        }
-        .btn-primary {
-            background-color: #CD853F;
-            color: white;
-            padding: 0.7rem 1.8rem;
-            border-radius: 9999px;
-            transition: background-color 0.3s ease;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            font-size: 0.95rem;
-        }
-        .btn-primary:hover {
-            background-color: #A0522D;
-        }
-        /* 基本卡片樣式 - 適用於產品簡介和客製化 */
-        .card {
-            background-color: white;
-            border-radius: 1.25rem;
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.04);
-            padding: 1.2rem; /* 縮減卡片內距 */
-            transition: transform 0.3s ease;
-        }
-        .card:hover {
-            transform: translateY(-5px);
-        }
-        .feature-icon {
-            color: #CD853F;
-            font-size: 2.2rem;
-            margin-bottom: 0.75rem;
-        }
-        .footer-link {
-            color: #8B4513;
-            transition: color 0.3s ease;
-        }
-        .footer-link:hover {
-            color: #CD853F;
-        }
-        @media (min-width: 768px) {
-            .hamburger-menu {
-                display: none;
-            }
-            .mobile-nav-links {
-                display: none;
-            }
-        }
-        @media (max-width: 767px) {
-             .desktop-nav-links {
-                display: none;
-            }
-             .mobile-nav-links {
-                display: block;
-             }
-        }
+    <style>*,:after,:before{box-sizing:border-box;border-width:0;border-style:solid}body{margin:0;font-family:'Inter','Inter-fallback',system-ui,sans-serif;background:#fff;color:#1a1a1a;-webkit-font-smoothing:antialiased}@font-face{font-family:'Inter-fallback';src:local('Arial');size-adjust:107%;ascent-override:97%;descent-override:24%;line-gap-override:0%}img{max-width:100%;height:auto;display:block}a{color:inherit;text-decoration:none}.container{width:100%;margin-right:auto;margin-left:auto;padding-left:1rem;padding-right:1rem}.flex{display:flex}.items-center{align-items:center}.justify-center{justify-content:center}.text-center{text-align:center}.w-full{width:100%}.h-auto{height:auto}.mx-auto{margin-left:auto;margin-right:auto}.rounded-2xl{border-radius:1rem}.shadow-lg{box-shadow:0 10px 25px -5px rgba(0,0,0,.1)}.bg-white{--tw-bg-opacity:1;background-color:rgb(255 255 255/var(--tw-bg-opacity))}.text-rose-500{--tw-text-opacity:1;color:rgb(244 63 94/var(--tw-text-opacity))}.font-bold{font-weight:700}.font-semibold{font-weight:600}.p-4{padding:1rem}.m-0{margin:0}.grid{display:grid}.gap-4{gap:1rem}.mb-4{margin-bottom:1rem}.mt-4{margin-top:1rem}.text-gray-700{color:#374151}.text-gray-800{color:#1f2937}.text-pink-600{color:#db2777}.text-green-500{color:#22c55e}.text-lg{font-size:1.125rem;line-height:1.75rem}.text-xl{font-size:1.25rem;line-height:2rem}.text-2xl{font-size:1.5rem;line-height:2rem}.text-3xl{font-size:1.875rem;line-height:2.25rem}.text-4xl{font-size:2.25rem;line-height:2.5rem}.text-5xl{font-size:3rem;line-height:1}.space-x-5>:not([hidden])~:not([hidden]){--tw-space-x-reverse:0;margin-right:calc(1.25rem*var(--tw-space-x-reverse));margin-left:calc(1.25rem*(1 - var(--tw-space-x-reverse)))}.mt-5{margin-top:1.25rem}.mt-6{margin-top:1.5rem}.mb-1{margin-bottom:.25rem}.mb-2{margin-bottom:.5rem}.mb-3{margin-bottom:.75rem}@media(max-width:640px){.container{padding-left:.75rem;padding-right:.75rem}}</style>
+    <link rel="stylesheet" href="/css/tailwind.min.css">
+    <noscript><link rel="stylesheet" href="/css/tailwind.min.css"></noscript>
+<link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet"></noscript>
 
-        /* 顏色選擇卡片樣式基礎 */
-        .select-option {
-            border: 2px solid transparent; /* 保持透明邊框作為基礎 */
-            cursor: pointer; 
-            transition: all 0.2s ease-in-out;
-            display: flex;
-            flex-direction: column; /* 桌面版預設垂直堆疊 */
-            align-items: center;
-            text-align: center;
-        }
-        .select-option:hover {
-            border-color: transparent; /* 滑鼠停留時也設為透明 */
-            transform: translateY(-2px);
-        }
-        /* 已移除紅色效果 */
-        .select-option.selected {
-            border-color: transparent; /* 點擊選中時也設為透明 */
-            box-shadow: none; /* 移除陰影 */
-            transform: translateY(-2px); /* 保留 Hover 效果 */
-        }
-        .color-circle {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            border: 1px solid #ccc;
-            margin-bottom: 0.6rem;
-        }
-        /* 圖片容器，確保圖片高度一致 */
-        .image-container {
-            width: 100%;
-            height: 160px; /* 縮減圖片容器高度 */
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            overflow: hidden;
-            margin-top: 0.6rem; /* 縮減間距 */
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            border-radius: 1.5rem; /* 通用圖片容器圓角：更圓潤 */
-        }
-        .select-option-image {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            border-radius: 1.5rem; /* 通用圖片圓角：更圓潤 */
-        }
+    
 
-        .GAuSPc {
-            display: flex;
-            align-items: center;
-            text-decoration: none;
-            color: inherit;
-        }
-        .lzy1Td {
-            height: 24px;
-            width: 24px;
-            margin-right: 8px;
-        }
-        .QTKDff {
-            font-size: 1.25rem;
-            font-weight: 600;
-            color: #333;
-        }
-        .p46B7e {
-        }
+    <style>body{font-family:'Inter',sans-serif;background-color:#fdfaf6;color:#333}.hero-section{background:linear-gradient(to bottom right,#fdfaf6,#ffece6);padding:2.5rem 0;text-align:center;min-height:400px}.section-title{color:#8B4513;font-size:2.2rem;font-weight:700;margin-bottom:1.5rem}.btn-primary{background-color:#9f6731;color:white;padding:0.7rem 1.8rem;border-radius:9999px;transition:background-color 0.3s ease;box-shadow:0 4px 6px rgba(0,0,0,0.1);font-size:0.95rem}.btn-primary:hover{background-color:#A0522D}.social-icons a{transition:opacity 0.25s ease;will-change:opacity}.social-icons a:hover{opacity:.75}.card{background-color:white;border-radius:1.25rem;box-shadow:0 8px 16px rgba(0,0,0,0.04);padding:1.2rem;transition:transform 0.3s ease}.card:hover{transform:translateY(-5px)}.feature-icon{color:#8B6914;font-size:2.2rem;margin-bottom:0.75rem}.footer-link{color:#d1d5db;transition:color 0.3s ease}.footer-link:hover{color:#f3f4f6}@media (min-width:768px){.hamburger-menu{display:none}.mobile-nav-links{display:none}}@media (max-width:767px){.desktop-nav-links{display:none}.mobile-nav-links{display:block;position:absolute;top:100%;left:0;right:0;background:white;box-shadow:0 4px 12px rgba(0,0,0,0.1);transform:translateY(-10px);opacity:0;visibility:hidden;transition:transform 0.3s ease-in-out,opacity 0.3s ease-in-out,box-shadow 0.3s ease-in-out;z-index:999}.mobile-nav-links.active{transform:translateY(0);opacity:1;visibility:visible}.mobile-nav-links a{transition:transform 0.2s ease,opacity 0.2s ease;border-radius:0.5rem;margin:2px 8px}.mobile-nav-links a:hover{background-color:#fef3c7}.mobile-nav-links a:active{background-color:#fcd34d;transform:scale(0.98)}.hamburger-menu{transition:transform 0.2s ease}.hamburger-menu:active{transform:scale(0.9)}}.select-option{border:2px solid transparent;cursor:pointer;transition:transform 0.2s ease-in-out,border-color 0.2s ease-in-out;display:flex;flex-direction:column;align-items:center;text-align:center}.select-option:hover{border-color:transparent;transform:translateY(-2px)}.select-option.selected{border-color:transparent;box-shadow:none;transform:translateY(-2px)}.color-circle{width:40px;height:40px;border-radius:50%;border:1px solid #ccc;margin-bottom:0.6rem}.image-container{width:100%;height:160px;display:flex;justify-content:center;align-items:center;overflow:hidden;margin-top:0.6rem;box-shadow:0 2px 5px rgba(0,0,0,0.1);border-radius:1.5rem}.select-option-image{width:100%;height:100%;object-fit:contain;border-radius:1.5rem}.GAuSPc{display:flex;align-items:center;text-decoration:none;color:inherit}.lzy1Td{height:24px;width:24px;margin-right:8px}.QTKDff{font-size:1.25rem;font-weight:600;color:#333}.p46B7e{}.contact-cta-item{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:1.2rem 0.8rem;border-radius:1.25rem;background-color:white;box-shadow:0 4px 12px rgba(0,0,0,0.06);transition:transform 0.3s ease-in-out,box-shadow 0.3s ease-in-out;cursor:pointer;text-decoration:none;color:#333}.contact-cta-item:hover{transform:translateY(-5px);box-shadow:0 6px 15px rgba(0,0,0,0.1)}.contact-cta-item .icon-large{font-size:3.5rem;margin-bottom:0.6rem}.contact-cta-item .cta-text{font-size:1rem;font-weight:600;color:#555}.swiper-button-prev,.swiper-button-next{color:#CD853F;width:44px;height:44px;background:rgba(255,255,255,0.95);border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 8px rgba(0,0,0,0.15);transition:background-color 0.2s ease,box-shadow 0.2s ease,transform 0.2s ease}.swiper-button-prev,.swiper-button-next{transition:background-color 0.2s ease,box-shadow 0.2s ease,transform 0.2s ease!important}.swiper-button-prev:hover,.swiper-button-next:hover{background:#fff;box-shadow:0 4px 12px rgba(205,133,63,0.3);transform:scale(1.05)}.swiper-button-prev:active,.swiper-button-next:active{transform:scale(0.95)}.swiper-button-prev::after,.swiper-button-next::after{font-size:1.2rem;font-weight:bold}.swiper-pagination-bullet-active{background:#CD853F}.swiper-pagination-bullet{width:24px !important;height:24px !important;margin:0 6px !important}.design-style-card{box-shadow:0 5px 15px rgba(0,0,0,0.05);border-radius:1rem;height:280px;display:flex;flex-direction:column;justify-content:flex-start;align-items:center;padding:0.8rem;text-align:center;overflow:hidden}.design-style-card .image-container-design{width:100%;height:140px;display:flex;justify-content:center;align-items:center;overflow:hidden;margin-bottom:0.4rem;border-radius:0.5rem}.design-style-card img{width:100%;height:100%;object-fit:contain;border-radius:0.5rem}.design-style-card span,.design-style-card p{text-align:center;width:100%;font-size:0.9rem;line-height:1.2}.design-style-card h3{font-size:1.05rem;margin-bottom:0.15rem}.design-style-card p{font-size:0.8rem}.mySwiper{padding:0 15px;overflow:hidden}.mySwiper .swiper-button-prev,.mySwiper .swiper-button-next{top:40%;transform:translateY(-50%)}.modal{display:none;position:fixed;z-index:1000;left:0;top:0;width:100%;height:100%;overflow:auto;background-color:rgba(0,0,0,0.8);justify-content:center;align-items:center}.modal-content{margin:auto;display:block;max-width:80%;max-height:80%;border-radius:0.5rem;box-shadow:0 4px 8px rgba(0,0,0,0.2);object-fit:contain}.close-button{position:absolute;top:15px;right:35px;color:#f1f1f1;font-size:32px;font-weight:bold;transition:background-color 0.3s ease,transform 0.3s ease;cursor:pointer;width:44px;height:44px;display:flex;align-items:center;justify-content:center;border-radius:50%;background:rgba(0,0,0,0.5)}.close-button:hover,.close-button:focus{color:#fff;background:rgba(0,0,0,0.7);transform:scale(1.1)}.close-button:active{transform:scale(0.95)}@media (max-width:639px){.hero-section{padding:2rem 0}.hero-section h1{font-size:2.2rem;margin-bottom:0.8rem}.hero-section p{font-size:0.9rem;margin-bottom:1.2rem}.hero-section .btn-primary{padding:0.4rem 1rem;font-size:0.8rem;margin-bottom:0.8rem}.hero-section .text-md{font-size:0.85rem;margin-bottom:0.4rem}.hero-section .social-icons{font-size:2rem;margin-top:0.6rem}.hero-section .brand-name{font-size:1rem}section{padding:2rem 0}.section-title{font-size:1.8rem;margin-bottom:1rem}#product-overview .product-image{margin-bottom:0.8rem}#product-overview .text-md{font-size:0.85rem;margin-bottom:0.6rem}#product-overview .text-sm{font-size:0.7rem}#product-overview ul.space-y-3 li{margin-bottom:0.6rem}#product-overview .feature-icon{font-size:1.4rem;margin-right:0.4rem}#product-overview strong{font-size:0.85rem}#product-overview .customization-text{margin-top:1.2rem;font-size:0.85rem}#designs .color-option-card{flex-direction:row;align-items:center;justify-content:space-between;padding:0.5rem}#designs .color-option-card .color-circle{width:24px;height:24px;margin-bottom:0}#designs .color-option-card span{font-size:0.8rem;margin-left:0.4rem}#designs .color-option-card .image-container{width:60px;height:60px;margin-left:0.6rem}#designs .grid{gap:0.5rem}.design-style-card{height:240px;padding:0.5rem}.design-style-card .image-container-design{height:120px;margin-bottom:0.2rem}.design-style-card img{max-height:120px}.design-style-card span,.design-style-card p{font-size:0.75rem}.design-style-card h3{font-size:0.9rem}.design-style-card p{font-size:0.65rem}.mySwiper{padding:0 5px}.swiper-button-prev,.swiper-button-next{font-size:1rem;top:45%;width:40px;height:40px}}@media (min-width:640px){.hero-section{padding:3.5rem 0}.hero-section h1{font-size:3rem;margin-bottom:1.2rem}.hero-section p{font-size:1rem;margin-bottom:1.5rem}.hero-section .btn-primary{padding:0.6rem 1.5rem;font-size:0.9rem;margin-bottom:1.5rem}.hero-section .text-md{font-size:0.95rem;margin-bottom:0.6rem}.hero-section .social-icons{font-size:2.5rem;margin-top:1rem}.hero-section .brand-name{font-size:1.1rem}section{padding:3rem 0}.section-title{font-size:2rem;margin-bottom:1.2rem}#product-overview .text-md{font-size:0.9rem;margin-bottom:0.8rem}#product-overview ul.space-y-3 li{margin-bottom:0.7rem}#product-overview .feature-icon{font-size:1.8rem}#product-overview .customization-text{margin-top:1.5rem;font-size:0.95rem}#designs .color-option-card{padding:1rem}#designs .color-option-card .color-circle{width:36px;height:36px;margin-bottom:0.5rem}#designs .color-option-card span{font-size:1rem}#designs .color-option-card .image-container{height:150px;margin-top:0.7rem}#designs .grid{gap:1rem}.design-style-card{height:280px;padding:0.7rem}.design-style-card .image-container-design{height:130px}.design-style-card span,.design-style-card p{font-size:0.85rem}.design-style-card h3{font-size:1.05rem}.design-style-card p{font-size:0.75rem}.mySwiper{padding:0 10px}.swiper-button-prev,.swiper-button-next{font-size:1.8rem}}@media (min-width:768px){.hero-section{padding:4rem 0}section{padding:3.5rem 0}.design-style-card{height:300px}.design-style-card .image-container-design{height:150px}}@media (min-width:1024px){.hero-section{padding:5rem 0}section{padding:4rem 0}.design-style-card{height:320px}.design-style-card .image-container-design{height:160px}}.sticky-conversion-bar{position:fixed;bottom:0;left:0;right:0;background:#ffffff;padding:8px 12px 12px;box-shadow:0 -4px 20px rgba(0,0,0,0.12);z-index:999;display:flex;align-items:center;justify-content:space-between;gap:8px;border-top:3px solid #fbbf24}.sticky-conversion-bar .brand-section{display:flex;align-items:center;gap:6px;flex-shrink:0}.sticky-conversion-bar .logo{width:28px;height:28px;border-radius:50%;object-fit:cover}.sticky-conversion-bar .brand-name{display:flex;flex-direction:column}.sticky-conversion-bar .brand-name span:first-child{font-size:0.85rem;font-weight:700;color:#333;line-height:1.2}.sticky-conversion-bar .brand-name span:last-child{font-size:0.7rem;color:#666;line-height:1.2}.sticky-conversion-bar .btn-group{display:flex;gap:8px;flex-shrink:0}.sticky-conversion-bar .cta-section{display:flex;align-items:center;gap:8px}.sticky-conversion-bar .cta-text{font-size:0.9rem;font-weight:800;color:#fff;background:linear-gradient(135deg,#EA580C 0%,#C2410C 100%);padding:8px 14px;border-radius:20px;white-space:nowrap;box-shadow:0 3px 0 #9A3412,0 4px 10px rgba(234,88,12,0.4);border:2px solid rgba(0,0,0,0.1)}.sticky-conversion-bar .btn-social{display:flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:12px;text-decoration:none;transition:transform 0.2s ease,box-shadow 0.2s ease,background-color 0.2s ease,border-color 0.2s ease,color 0.2s ease;border:2px solid #333;background:#fff}.sticky-conversion-bar .btn-ig{color:#E1306C;font-size:1.2rem;box-shadow:0 2px 8px rgba(0,0,0,0.12)}.sticky-conversion-bar .btn-ig:hover{transform:translateY(-2px);box-shadow:0 4px 12px rgba(225,48,108,0.25);background:#FFF0F5;border-color:#E1306C}.sticky-conversion-bar .btn-whatsapp{background-color:#fff;color:#25D366;font-size:1.3rem;box-shadow:0 2px 8px rgba(0,0,0,0.12);border-color:#25D366}.sticky-conversion-bar .btn-whatsapp:hover{background-color:#25D366;color:#fff;transform:translateY(-3px);box-shadow:0 6px 20px rgba(37,211,102,0.4)}@media (min-width:768px){.sticky-conversion-bar{display:none !important}}@media (max-width:767px){footer{padding-bottom:70px !important}}@media (max-width:380px){.sticky-conversion-bar .brand-name span:last-child{display:none}.sticky-conversion-bar .cta-text{display:none}.sticky-conversion-bar{padding:8px 10px 12px}}#faq details.card{overflow:hidden;transition:none}#faq details.card summary::-webkit-details-marker{display:none}#faq details.card summary .text-rose-500{transition:transform 0.3s ease}#faq details.card[open] summary .text-rose-500{transform:rotate(180deg)}#faq details.card:hover{transform:none}.swiper-wrapper{display:flex}.swiper-slide{flex-shrink:0}.swiper{overflow:hidden}.swiper-pagination,.swiper-button-next,.swiper-button-prev{display:none}</style>
+<meta name="google-site-verification" content="JX8rTzju7_uRCDwgESy2VsfXQdKUhPc87tQuKCAxeb8" />
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "MyO 專屬結婚證書套",
+  "url": "https://myo-makeyourown.pages.dev",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": {
+      "@type": "EntryPoint",
+      "urlTemplate": "https://myo-makeyourown.pages.dev/blog/?search={search_term_string}"
+    },
+    "query-input": "required name=search_term_string"
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "MyO 專屬結婚證書套",
+  "url": "https://myo-makeyourown.pages.dev",
+  "logo": "https://myo-makeyourown.pages.dev/image/01_company_logo.png",
+  "description": "香港設計師級結婚證書套品牌，提供客製化亞麻布與磨砂珠光證書套，採用熱轉印工藝印製新人名字與結婚日期。",
+  "foundingDate": "2025",
+  "areaServed": "HK",
+  "sameAs": [
+    "https://www.instagram.com/myo.makeyourown/"
+  ],
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "telephone": "+852-6379-6410",
+    "contactType": "customer service",
+    "areaServed": "HK",
+    "availableLanguage": ["Chinese", "English"]
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "MyO 專屬結婚證書套 — 經典款 亞麻布",
+  "description": "設計師級亞麻布結婚證書套，採用熱轉印工藝印上新人名字與結婚日期，讓愛情見證永恆閃耀。",
+  "brand": {
+    "@type": "Brand",
+    "name": "MyO 專屬結婚證書套"
+  },
+  "offers": [
+    {
+      "@type": "Offer",
+      "name": "經典款 亞麻布",
+      "price": "388",
+      "priceCurrency": "HKD",
+      "itemCondition": "https://schema.org/NewCondition",
+      "availability": "https://schema.org/InStock"
+    },
+    {
+      "@type": "Offer",
+      "name": "經典款 磨砂珠光",
+      "price": "388",
+      "priceCurrency": "HKD",
+      "itemCondition": "https://schema.org/NewCondition",
+      "availability": "https://schema.org/InStock"
+    },
+    {
+      "@type": "Offer",
+      "name": "設計師款 亞麻布",
+      "price": "588",
+      "priceCurrency": "HKD",
+      "itemCondition": "https://schema.org/NewCondition",
+      "availability": "https://schema.org/InStock"
+    },
+    {
+      "@type": "Offer",
+      "name": "設計師款 磨砂珠光",
+      "price": "588",
+      "priceCurrency": "HKD",
+      "itemCondition": "https://schema.org/NewCondition",
+      "availability": "https://schema.org/InStock"
+    }
+  ],
+  "material": ["亞麻布", "磨砂珠光"],
+  "pattern": "熱轉印（燙印）工藝",
+  "color": ["米色", "藍色"],
+  "countryOfOrigin": "HK",
+  "url": "https://myo-makeyourown.pages.dev/",
+  "image": "https://myo-makeyourown.pages.dev/image/01_company_logo.webp"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "證書套的尺寸是否適合香港婚姻登記處的 A4 結婚證書？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "適合。我們的證書套專為香港 A4 結婚證書設計，內尺寸約 31cm × 22.5cm，完美容納標準證書，無需摺疊。另備有其他尺寸可選。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "可以在證書套上印製哪些文字？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "可以印上新人名字（中英文均可）和結婚日期，採用熱轉印（燙印）工藝，呈現燙金或燙銀質感。設計師款更可加入指定字句。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "亞麻布和磨砂珠光材質有什麼分別？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "亞麻布（米色）紋理自然質樸，手感溫暖，適合簡約風格；磨砂珠光（藍色）帶細緻光澤，更顯華麗。兩款均為硬殼封面，耐用防潮。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "訂製一個證書套需要多久時間？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "一般訂製需時約 7-14 個工作天（視乎訂單量），確認設計稿後開始製作。如有急單可與我們聯絡協調。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "如何清潔和保養結婚證書套？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "建議以乾軟布輕拭表面，避免接觸水份或化學溶劑。存放於陰涼乾燥處，避免陽光直射。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "證書套的價格是多少？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "經典款 HK$388（亞麻布／磨砂珠光），設計師款 HK$388，價格已包含名字與日期印刷。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "訂購流程是怎樣的？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "選擇款式與顏色 → 提供新人名字與結婚日期 → 我們確認設計稿 → 製作 → 送貨。全程可透過 Instagram 或 WhatsApp 溝通。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "可以只訂購一個證書套嗎？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "可以。您可以按需要訂購一個或一對，沒有最低數量限制。"
+      }
+    }
+  ]
+}
+</script>
+<link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#CD853F">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="MyO!">
+    <link rel="apple-touch-icon" href="/image/icon-192x192.png">
+<!-- PostHog: lazy load on first interaction or 3000ms. See scripts/add_posthog.py -->
+<script>
+(function () {
+  if (window.__myoPostHog) return;
+  window.__myoPostHog = true;
+  var KEY = "phc_Bh9JEckmeRh3GGbBNyV45tj44L6NqxmeBqAxRPRtdzK5";
+  var API_HOST = "https://us.i.posthog.com";
+  var DEFAULTS = "2026-05-30";
+  var queue = [];
+  var loaded = false;
+  var injected = false;
 
-        .fa-instagram {
-            color: #E1306C;
-        }
-        .fa-whatsapp {
-            color: #25D366;
-        }
-        .contact-cta-item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding: 1.2rem 0.8rem;
-            border-radius: 1.25rem;
-            background-color: white;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
-            transition: all 0.3s ease-in-out;
-            cursor: pointer;
-            text-decoration: none;
-            color: #333;
-        }
-        .contact-cta-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
-        }
-        .contact-cta-item .icon-large {
-            font-size: 3.5rem;
-            margin-bottom: 0.6rem;
-        }
-        .contact-cta-item .cta-text {
-            font-size: 1rem;
-            font-weight: 600;
-            color: #555;
-        }
-        .contact-cta-item:hover .fa-instagram,
-        .contact-cta-item:hover .fa-whatsapp {
-            filter: brightness(1.15);
-        }
+  function client() {
+    var c = window.posthog;
+    return c && typeof c.capture === "function" ? c : null;
+  }
 
-        /* Swiper 客製化樣式 (僅適用於「選擇證書套設計樣式」) */
-        .swiper-button-prev, .swiper-button-next {
-            color: #CD853F;
-        }
-        .swiper-pagination-bullet-active {
-            background: #CD853F;
-        }
-        
-        /* 針對「選擇證書套設計樣式」卡片 (款式卡片) */
-        .design-style-card {
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            border-radius: 1rem;
-            height: 280px; /* 縮減卡片高度 */
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-start;
-            align-items: center;
-            padding: 0.8rem;
-            text-align: center;
-            overflow: hidden;
-        }
-        .design-style-card .image-container-design {
-            width: 100%;
-            height: 140px; /* 縮減圖片容器高度 */
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            overflow: hidden;
-            margin-bottom: 0.4rem;
-            border-radius: 0.5rem;
-        }
-        .design-style-card img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            border-radius: 0.5rem;
-        }
-        .design-style-card span,
-        .design-style-card p {
-            text-align: center;
-            width: 100%;
-            font-size: 0.9rem;
-            line-height: 1.2;
-        }
-        .design-style-card h3 {
-            font-size: 1.05rem;
-            margin-bottom: 0.15rem;
-        }
-        .design-style-card p {
-            font-size: 0.8rem;
-        }
-        /* 調整 Swiper 容器的 padding 讓邊緣的 Slide 可見 */
-        .mySwiper {
-            padding: 0 15px;
-            overflow: hidden;
-        }
-        /* Swiper 導航箭頭位置微調 */
-        .mySwiper .swiper-button-prev,
-        .mySwiper .swiper-button-next {
-            top: 40%;
-            transform: translateY(-50%);
-        }
+  function enqueue(name, props) {
+    if (loaded) {
+      var c = client();
+      if (c) c.capture(name, props);
+      return;
+    }
+    if (queue.length < 50) queue.push([name, props]);
+  }
 
-        /* ----- Modal 樣式 ----- */
-        .modal {
-            display: none; /* 預設隱藏 */
-            position: fixed; /* 固定在視窗上 */
-            z-index: 1000; /* 最上層 */
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            overflow: auto; /* 允許滾動 */
-            background-color: rgba(0,0,0,0.8); /* 半透明黑色背景 */
-            justify-content: center;
-            align-items: center;
-        }
+  function flush() {
+    var c = client();
+    if (!loaded || !c) return;
+    while (queue.length) {
+      var item = queue.shift();
+      c.capture(item[0], item[1]);
+    }
+  }
 
-        .modal-content {
-            margin: auto;
-            display: block;
-            max-width: 80%;
-            max-height: 80%;
-            border-radius: 0.5rem;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-            object-fit: contain; /* 確保圖片完全顯示 */
-        }
+  function start() {
+    if (injected) return;
+    injected = true;
+    var s = document.createElement("script");
+    s.id = "myo-posthog-script";
+    s.type = "text/javascript";
+    s.crossOrigin = "anonymous";
+    s.async = true;
+    s.src = API_HOST.replace(".i.posthog.com", "-assets.i.posthog.com") + "/static/array.js";
+    s.onload = function () {
+      var c = client();
+      if (!c) return;
+      c.init(KEY, { api_host: API_HOST, defaults: DEFAULTS, capture_pageview: false, autocapture: true });
+      loaded = true;
+      c.capture("$pageview", {
+        $current_url: window.location.href,
+        $referrer: document.referrer
+      });
+      flush();
+    };
+    document.head.appendChild(s);
+  }
 
-        .close-button {
-            position: absolute;
-            top: 15px;
-            right: 35px;
-            color: #f1f1f1;
-            font-size: 40px;
-            font-weight: bold;
-            transition: 0.3s;
-            cursor: pointer;
-        }
+  // Bridge existing gtag('event', name, params) calls into PostHog.
+  // The original still runs first, so GA4 behaviour is unchanged.
+  if (typeof window.gtag === "function") {
+    var original = window.gtag;
+    window.gtag = function () {
+      var args = Array.prototype.slice.call(arguments);
+      original.apply(window, args);
+      if (args[0] !== "event" || typeof args[1] !== "string") return;
+      var p = args[2] || {};
+      var props = {};
+      if (p.event_category !== undefined) props.category = p.event_category;
+      if (p.event_label !== undefined) props.label = p.event_label;
+      if (p.value !== undefined) props.value = p.value;
+      if (p.non_interaction !== undefined) props.non_interaction = p.non_interaction;
+      enqueue(args[1], props);
+      if (!loaded) start();
+    };
+  }
 
-        .close-button:hover,
-        .close-button:focus {
-            color: #bbb;
-            text-decoration: none;
-            cursor: pointer;
-        }
-        /* ----- Modal 樣式結束 ----- */
+  function onFirstInteraction() {
+    start();
+    for (var i = 0; i < ["touchstart", "click", "scroll", "keydown", "mouseover"].length; i++) {
+      document.removeEventListener(["touchstart", "click", "scroll", "keydown", "mouseover"][i], onFirstInteraction, true);
+    }
+  }
 
-
-        /* 響應式斷點調整 */
-        @media (max-width: 639px) { /* 手機版 */
-            /* Hero Section */
-            .hero-section {
-                padding: 2rem 0; /* 進一步縮減間距 */
-            }
-            .hero-section h1 {
-                font-size: 2.2rem;
-                margin-bottom: 0.8rem; /* 縮減間距 */
-            }
-            .hero-section p {
-                font-size: 0.9rem; /* 縮小字體 */
-                margin-bottom: 1.2rem; /* 縮減間距 */
-            }
-            .hero-section .btn-primary {
-                padding: 0.4rem 1rem; /* 縮小按鈕 */
-                font-size: 0.8rem;
-                margin-bottom: 0.8rem; /* 縮減間距 */
-            }
-            .hero-section .text-md {
-                font-size: 0.85rem; /* 縮小字體 */
-                margin-bottom: 0.4rem; /* 縮減間距 */
-            }
-            /* 調整 Hero Section 內的社交媒體圖示大小 */
-            .hero-section .social-icons {
-                font-size: 2rem; /* 手機版縮小 */
-                margin-top: 0.6rem; /* 縮減間距 */
-            }
-            .hero-section .brand-name {
-                font-size: 1rem; /* 手機版品牌名稱字體大小 */
-            }
-
-            /* 所有 Section 的通用間距 */
-            section {
-                padding: 2rem 0; /* 縮減所有區塊的垂直間距 */
-            }
-            .section-title {
-                font-size: 1.8rem; /* 縮小標題 */
-                margin-bottom: 1rem; /* 縮減間距 */
-            }
-
-            /* 產品簡介 & 客製化合併區塊 */
-            #product-overview .product-image {
-                max-height: 180px; /* 縮小圖片 */
-                margin-bottom: 0.8rem;
-            }
-            #product-overview .text-md {
-                font-size: 0.85rem;
-                margin-bottom: 0.6rem;
-            }
-            #product-overview .text-sm {
-                font-size: 0.7rem;
-            }
-            #product-overview ul.space-y-3 li {
-                margin-bottom: 0.6rem;
-            }
-            #product-overview .feature-icon {
-                font-size: 1.4rem;
-                margin-right: 0.4rem;
-            }
-            #product-overview strong {
-                font-size: 0.85rem;
-            }
-            /* 針對簡化後的客製化部分調整間距 */
-            #product-overview .customization-text {
-                margin-top: 1.2rem;
-                font-size: 0.85rem;
-            }
-
-
-            /* 選擇證書套顏色 section (手機版卡片顯示縮圖，圖片在右側) */
-            #designs .color-option-card {
-                flex-direction: row; /* 手機版改為水平排列 */
-                align-items: center;
-                justify-content: space-between; /* 讓內容分散對齊 */
-                padding: 0.5rem; /* 縮減內距 */
-            }
-            #designs .color-option-card .color-circle {
-                width: 24px; /* 縮小圓圈 */
-                height: 24px;
-                margin-bottom: 0;
-            }
-            #designs .color-option-card span {
-                font-size: 0.8rem; /* 縮小字體 */
-                margin-left: 0.4rem; /* 縮減間距 */
-            }
-            #designs .color-option-card .image-container {
-                width: 60px; /* 縮小圖片容器 */
-                height: 60px;
-                margin-left: 0.6rem; /* 縮減間距 */
-            }
-            #designs .grid {
-                gap: 0.5rem; /* 縮減網格間距 */
-            }
-
-            /* 選擇證書套設計樣式 section (手機版卡片樣式) */
-            .design-style-card {
-                height: 240px; /* 縮減高度 */
-                padding: 0.5rem; /* 縮減內距 */
-            }
-            .design-style-card .image-container-design {
-                height: 120px; /* 縮減高度 */
-                margin-bottom: 0.2rem;
-            }
-            .design-style-card img {
-                max-height: 120px;
-            }
-            .design-style-card span,
-            .design-style-card p {
-                font-size: 0.75rem;
-            }
-            .design-style-card h3 {
-                font-size: 0.9rem;
-            }
-            .design-style-card p {
-                font-size: 0.65rem;
-            }
-            .mySwiper {
-                padding: 0 5px; /* 縮減 Swiper 邊距 */
-            }
-            .swiper-button-prev, .swiper-button-next {
-                font-size: 1.2rem;
-                top: 45%; /* 微調位置 */
-            }
-        }
-
-        /* 桌面版調整 (min-width: 640px) */
-        @media (min-width: 640px) {
-            .hero-section {
-                padding: 3.5rem 0; /* 縮減間距 */
-            }
-            .hero-section h1 {
-                font-size: 3rem; /* 縮小字體 */
-                margin-bottom: 1.2rem;
-            }
-            .hero-section p {
-                font-size: 1rem;
-                margin-bottom: 1.5rem;
-            }
-            .hero-section .btn-primary {
-                padding: 0.6rem 1.5rem;
-                font-size: 0.9rem;
-                margin-bottom: 1.5rem;
-            }
-            .hero-section .text-md {
-                font-size: 0.95rem;
-                margin-bottom: 0.6rem;
-            }
-            .hero-section .social-icons {
-                font-size: 2.5rem; /* 縮小圖示 */
-                margin-top: 1rem;
-            }
-            .hero-section .brand-name {
-                font-size: 1.1rem;
-            }
-
-            /* 所有 Section 的通用間距 */
-            section {
-                padding: 3rem 0; /* 縮減所有區塊的垂直間距 */
-            }
-            .section-title {
-                font-size: 2rem;
-                margin-bottom: 1.2rem;
-            }
-
-            /* 產品簡介 & 客製化合併區塊 */
-            #product-overview .product-image {
-                max-height: 250px; /* 縮小圖片 */
-            }
-            #product-overview .text-md {
-                font-size: 0.9rem;
-                margin-bottom: 0.8rem;
-            }
-            #product-overview ul.space-y-3 li {
-                margin-bottom: 0.7rem;
-            }
-            #product-overview .feature-icon {
-                font-size: 1.8rem;
-            }
-            #product-overview .customization-text {
-                margin-top: 1.5rem;
-                font-size: 0.95rem;
-            }
-
-
-            /* 選擇證書套顏色 section (桌面版圖片在底部，圖片圓角) */
-            #designs .color-option-card {
-                padding: 1rem; /* 縮減內距 */
-            }
-            #designs .color-option-card .color-circle {
-                width: 36px; /* 縮小圓圈 */
-                height: 36px;
-                margin-bottom: 0.5rem;
-            }
-            #designs .color-option-card span {
-                font-size: 1rem;
-            }
-            #designs .color-option-card .image-container {
-                height: 150px; /* 縮小圖片容器 */
-                margin-top: 0.7rem;
-            }
-            #designs .grid {
-                gap: 1rem; /* 縮減網格間距 */
-            }
-            
-            /* 設計樣式卡片 (桌面版圖片高度一致) */
-            .design-style-card {
-                height: 280px; /* 縮減高度 */
-                padding: 0.7rem;
-            }
-            .design-style-card .image-container-design {
-                height: 130px; /* 縮減高度 */
-            }
-            .design-style-card span,
-            .design-style-card p {
-                font-size: 0.85rem;
-            }
-            .design-style-card h3 {
-                font-size: 1.05rem;
-            }
-            .design-style-card p {
-                font-size: 0.75rem;
-            }
-            .mySwiper {
-                padding: 0 10px;
-            }
-            .swiper-button-prev, .swiper-button-next {
-                font-size: 1.8rem;
-            }
-        }
-        @media (min-width: 768px) {
-            .hero-section {
-                padding: 4rem 0; /* 縮減間距 */
-            }
-            section {
-                padding: 3.5rem 0; /* 縮減所有區塊的垂直間距 */
-            }
-            #product-overview .product-image {
-                max-height: 300px; /* 縮小圖片 */
-            }
-            .design-style-card {
-                height: 300px; /* 縮減高度 */
-            }
-            .design-style-card .image-container-design {
-                height: 150px; /* 縮減高度 */
-            }
-        }
-        @media (min-width: 1024px) {
-            .hero-section {
-                padding: 5rem 0; /* 縮減間距 */
-            }
-            section {
-                padding: 4rem 0; /* 縮減所有區塊的垂直間距 */
-            }
-            #product-overview .product-image {
-                max-height: 350px; /* 縮小圖片 */
-            }
-            .design-style-card {
-                height: 320px; /* 縮減高度 */
-            }
-            .design-style-card .image-container-design {
-                height: 160px; /* 縮減高度 */
-            }
-        }
-    </style>
+  var TRIGGERS = ["touchstart", "click", "scroll", "keydown", "mouseover"];
+  for (var j = 0; j < TRIGGERS.length; j++) {
+    document.addEventListener(TRIGGERS[j], onFirstInteraction, { capture: true, passive: true });
+  }
+  setTimeout(start, 3000);
+})();
+</script>
 </head>
 <body>
     <nav class="bg-white p-4 shadow-md sticky top-0 z-50">
         <div class="container mx-auto flex justify-between items-center">
             <a class="GAuSPc" aria-hidden="false" tabindex="0">
-                <img src="image/01_company_logo.png" class="lzy1Td" role="img" aria-label="網站首頁" jsname="SwcDWb">
-                <span class="QTKDff text-rose-500">My O!</span>專屬結婚證書套
+                <img src="image/01_company_logo.webp" width="256" height="256" loading="eager" class="lzy1Td" role="img" aria-label="網站首頁" jsname="SwcDWb">
+                <span class="QTKDff text-rose-500">MyO!</span>專屬結婚證書套
             </a>
 
             <div class="desktop-nav-links space-x-6">
-                <a href="#product-overview" class="text-gray-600 hover:text-rose-500 transition-colors">產品概覽</a>
-                <a href="#designs" class="text-gray-600 hover:text-rose-500 transition-colors">款式與設計</a>
-                <a href="./blog/" class="text-gray-600 hover:text-rose-500 transition-colors">教學指南</a>
-                <a href="#contact" class="text-gray-600 hover:text-rose-500 transition-colors">聯絡我們</a>
+                <a href="#product-overview" class="text-gray-600 hover:opacity-75 transition-opacity">產品概覽</a>
+                <a href="#designs" class="text-gray-600 hover:opacity-75 transition-opacity">款式與設計</a>
+                <a href="./blog/" class="text-gray-600 hover:opacity-75 transition-opacity">教學指南</a>
+                <a href="#contact" class="text-gray-600 hover:opacity-75 transition-opacity">聯絡我們</a>
+                <a href="./poster.html" class="inline-flex items-center gap-1 text-rose-700 hover:opacity-80 transition-opacity font-semibold" target="_blank">
+                    <svg class="shrink-0" width="16" height="16" viewBox="0 0 512 512" fill="currentColor" aria-hidden="true"><path d="M128 0C92.7 0 64 28.7 64 64v96h64V64H354.7L384 93.3V160h64V93.3c0-17-6.7-33.3-18.7-45.3L400 18.7C388 6.7 371.7 0 354.7 0H128zM384 352v32 64H128V384 368 352H384zm64-32H64v64c0 35.3 28.7 64 64 64H384c35.3 0 64-28.7 64-64V320zm64-160v160H448V224H64v96H0V160c0-35.3 28.7-64 64-64H448c35.3 0 64 28.7 64 64z"/></svg>宣傳單張
+                </a>
             </div>
 
-            <button class="hamburger-menu md:hidden focus:outline-none" id="mobile-menu-button">
+            <button class="hamburger-menu md:hidden focus:outline-none" id="mobile-menu-button" aria-label="開啟選單">
                 <svg class="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
                 </svg>
             </button>
         </div>
 
-        <div class="mobile-nav-links hidden md:hidden bg-white py-2" id="mobile-menu">
+        <div class="mobile-nav-links md:hidden bg-white py-2" id="mobile-menu">
             <a href="#product-overview" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">產品概覽</a>
             <a href="#designs" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">款式與設計</a>
             <a href="./blog/" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">教學指南</a>
             <a href="#contact" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">聯絡我們</a>
+            <a href="./poster.html" class="flex items-center px-4 py-2 text-rose-700 hover:bg-rose-50 font-semibold" target="_blank">
+                <svg class="mr-2 shrink-0" width="16" height="16" viewBox="0 0 512 512" fill="currentColor" aria-hidden="true"><path d="M128 0C92.7 0 64 28.7 64 64v96h64V64H354.7L384 93.3V160h64V93.3c0-17-6.7-33.3-18.7-45.3L400 18.7C388 6.7 371.7 0 354.7 0H128zM384 352v32 64H128V384 368 352H384zm64-32H64v64c0 35.3 28.7 64 64 64H384c35.3 0 64-28.7 64-64V320zm64-160v160H448V224H64v96H0V160c0-35.3 28.7-64 64-64H448c35.3 0 64 28.7 64 64z"/></svg>宣傳單張 (列印版)
+            </a>
         </div>
     </nav>
 
+    <main>
+
     <header class="hero-section">
         <div class="container mx-auto px-4">
-            <div class="flex justify-center mb-6 md:mb-8"> <img src="image/01_company_logo.png" alt="My O! logo" class="w-28 md:w-36 h-auto"> </div>
+            <div class="flex justify-center mb-6 md:mb-8"> <img src="image/01_company_logo.webp" alt="MyO! logo" width="112" height="112" loading="eager" class="w-28 md:w-36 h-auto"> </div>
 
-            <h1 class="text-4xl md:text-5xl font-bold text-rose-600 leading-tight mb-3 md:mb-4"> 珍藏您的愛情，<br>從一份證書套開始。💖
+            <h1 class="text-4xl md:text-5xl font-bold text-rose-600 leading-tight mb-3 md:mb-4" style="min-height:5.625rem"> 珍藏您的愛情，<br>從一份證書套開始。💖
             </h1>
             <p class="text-lg text-gray-700 mb-5 md:mb-6 max-w-2xl mx-auto"> 您的結婚證書，承載著一生一世的誓言。我們為您打造設計師級結婚證書套，讓這份愛情的見證，永恆閃耀。
             </p>
             <a href="#contact" class="btn-primary text-md font-semibold inline-block mb-6 md:mb-8"> 立即聯絡我們
             </a>
-            <div class="text-center mt-3 md:mt-4"> <p class="text-md text-gray-700 font-semibold mb-1 md:mb-2">聯絡我們：</p> <p class="brand-name text-xl font-bold text-gray-800 mb-2 md:mb-3">myo.makeyourown</p> <div class="flex justify-center social-icons space-x-5 text-2xl md:text-3xl"> <a href="https://www.instagram.com/myo.makeyourown/" target="_blank" class="text-pink-600 hover:text-pink-700 transition-colors" aria-label="Instagram">
-                        <i class="fab fa-instagram"></i>
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLScqX5Fq6dA50bSGzbFa14pFJ5RH3FX3PENF-kUPhuBJluCNVA/viewform" target="_blank" rel="noopener" class="inline-block text-sm md:text-base text-rose-700 hover:text-rose-800 font-medium" onclick="gtag('event', 'click_order_form', {'event_category': 'engagement', 'event_label': 'hero', 'value': 1})">或填寫網上訂購表單 →</a>
+            <div class="text-center mt-5 md:mt-6"> <p class="text-xl md:text-2xl text-gray-700 font-semibold mb-3 md:mb-4">聯絡我們：</p> <p class="brand-name text-3xl md:text-4xl font-bold text-gray-800 mb-3 md:mb-4">myo.makeyourown</p> <div class="flex justify-center social-icons space-x-5"> <a href="https://www.instagram.com/myo.makeyourown/" target="_blank" class="text-pink-600" aria-label="Instagram" onclick="gtag('event', 'click_instagram', {'event_category': 'engagement', 'event_label': 'content', 'value': 1})">
+                        <svg width="44" height="44" viewBox="0 0 448 512" fill="#E1306C" aria-hidden="true"><path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/></svg>
                     </a>
-                    <a href="https://api.whatsapp.com/send?phone=85263796410&text=%E4%BD%A0%E5%A5%BD%EF%BC%8C%E6%88%91%E5%BE%9E%E4%BD%A0%E5%80%91%E7%B6%B2%E7%AB%99%E4%B8%8A%E7%9C%8B%E5%88%B0%E9%80%99%E5%80%8B%E7%94%A2%E5%93%81%EF%BC%81%E6%9C%89%E8%88%88%E8%B6%A3%E4%BA%86%E8%A7%A3%E6%9B%B4%E5%A4%9A%EF%BC%81" target="_blank" class="text-green-500 hover:text-green-600 transition-colors" aria-label="WhatsApp">
-                        <i class="fab fa-whatsapp"></i>
+                    <a href="https://api.whatsapp.com/send?phone=85263796410&text=%E4%BD%A0%E5%A5%BD%EF%BC%8C%E6%88%91%E5%BE%9E%E4%BD%A0%E5%80%91%E7%B6%B2%E7%AB%99%E4%B8%8A%E7%9C%8B%E5%88%B0%E9%80%99%E5%80%8B%E7%94%A2%E5%93%81%EF%BC%81%E6%9C%89%E8%88%88%E8%B6%A3%E4%BA%86%E8%A7%A3%E6%9B%B4%E5%A4%9A%EF%BC%81" target="_blank" class="text-green-500" aria-label="WhatsApp" onclick="gtag('event', 'click_whatsapp', {'event_category': 'engagement', 'event_label': 'content', 'value': 1})">
+                        <svg width="44" height="44" viewBox="0 0 448 512" fill="#25D366" aria-hidden="true"><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 81.8 13.2 5.3 23.5 8.5 31.5 10.8 13.2 3.8 25.2 3.3 34.7 2 10.7-1.5 32.8-13.4 37.4-26.3 4.6-12.9 4.6-24 3.2-26.3-1.3-2.3-5-3.7-10.6-6.5z"/></svg>
                     </a>
                 </div>
             </div>
@@ -633,7 +400,10 @@
                             <span class="text-md font-medium text-gray-800">米色 Beige ｜亞麻布 Linen Texture</span>
                         </div>
                         <div class="image-container">
-                            <img src="image/cert_color_beige.jpg" alt="米色證書套預覽" class="select-option-image">
+                            <picture>
+                                <source srcset="image/cert_color_beige_thumb.webp" type="image/webp">
+                                <img src="image/cert_color_beige_thumb.webp" alt="米色證書套預覽" class="select-option-image" width="210" height="140" loading="lazy">
+                            </picture>
                         </div>
                     </div>
                     <div class="card select-option color-option-card" data-type="color" data-value="blue">
@@ -642,7 +412,10 @@
                             <span class="text-md font-medium text-gray-800">藍色 Blue ｜磨砂珠光 Frosted Pearl</span>
                         </div>
                         <div class="image-container">
-                            <img src="image/cert_color_blue.jpg" alt="藍色證書套預覽" class="select-option-image">
+                            <picture>
+                                <source srcset="image/cert_color_blue_thumb.webp" type="image/webp">
+                                <img src="image/cert_color_blue_thumb.webp" alt="藍色證書套預覽" class="select-option-image" width="210" height="140" loading="lazy">
+                            </picture>
                         </div>
                     </div>
                 </div>
@@ -656,7 +429,10 @@
                         <div class="swiper-slide">
                             <div class="card select-option design-style-card" data-type="style" data-value="style1">
                                 <div class="image-container-design">
-                                    <img src="image/cert_style_1.png" alt="款式1" class="w-full h-auto rounded-md">
+                                    <picture>
+                                        <source srcset="image/cert_style_1_thumb.webp 200w, image/cert_style_1.webp 437w" sizes="(max-width: 768px) 70vw, 180px" type="image/webp">
+                                        <img src="image/cert_style_1.webp" alt="款式1" class="w-full h-auto rounded-md" width="437" height="465" loading="lazy">
+                                    </picture>
                                 </div>
                                 <span class="block font-medium text-gray-800">款式1｜Cert Style 1</span>
                                 <p class="text-gray-600 text-sm mt-1">簡潔線條，永恆經典。</p>
@@ -665,7 +441,10 @@
                         <div class="swiper-slide">
                             <div class="card select-option design-style-card" data-type="style" data-value="style2">
                                 <div class="image-container-design">
-                                    <img src="image/cert_style_2.png" alt="款式2" class="w-full h-auto rounded-md">
+                                    <picture>
+                                        <source srcset="image/cert_style_2_thumb.webp 200w, image/cert_style_2.webp 548w" sizes="(max-width: 768px) 70vw, 180px" type="image/webp">
+                                        <img src="image/cert_style_2.webp" alt="款式2" class="w-full h-auto rounded-md" width="548" height="455" loading="lazy">
+                                    </picture>
                                 </div>
                                 <span class="block font-medium text-gray-800">款式2｜Cert Style 2</span>
                                 <p class="text-gray-600 text-sm mt-1">以花卉圖案點綴，寓意愛情如花般綻放。</p>
@@ -674,7 +453,10 @@
                         <div class="swiper-slide">
                             <div class="card select-option design-style-card" data-type="style" data-value="style3">
                                 <div class="image-container-design">
-                                    <img src="image/cert_style_3_chinese.png" alt="款式3" class="w-full h-auto rounded-md">
+                                    <picture>
+                                        <source srcset="image/cert_style_3_chinese_thumb.webp 200w, image/cert_style_3_chinese.webp 656w" sizes="(max-width: 768px) 70vw, 180px" type="image/webp">
+                                        <img src="image/cert_style_3_chinese.webp" alt="款式3" class="w-full h-auto rounded-md" width="656" height="262" loading="lazy">
+                                    </picture>
                                 </div>
                                 <span class="block font-medium text-gray-800">款式3｜Cert Style 3</span>
                                 <p class="text-gray-600 text-sm mt-1">時尚幾何圖形，展現現代感。</p>
@@ -683,7 +465,10 @@
                         <div class="swiper-slide">
                             <div class="card select-option design-style-card" data-type="style" data-value="style4">
                                 <div class="image-container-design">
-                                    <img src="image/cert_style_4.png" alt="款式4" class="w-full h-auto rounded-md">
+                                    <picture>
+                                        <source srcset="image/cert_style_4_thumb.webp 200w, image/cert_style_4.webp 608w" sizes="(max-width: 768px) 70vw, 180px" type="image/webp">
+                                        <img src="image/cert_style_4.webp" alt="款式4" class="w-full h-auto rounded-md" width="608" height="288" loading="lazy">
+                                    </picture>
                                 </div>
                                 <span class="block font-medium text-gray-800">款式4｜Cert Style 4</span>
                                 <p class="text-gray-600 text-sm mt-1">融入夢幻元素，充滿魔法。</p>
@@ -692,7 +477,10 @@
                         <div class="swiper-slide">
                             <div class="card select-option design-style-card" data-type="style" data-value="style5">
                                 <div class="image-container-design">
-                                    <img src="image/cert_style_5.png" alt="款式5" class="w-full h-auto rounded-md">
+                                    <picture>
+                                        <source srcset="image/cert_style_5_thumb.webp 200w, image/cert_style_5.webp 490w" sizes="(max-width: 768px) 70vw, 180px" type="image/webp">
+                                        <img src="image/cert_style_5.webp" alt="款式5" class="w-full h-auto rounded-md" width="490" height="518" loading="lazy">
+                                    </picture>
                                 </div>
                                 <span class="block font-medium text-gray-800">款式5｜Cert Style 5</span>
                                 <p class="text-gray-600 text-sm mt-1">更多風格選擇，等待您發掘。</p>
@@ -715,7 +503,10 @@
             </p>
 
             <div class="grid md:grid-cols-2 gap-6 items-center mb-6"> <div class="flex justify-center">
-                    <img src="https://lh5.googleusercontent.com/DWeIfZzwIHgSE31vh0akZf8RFa4FSApdYuzT_Cer8xnRZ3AdnIqurxsmKCM82KVA1GmyjdCxfLDtzuL1f1RtYvojfmzK-Ee38rYaossg4OfSVJ4oKA5iaryucGf6cRqe3mCcj5nfJwXmZP3785AdCaWNgTR_M7BlcNdw4a8CDRX9eJxBNg=w1326?key=Bl7sKK6_IAHx2-hi6KOMLg" alt="結婚證書套示意圖" class="rounded-2xl shadow-lg product-image">
+                    <picture>
+                        <source srcset="image/cert_hero_600.webp 600w, image/cert_hero_680.webp 680w, image/cert_hero_900.webp 900w, image/cert_hero.webp 1200w" sizes="(max-width: 768px) calc(100vw - 2rem), 600px" type="image/webp">
+                        <img src="image/cert_hero.webp" alt="結婚證書套示意圖" class="rounded-2xl shadow-lg product-image" style="width:600px;aspect-ratio:1200/991;" loading="eager" fetchpriority="high">
+                    </picture>
                 </div>
                 <div>
                     <h3 class="text-xl font-semibold text-gray-800 mb-3">產品特點 | Product Highlights</h3> <ul class="space-y-2 text-gray-800 text-md"> <li class="flex items-start">
@@ -760,6 +551,81 @@
         </div>
     </section>
 
+    <section id="faq" class="py-6 bg-white">
+        <div class="container mx-auto px-4 max-w-3xl">
+            <h2 class="section-title text-center">常見問題</h2>
+            <p class="text-md text-gray-700 mb-6 text-center max-w-3xl mx-auto">關於結婚證書套，您可能想了解的問題：</p>
+
+            <details class="card cursor-pointer mb-3">
+                <summary class="flex justify-between items-center list-none font-semibold text-gray-800 text-lg">
+                    <span>證書套的尺寸是否適合香港婚姻登記處的 A4 結婚證書？</span>
+                    <span class="text-rose-500 ml-2 flex-shrink-0">▼</span>
+                </summary>
+                <p class="text-gray-700 mt-3 leading-relaxed">適合。我們的證書套專為香港 A4 結婚證書設計，內尺寸約 31cm × 22.5cm，完美容納標準證書，無需摺疊。另備有其他尺寸可選。<a href="faq.html" class="text-rose-700 hover:text-rose-800 ml-1 font-medium">了解更多 →</a></p>
+            </details>
+
+            <details class="card cursor-pointer mb-3">
+                <summary class="flex justify-between items-center list-none font-semibold text-gray-800 text-lg">
+                    <span>可以在證書套上印製哪些文字？</span>
+                    <span class="text-rose-500 ml-2 flex-shrink-0">▼</span>
+                </summary>
+                <p class="text-gray-700 mt-3 leading-relaxed">可以印上新人名字（中英文均可）和結婚日期，採用熱轉印（燙印）工藝，呈現燙金或燙銀質感。設計師款更可加入指定字句。<a href="faq.html" class="text-rose-700 hover:text-rose-800 ml-1 font-medium">了解更多 →</a></p>
+            </details>
+
+            <details class="card cursor-pointer mb-3">
+                <summary class="flex justify-between items-center list-none font-semibold text-gray-800 text-lg">
+                    <span>亞麻布和磨砂珠光材質有什麼分別？</span>
+                    <span class="text-rose-500 ml-2 flex-shrink-0">▼</span>
+                </summary>
+                <p class="text-gray-700 mt-3 leading-relaxed">亞麻布（米色）紋理自然質樸，手感溫暖，適合簡約風格；磨砂珠光（藍色）帶細緻光澤，更顯華麗。兩款均為硬殼封面，耐用防潮。<a href="faq.html" class="text-rose-700 hover:text-rose-800 ml-1 font-medium">了解更多 →</a></p>
+            </details>
+
+            <details class="card cursor-pointer mb-3">
+                <summary class="flex justify-between items-center list-none font-semibold text-gray-800 text-lg">
+                    <span>訂製一個證書套需要多久時間？</span>
+                    <span class="text-rose-500 ml-2 flex-shrink-0">▼</span>
+                </summary>
+                <p class="text-gray-700 mt-3 leading-relaxed">一般訂製需時約 7-14 個工作天（視乎訂單量），確認設計稿後開始製作。如有急單可與我們聯絡協調。<a href="faq.html" class="text-rose-700 hover:text-rose-800 ml-1 font-medium">了解更多 →</a></p>
+            </details>
+
+            <details class="card cursor-pointer mb-3">
+                <summary class="flex justify-between items-center list-none font-semibold text-gray-800 text-lg">
+                    <span>如何清潔和保養結婚證書套？</span>
+                    <span class="text-rose-500 ml-2 flex-shrink-0">▼</span>
+                </summary>
+                <p class="text-gray-700 mt-3 leading-relaxed">建議以乾軟布輕拭表面，避免接觸水份或化學溶劑。存放於陰涼乾燥處，避免陽光直射。<a href="faq.html" class="text-rose-700 hover:text-rose-800 ml-1 font-medium">了解更多 →</a></p>
+            </details>
+
+            <details class="card cursor-pointer mb-3">
+                <summary class="flex justify-between items-center list-none font-semibold text-gray-800 text-lg">
+                    <span>證書套的價格是多少？</span>
+                    <span class="text-rose-500 ml-2 flex-shrink-0">▼</span>
+                </summary>
+                <p class="text-gray-700 mt-3 leading-relaxed">經典款 HK$388（亞麻布／磨砂珠光），設計師款 HK$388，價格已包含名字與日期印刷。</p>
+            </details>
+
+            <details class="card cursor-pointer mb-3">
+                <summary class="flex justify-between items-center list-none font-semibold text-gray-800 text-lg">
+                    <span>訂購流程是怎樣的？</span>
+                    <span class="text-rose-500 ml-2 flex-shrink-0">▼</span>
+                </summary>
+                <p class="text-gray-700 mt-3 leading-relaxed">選擇款式與顏色 → 提供新人名字與結婚日期 → 我們確認設計稿 → 製作 → 送貨。全程可透過 Instagram 或 WhatsApp 溝通，亦可直接<a href="https://docs.google.com/forms/d/e/1FAIpQLScqX5Fq6dA50bSGzbFa14pFJ5RH3FX3PENF-kUPhuBJluCNVA/viewform" target="_blank" rel="noopener" class="text-rose-700 hover:text-rose-800 font-medium" onclick="gtag('event', 'click_order_form', {'event_category': 'engagement', 'event_label': 'faq', 'value': 1})">填寫網上訂購表單</a>。<a href="faq.html" class="text-rose-700 hover:text-rose-800 ml-1 font-medium">了解更多 →</a></p>
+            </details>
+
+            <details class="card cursor-pointer mb-3">
+                <summary class="flex justify-between items-center list-none font-semibold text-gray-800 text-lg">
+                    <span>可以只訂購一個證書套嗎？</span>
+                    <span class="text-rose-500 ml-2 flex-shrink-0">▼</span>
+                </summary>
+                <p class="text-gray-700 mt-3 leading-relaxed">可以。您可以按需要訂購一個或一對，沒有最低數量限制。</p>
+            </details>
+
+            <div class="text-center mt-6">
+                <a href="faq.html" class="text-rose-700 hover:text-rose-800 font-semibold">查看全部常見問題 →</a>
+            </div>
+        </div>
+    </section>
+
     <section id="contact" class="py-6 bg-white"> <div class="container mx-auto px-4 text-center">
             <h2 class="section-title">聯絡我們</h2>
             <p class="text-lg text-gray-700 mb-4 max-w-2xl mx-auto"> 有任何疑問或需要客製化協助嗎？歡迎隨時與我們聯繫，我們將竭誠為您服務。
@@ -767,31 +633,58 @@
             <div class="max-w-3xl mx-auto mb-3"> <p class="text-xl font-bold text-gray-800 mb-4 text-center leading-relaxed"> 準備好定制您的專屬證書套了嗎？<br>
                     立即透過以下方式聯絡我們！✨
                 </p>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-4"> <a href="https://www.instagram.com/myo.makeyourown/" target="_blank" class="contact-cta-item">
-                        <i class="fab fa-instagram icon-large text-3xl md:text-4xl"></i> <span class="cta-text text-base md:text-base">透過 Instagram 訊息我們</span>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-4"> <a href="https://www.instagram.com/myo.makeyourown/" target="_blank" class="contact-cta-item" onclick="gtag('event', 'click_instagram', {'event_category': 'engagement', 'event_label': 'content', 'value': 1})">
+                        <svg class="icon-large text-3xl md:text-4xl" width="48" height="48" viewBox="0 0 448 512" fill="#E1306C" aria-hidden="true"><path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/></svg> <span class="cta-text text-base md:text-base">透過 Instagram 訊息我們</span>
                     </a>
-                    <a href="https://api.whatsapp.com/send?phone=85263796410&text=%E4%BD%A0%E5%A5%BD%EF%BC%8C%E6%88%91%E5%BE%9E%E4%BD%A0%E5%80%91%E7%B6%B2%E7%AB%99%E4%B8%8A%E7%9C%8B%E5%88%B0%E9%80%99%E5%80%8B%E7%94%A2%E5%93%81%EF%BC%81%E6%9C%89%E8%88%88%E8%B6%A3%E4%BA%86%E8%A7%A3%E6%9B%B4%E5%A4%9A%EF%BC%81" target="_blank" class="contact-cta-item">
-                        <i class="fab fa-whatsapp icon-large text-3xl md:text-4xl"></i> <span class="cta-text text-base md:text-base">透過 WhatsApp 聯絡我們</span>
+                    <a href="https://api.whatsapp.com/send?phone=85263796410&text=%E4%BD%A0%E5%A5%BD%EF%BC%8C%E6%88%91%E5%BE%9E%E4%BD%A0%E5%80%91%E7%B6%B2%E7%AB%99%E4%B8%8A%E7%9C%8B%E5%88%B0%E9%80%99%E5%80%8B%E7%94%A2%E5%93%81%EF%BC%81%E6%9C%89%E8%88%88%E8%B6%A3%E4%BA%86%E8%A7%A3%E6%9B%B4%E5%A4%9A%EF%BC%81" target="_blank" class="contact-cta-item" onclick="gtag('event', 'click_whatsapp', {'event_category': 'engagement', 'event_label': 'content', 'value': 1})">
+                        <svg class="icon-large text-3xl md:text-4xl" width="48" height="48" viewBox="0 0 448 512" fill="#25D366" aria-hidden="true"><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 81.8 13.2 5.3 23.5 8.5 31.5 10.8 13.2 3.8 25.2 3.3 34.7 2 10.7-1.5 32.8-13.4 37.4-26.3 4.6-12.9 4.6-24 3.2-26.3-1.3-2.3-5-3.7-10.6-6.5z"/></svg> <span class="cta-text text-base md:text-base">透過 WhatsApp 聯絡我們</span>
+                    </a>
+                    <a href="https://docs.google.com/forms/d/e/1FAIpQLScqX5Fq6dA50bSGzbFa14pFJ5RH3FX3PENF-kUPhuBJluCNVA/viewform" target="_blank" rel="noopener" class="contact-cta-item" onclick="gtag('event', 'click_order_form', {'event_category': 'engagement', 'event_label': 'contact', 'value': 1})">
+                        <span class="icon-large" aria-hidden="true">📋</span> <span class="cta-text text-base md:text-base">填寫網上訂購表單</span>
                     </a>
                 </div>
             </div>
         </div>
     </section>
 
+    </main>
+
     <footer class="bg-gray-800 text-white py-5"> <div class="container mx-auto px-4 text-center">
             <p class="mb-1 text-sm">© 2025 愛的見證. 版權所有。</p> <div class="space-x-2 text-sm"> <a href="privacy.html" class="footer-link">隱私政策</a>
                 <a href="terms.html" class="footer-link">服務條款</a>
-                <a href="#" class="footer-link">常見問題</a>
+                <a href="faq.html" class="footer-link">常見問題</a>
             </div>
         </div>
     </footer>
 
     <div id="image-modal" class="modal">
         <span class="close-button">&times;</span>
-        <img class="modal-content" id="modal-image">
+        <img class="modal-content" id="modal-image" alt="產品大圖" loading="lazy" width="800" height="600">
     </div>
 
-    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <!-- Mobile Sticky Conversion Bar -->
+    <div class="sticky-conversion-bar" id="sticky-conversion-bar">
+        <div class="brand-section">
+            <img src="image/01_company_logo.webp" alt="MyO! Logo" width="50" height="50" loading="lazy" class="logo">
+            <div class="brand-name">
+                <span>MyO!</span>
+                <span>myo.makeyourown</span>
+            </div>
+        </div>
+        <div class="cta-section">
+            <a href="https://api.whatsapp.com/send?phone=85263796410&text=%E4%BD%A0%E5%A5%BD%EF%BC%8C%E6%88%91%E5%BE%9E%E4%BD%A0%E5%80%91%E7%B6%B2%E7%AB%99%E4%B8%8A%E7%9C%8B%E5%88%B0%E9%80%99%E5%80%8B%E7%94%A2%E5%93%81%EF%BC%81%E6%9C%89%E8%88%88%E8%B6%A3%E4%BA%86%E8%A7%A3%E6%9B%B4%E5%A4%9A%EF%BC%81" target="_blank" class="cta-text" onclick="gtag('event', 'click_whatsapp', {'event_category': 'engagement', 'event_label': 'sticky_bar', 'value': 1})">立即查詢</a>
+            <div class="btn-group">
+                <a href="https://www.instagram.com/myo.makeyourown/" target="_blank" class="btn-social btn-ig" aria-label="Instagram" onclick="gtag('event', 'click_instagram', {'event_category': 'engagement', 'event_label': 'sticky_bar', 'value': 1})">
+                    <svg width="20" height="20" viewBox="0 0 448 512" fill="currentColor" aria-hidden="true"><path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/></svg>
+                </a>
+                <a href="https://api.whatsapp.com/send?phone=85263796410&text=%E4%BD%A0%E5%A5%BD%EF%BC%8C%E6%88%91%E5%BE%9E%E4%BD%A0%E5%80%91%E7%B6%B2%E7%AB%99%E4%B8%8A%E7%9C%8B%E5%88%B0%E9%80%99%E5%80%8B%E7%94%A2%E5%93%81%EF%BC%81%E6%9C%89%E8%88%88%E8%B6%A3%E4%BA%86%E8%A7%A3%E6%9B%B4%E5%A4%9A%EF%BC%81" target="_blank" class="btn-social btn-whatsapp" aria-label="WhatsApp" onclick="gtag('event', 'click_whatsapp', {'event_category': 'engagement', 'event_label': 'sticky_bar', 'value': 1})">
+                    <svg width="20" height="20" viewBox="0 0 448 512" fill="#25D366" aria-hidden="true"><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 81.8 13.2 5.3 23.5 8.5 31.5 10.8 13.2 3.8 25.2 3.3 34.7 2 10.7-1.5 32.8-13.4 37.4-26.3 4.6-12.9 4.6-24 3.2-26.3-1.3-2.3-5-3.7-10.6-6.5z"/></svg>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    
 
     <script>
         document.addEventListener('DOMContentLoaded', function () {
@@ -801,12 +694,12 @@
 
             if (mobileMenuButton && mobileMenu) {
                 mobileMenuButton.addEventListener('click', function () {
-                    mobileMenu.classList.toggle('hidden');
+                    mobileMenu.classList.toggle('active');
                 });
 
                 mobileMenu.querySelectorAll('a').forEach(link => {
                     link.addEventListener('click', () => {
-                        mobileMenu.classList.add('hidden');
+                        mobileMenu.classList.remove('active');
                     });
                 });
             }
@@ -837,12 +730,15 @@
                         selectedColorInput.value = value;
                         console.log(`Selected color: ${value}`);
 
-                        // 獲取該卡片中圖片的 src 屬性
-                        const imgSrc = this.querySelector('.select-option-image').src;
-                        
+                        // 獲取該卡片中圖片的 src 與 alt 屬性
+                        const sourceImg = this.querySelector('.select-option-image');
+                        const imgSrc = sourceImg.getAttribute('src');
+                        const imgAlt = sourceImg.getAttribute('alt');
+
                         // 顯示 Modal
                         if (imgSrc) {
                             modalImage.src = imgSrc;
+                            modalImage.alt = imgAlt || '結婚證書套預覽';
                             imageModal.style.display = 'flex'; // 顯示 Modal (使用 flex 讓圖片居中)
                         }
 
@@ -870,55 +766,146 @@
                 }
             });
 
-
-            // 3. 初始化 Swiper 輪播 for 選擇證書套設計樣式 (mySwiper)
-            const mySwiper = new Swiper('.mySwiper', {
-                slidesPerView: 'auto', 
-                centeredSlides: true,  
-                spaceBetween: 20,     
-
-                breakpoints: {
-                    0: { // 0px 到 639px
-                        slidesPerView: 1.2,
-                        spaceBetween: 10,
-                    },
-                    640: { // 640px 及以上
-                        slidesPerView: 2.2, 
-                        spaceBetween: 15,
-                    },
-                    768: { // 768px 及以上
-                        slidesPerView: 3.2, 
-                        spaceBetween: 20,
-                    },
-                    1024: { // 1024px 及以上
-                        slidesPerView: 4.2, 
-                        spaceBetween: 20,
-                    },
-                    1280: { // 1280px 及以上
-                        slidesPerView: 5.2, 
-                        spaceBetween: 20,
-                    }
-                },
-                
-                loop: true, 
-
-                pagination: {
-                    el: '.swiper-pagination',
-                    clickable: true,
-                },
-
-                navigation: {
-                    nextEl: '.swiper-button-next',
-                    prevEl: '.swiper-button-prev',
-                },
-
-                autoplay: {
-                    delay: 2500,
-                    disableOnInteraction: false,
-                },
+            // ESC 鍵關閉 Modal
+            document.addEventListener('keydown', function(event) {
+                if (event.key === 'Escape' && imageModal.style.display === 'flex') {
+                    imageModal.style.display = 'none';
+                }
             });
+
+
+            // 3. 輪播初始化 (Swiper Carousel) — lazy load on viewport entry
+            var swiperLoaded = false;
+            var swiperScript = document.createElement('script');
+            swiperScript.src = 'https://unpkg.com/swiper/swiper-bundle.min.js';
+
+            function initSwiper() {
+                if (swiperLoaded) return;
+                swiperLoaded = true;
+                if (observer) observer.disconnect();
+
+                if (!document.querySelector('link[href*="swiper-bundle.min.css"]')) {
+                    var link = document.createElement('link');
+                    link.rel = 'stylesheet';
+                    link.href = 'https://unpkg.com/swiper/swiper-bundle.min.css';
+                    document.head.appendChild(link);
+                }
+
+                swiperScript.onload = function () {
+                    new Swiper('.mySwiper', {
+                        slidesPerView: 'auto',
+                        centeredSlides: true,
+                        spaceBetween: 20,
+                        simulateTouch: true,
+                        touchRatio: 1,
+                        touchAngle: 45,
+                        shortSwipes: true,
+                        longSwipesRatio: 0.5,
+                        allowTouchMove: true,
+                        threshold: 5,
+                        breakpoints: {
+                            0: { slidesPerView: 1.2, spaceBetween: 10 },
+                            640: { slidesPerView: 2.2, spaceBetween: 15 },
+                            768: { slidesPerView: 3.2, spaceBetween: 20 },
+                            1024: { slidesPerView: 4.2, spaceBetween: 20 },
+                            1280: { slidesPerView: 5.2, spaceBetween: 20 }
+                        },
+                        loop: true,
+                        pagination: { el: '.swiper-pagination', clickable: true },
+                        navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },
+                        autoplay: { delay: 2500, disableOnInteraction: false }
+                    });
+                    // Re-show pagination/nav now that Swiper is initialized
+                    var swiperShow = document.createElement('style');
+                    swiperShow.textContent = '.swiper-pagination,.swiper-button-next,.swiper-button-prev{display:revert}';
+                    document.head.appendChild(swiperShow);
+                };
+                document.body.appendChild(swiperScript);
+            }
+
+            var observer;
+            var designSection = document.getElementById('designs');
+            if (designSection) {
+                var designRect = designSection.getBoundingClientRect();
+                var belowFold = designRect.top >= window.innerHeight;
+                if (belowFold && 'IntersectionObserver' in window) {
+                    observer = new IntersectionObserver(function(entries) {
+                        if (entries[0].isIntersecting) {
+                            initSwiper();
+                        }
+                    }, { rootMargin: '200px' });
+                    observer.observe(designSection);
+                } else {
+                    if ('requestIdleCallback' in window) {
+                        requestIdleCallback(initSwiper, { timeout: 3000 });
+                    } else {
+                        setTimeout(initSwiper, 2000);
+                    }
+                }
+            }
+
+            // 4. Mobile Sticky Conversion Bar - 保持始終顯示（無需額外 JS）
         });
     </script>
 
+    <script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/sw.js').catch((err) => {
+      console.warn('SW registration failed:', err);
+    });
+  });
+}
+</script>
+
+
+<script>
+(function() {
+  if (typeof gtag === 'undefined') return;
+  var scrollDepths = {25: true, 50: true, 75: true, 90: true};
+  var firedDepths = {};
+  var docHeight = 0;
+
+  function measureDocHeight() {
+    docHeight = Math.max(
+      document.body.scrollHeight,
+      document.documentElement.scrollHeight
+    );
+  }
+
+  // Pre-calculate height once on idle to avoid forced reflow in scroll handler
+  if ('requestIdleCallback' in window) {
+    requestIdleCallback(measureDocHeight, {timeout: 2000});
+  } else {
+    setTimeout(measureDocHeight, 500);
+  }
+
+  // Re-measure on resize (lazy images may change doc height)
+  var resizeTimer;
+  window.addEventListener('resize', function() {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(measureDocHeight, 300);
+  }, {passive: true});
+
+  var scrollHandler = function() {
+    var scrollTop = window.scrollY || window.pageYOffset;
+    var windowHeight = window.innerHeight;
+    var currentDocHeight = docHeight > 0 ? docHeight : (measureDocHeight(), docHeight);
+    var scrollPercent = Math.round((scrollTop + windowHeight) / currentDocHeight * 100);
+    Object.keys(scrollDepths).forEach(function(depth) {
+      if (scrollPercent >= parseInt(depth) && !firedDepths[depth]) {
+        firedDepths[depth] = true;
+        gtag('event', 'scroll_depth', {
+          'event_category': 'engagement',
+          'event_label': depth + '%',
+          'value': parseInt(depth),
+          'non_interaction': true
+        });
+      }
+    });
+  };
+  window.addEventListener('scroll', scrollHandler, {passive: true});
+})();
+</script>
 </body>
 </html>

@@ -1,0 +1,187 @@
+/* ─── Budget ─── */
+.bg-scene {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  padding: var(--stage-pad-y) var(--stage-pad-x);
+  text-align: center;
+  overflow: hidden;
+}
+
+.bg-hook {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  animation: bg-fade-in 600ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.bg-hook-icon {
+  animation: bg-scale-in 500ms cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+.bg-title {
+  font-size: clamp(40px, 4.5vw, 72px);
+  font-weight: 700;
+  color: var(--text);
+  font-family: var(--font-display-cn);
+}
+
+.bg-sub {
+  font-size: 20px;
+  color: var(--text-mute);
+  font-family: var(--font-display-cn);
+}
+
+/* number block */
+.bg-number-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  animation: bg-fade-in 600ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.bg-highlight-bar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.bg-highlight-bar .bg-rule {
+  width: 40px;
+  height: 4px;
+  background: var(--accent);
+  border-radius: 2px;
+}
+
+.bg-number-appear {
+  font-size: 80px;
+  font-weight: var(--hero-num-weight);
+  letter-spacing: var(--hero-num-track);
+  color: var(--accent);
+  font-family: var(--font-display-en);
+  animation: bg-bump 500ms cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+.bg-number-label {
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--text);
+  font-family: var(--font-display-cn);
+}
+
+.bg-number-sub {
+  font-size: 16px;
+  color: var(--text-mute);
+  font-family: var(--font-display-cn);
+}
+
+/* cost cards */
+.bg-cost-card {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  background: var(--card-glass-bg);
+  backdrop-filter: blur(8px);
+  border: 1px solid var(--card-glass-border);
+  border-radius: var(--r-card, 24px);
+  padding: 32px 40px;
+  min-width: 360px;
+  box-shadow: var(--card-shadow);
+  animation: bg-fade-in 600ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.bg-cost-bar-bg {
+  width: 100%;
+  height: 16px;
+  background: var(--accent-soft);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.bg-cost-bar-fill {
+  height: 100%;
+  background: var(--accent);
+  border-radius: 8px;
+  animation: bg-bar-grow 800ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  transform-origin: left;
+}
+
+.bg-cost-info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.bg-cost-label {
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--text);
+  font-family: var(--font-display-cn);
+}
+
+.bg-cost-amount {
+  font-size: 24px;
+  font-weight: 800;
+  color: var(--accent);
+  font-family: var(--font-display-en);
+}
+
+.bg-cost-pct {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--text-2);
+  font-family: var(--font-display-en);
+}
+
+/* final */
+.bg-final {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  animation: bg-fade-in 600ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.bg-final-icon {
+  animation: bg-scale-in 500ms cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+.bg-final h2 {
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--text);
+  font-family: var(--font-display-cn);
+}
+
+.bg-final p {
+  font-size: 18px;
+  color: var(--text-mute);
+  line-height: 1.6;
+  font-family: var(--font-display-cn);
+}
+
+@keyframes bg-fade-in {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes bg-scale-in {
+  from { opacity: 0; transform: scale(0.5); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes bg-bump {
+  from { opacity: 0; transform: scale(0.5); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes bg-bar-grow {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}

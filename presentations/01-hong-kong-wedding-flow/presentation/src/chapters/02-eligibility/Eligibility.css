@@ -1,0 +1,164 @@
+/* Eligibility Chapter Styles – warm-keynote theme */
+
+.el-scene {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  padding: var(--stage-pad-y) var(--stage-pad-x);
+  background: var(--surface);
+  font-family: var(--font-display-cn);
+  color: var(--text);
+}
+
+/* ---------- Step 0 – Conditions ---------- */
+.el-conditions {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+  max-width: 800px;
+}
+
+.el-condition-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px;
+  background: var(--card-glass-bg);
+  backdrop-filter: blur(8px);
+  border-radius: var(--r-card);
+  box-shadow: var(--card-shadow);
+  border: 1px solid var(--accent-soft);
+}
+
+.el-check-icon {
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+}
+
+.el-condition-text {
+  font-size: 24px;
+  font-weight: 500;
+}
+
+/* ---------- Step 1 – Documents ---------- */
+.el-documents {
+  display: flex;
+  gap: 32px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.el-document-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 20px;
+  background: var(--card-glass-bg);
+  backdrop-filter: blur(8px);
+  border-radius: var(--r-card);
+  box-shadow: var(--card-shadow);
+  border: 1px solid var(--accent-soft);
+}
+
+.el-doc-svg {
+  width: 64px;
+  height: 64px;
+}
+
+.el-doc-label {
+  font-size: 20px;
+  font-weight: 500;
+  text-align: center;
+}
+
+/* ---------- Step 2 – Special Cases ---------- */
+.el-specials {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+  justify-content: center;
+  max-width: 900px;
+}
+
+.el-special-card {
+  background: var(--card-glass-bg);
+  backdrop-filter: blur(8px);
+  border-radius: var(--r-card);
+  box-shadow: var(--card-shadow);
+  border: 1px solid var(--accent-soft);
+  padding: 24px;
+  width: 260px;
+  text-align: center;
+}
+
+.el-special-title {
+  font-size: 28px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.el-special-desc {
+  font-size: 18px;
+  line-height: 1.4;
+}
+
+/* ---------- Step 3 – Transition ---------- */
+.el-transition {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.el-checkmark-stamp {
+  width: 80px;
+  height: 80px;
+}
+
+.el-next-label {
+  font-size: 32px;
+  font-weight: 500;
+  color: var(--accent);
+}
+
+/* ---------- Animations ---------- */
+@keyframes el-fade-in-key {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.el-fade-in {
+  animation: el-fade-in-key var(--dur-base) ease-out both;
+}
+
+@keyframes el-slide-up-key {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.el-slide-up {
+  animation: el-slide-up-key var(--dur-base) cubic-bezier(0.16,1,0.3,1) both;
+}
+
+@keyframes el-scale-in-key {
+  from { opacity: 0; transform: scale(0.8); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.el-scale-in {
+  animation: el-scale-in-key var(--dur-base) ease-out both;
+}
+
+@keyframes el-rotate-in-key {
+  from { opacity: 0; transform: rotate(-45deg) scale(0.5); }
+  to { opacity: 1; transform: rotate(0deg) scale(1); }
+}
+
+.el-rotate-in {
+  animation: el-rotate-in-key var(--dur-base) ease-out both;
+}

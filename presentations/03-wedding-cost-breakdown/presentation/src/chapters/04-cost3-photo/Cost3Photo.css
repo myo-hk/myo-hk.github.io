@@ -1,0 +1,118 @@
+/* --- Cost3Photo --- */
+.c3-scene {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  padding: var(--stage-pad-y) var(--stage-pad-x);
+  text-align: center;
+  overflow: hidden;
+}
+.c3-hook {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  animation: c3-fade-in 600ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+.c3-hook-icon {
+  animation: c3-scale-in 500ms cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+.c3-title {
+  font-size: clamp(40px, 4.5vw, 72px);
+  font-weight: 700;
+  color: var(--text);
+  font-family: var(--font-display-cn);
+}
+.c3-sub {
+  font-size: 20px;
+  color: var(--text-mute);
+  font-family: var(--font-display-cn);
+}
+.c3-number-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  animation: c3-fade-in 600ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+.c3-highlight-bar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.c3-highlight-bar .c3-rule {
+  width: 40px;
+  height: 4px;
+  background: var(--accent);
+  border-radius: 2px;
+}
+.c3-number-appear {
+  font-size: clamp(40px, 5vw, 72px);
+  font-weight: var(--hero-num-weight);
+  letter-spacing: var(--hero-num-track);
+  color: var(--accent);
+  font-family: var(--font-display-en);
+  animation: c3-bump 500ms cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+.c3-number-label {
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--text);
+  font-family: var(--font-display-cn);
+}
+.c3-number-sub {
+  font-size: 16px;
+  color: var(--text-mute);
+  font-family: var(--font-display-cn);
+}
+.c3-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  background: var(--card-glass-bg);
+  backdrop-filter: blur(8px);
+  border: 1px solid var(--card-glass-border);
+  border-radius: var(--r-card, 24px);
+  padding: 32px 40px;
+  max-width: 420px;
+  box-shadow: var(--card-shadow);
+  animation: c3-fade-in 600ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+.c3-card-title {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--text);
+  font-family: var(--font-display-cn);
+}
+.c3-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+}
+.c3-list-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 18px;
+  color: var(--text-2);
+  font-family: var(--font-display-cn);
+  animation: c3-fade-in 500ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes c3-fade-in {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes c3-scale-in {
+  from { opacity: 0; transform: scale(0.5); }
+  to { opacity: 1; transform: scale(1); }
+}
+@keyframes c3-bump {
+  from { opacity: 0; transform: scale(0.5); }
+  to { opacity: 1; transform: scale(1); }
+}

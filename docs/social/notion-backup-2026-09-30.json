@@ -1,0 +1,143 @@
+{
+  "_meta": {
+    "created": "2026-09-30",
+    "purpose": "MyO Notion 內容庫遷移前備份 — 供 schema 回滾與 archive 還原對照",
+    "note": "本檔保存 48 列的 page_id、標題、id 編號，以及完整 schema 定義（multi_select 選項、status 選項與群組）。archive 後完整文案內容會留在 Notion 垃圾桶，可用 page_id 還原。",
+    "workspace": "myo-makeyourown",
+    "parent_page_id": "3e96ee9a-fad2-807e-822f-cb479a3305aa",
+    "parent_page_title": "MyO Cert HoderSocial Media Idea",
+    "database_id": "e466ee9a-fad2-83d7-80a2-8171ac6b0f8b",
+    "data_source_id": "6226ee9a-fad2-83cf-a751-87af1eb87d26",
+    "row_count": 48,
+    "content_nature": "TeaWikiHK 茶內容殘留（cta_url 全部指向 teawikihk.pages.dev），非 MyO 業務內容"
+  },
+
+  "original_schema": {
+    "content_dimensions": {
+      "type": "multi_select",
+      "options": [
+        { "name": "普洱茶", "color": "yellow" },
+        { "name": "烏龍茶", "color": "gray" },
+        { "name": "白茶", "color": "brown" },
+        { "name": "綠茶", "color": "pink" },
+        { "name": "茶具", "color": "green" },
+        { "name": "健康養生", "color": "purple" },
+        { "name": "節慶禮盒", "color": "blue" },
+        { "name": "季節限定", "color": "default" },
+        { "name": "基礎", "color": "gray" },
+        { "name": "文化在地", "color": "yellow" }
+      ]
+    },
+    "social_pillar": {
+      "type": "multi_select",
+      "note": "沿用不變 — 格式原型，非主題",
+      "options": [
+        { "name": "知識型", "color": "red" },
+        { "name": "教學型", "color": "blue" },
+        { "name": "對比型", "color": "pink" },
+        { "name": "文化型", "color": "purple" },
+        { "name": "互動型", "color": "orange" },
+        { "name": "品牌型", "color": "pink" }
+      ]
+    },
+    "Status": {
+      "type": "status",
+      "note": "沿用不變 — MyO 自己的 AI 協作流程，非 TeaWiki 的 ⏳✏️✅🚀",
+      "options": [
+        { "name": "Human Idea", "color": "default" },
+        { "name": "AI Drafted", "color": "blue" },
+        { "name": "AI Image Ready", "color": "brown" },
+        { "name": "Human Commenting", "color": "red" },
+        { "name": "Human Approved", "color": "purple" },
+        { "name": "Published", "color": "green" }
+      ],
+      "groups": [
+        { "name": "To-do", "color": "gray", "option_ids": ["637f7364-bf03-4889-98a8-4c73628066fb"] },
+        { "name": "In progress", "color": "blue", "option_ids": ["[Ytj", "9d8d5050-6184-4cea-b571-2ca6b3ebee63", "XTpT", "ty=U"] },
+        { "name": "Complete", "color": "green", "option_ids": ["d9bec87c-ed4b-4ce7-97cc-2686b308b3de"] }
+      ]
+    },
+    "other_properties": {
+      "Idea": "title",
+      "id": "number",
+      "publish_date": "date",
+      "ig_hook": "rich_text",
+      "ig_caption": "rich_text",
+      "threads_hook": "rich_text",
+      "threads_body": "rich_text",
+      "image_prompt": "rich_text",
+      "image_url": "url",
+      "image_file": "files",
+      "cta_url": "url",
+      "other_comment": "rich_text",
+      "Last edited by": "last_edited_by",
+      "Last edited time": "last_edited_time"
+    }
+  },
+
+  "rows": [
+    { "n": 1,  "page_id": "e956ee9a-fad2-83c9-bb06-01576a03aac8", "id": 10,  "title": "辦公室茶具選購" },
+    { "n": 2,  "page_id": "e666ee9a-fad2-83fc-9645-015aefe47ae1", "id": 30,  "title": "六大茶類同一棵樹？發酵度決定一切" },
+    { "n": 3,  "page_id": "58b6ee9a-fad2-821c-9692-0185553cf616", "id": 9,   "title": "蓋碗防燙教學" },
+    { "n": 4,  "page_id": "6a86ee9a-fad2-8336-90ab-8172af62366f", "id": 29,  "title": "白茶產地之爭" },
+    { "n": 5,  "page_id": "b546ee9a-fad2-8336-b89e-019ea358c036", "id": 8,   "title": "四季飲茶指南" },
+    { "n": 6,  "page_id": "df46ee9a-fad2-8270-add3-01426c6a1146", "id": 48,  "title": "紫砂壺開壺三步驟：新手必學" },
+    { "n": 7,  "page_id": "8976ee9a-fad2-8211-8f23-011b6732d7bf", "id": null, "title": "冷泡茶夏日教學" },
+    { "n": 8,  "page_id": "75e6ee9a-fad2-836a-87f5-81cd7eece28b", "id": null, "title": "寒底 vs 熱底揀茶" },
+    { "n": 9,  "page_id": "4e86ee9a-fad2-835a-b3ce-813433b23f30", "id": null, "title": "泡茶 ASMR 療癒" },
+    { "n": 10, "page_id": "5116ee9a-fad2-8354-b75c-8199e086ebd6", "id": null, "title": "蓋碗拿法教學：點樣先唔會燙到手？" },
+    { "n": 11, "page_id": "e6a6ee9a-fad2-82ad-b9d7-01340b9ab153", "id": null, "title": "廣東茶樓點單攻略" },
+    { "n": 12, "page_id": "9426ee9a-fad2-83f1-9a31-0140de4600d9", "id": null, "title": "水溫幾多度先啱？不同茶類沖泡温度一覽" },
+    { "n": 13, "page_id": "e406ee9a-fad2-82c1-a70a-01e9a0075bf9", "id": null, "title": "港式奶茶三王爭霸" },
+    { "n": 14, "page_id": "78c6ee9a-fad2-83cd-af0c-810b2bb1304c", "id": null, "title": "網店 vs 實體茶行：邊度買茶更抵？" },
+    { "n": 15, "page_id": "3726ee9a-fad2-827b-95bd-8107a51cb02f", "id": null, "title": "濕倉 vs 乾倉" },
+    { "n": 16, "page_id": "5d26ee9a-fad2-82a1-9eb9-81e539b41538", "id": null, "title": "週末飲茶偏好" },
+    { "n": 17, "page_id": "dca6ee9a-fad2-8311-b8cb-81302765114f", "id": null, "title": "英記 vs 林奇苑：香港茶行邊間買啱你？" },
+    { "n": 18, "page_id": "8f06ee9a-fad2-82cc-9978-0171235be890", "id": null, "title": "岩茶點解咁貴" },
+    { "n": 19, "page_id": "0416ee9a-fad2-8304-92f6-81d40e5c487b", "id": null, "title": "網站功能介紹" },
+    { "n": 20, "page_id": "9366ee9a-fad2-83e2-a8ac-819a65cc720c", "id": null, "title": "蓋碗 vs 紫砂壺：點樣揀先啱你？" },
+    { "n": 21, "page_id": "b016ee9a-fad2-838b-bcdd-812e2afe0d88", "id": null, "title": "尋找本命茶" },
+    { "n": 22, "page_id": "b4e6ee9a-fad2-82d5-b6ec-011d15dc70d0", "id": null, "title": "品牌初心故事" },
+    { "n": 23, "page_id": "6b86ee9a-fad2-8235-9751-810cdd989590", "id": null, "title": "普洱茶年份騙局：越陳一定越靚？" },
+    { "n": 24, "page_id": "d5b6ee9a-fad2-833d-8234-810a4b0911ca", "id": null, "title": "茶療消滯" },
+    { "n": 25, "page_id": "26e6ee9a-fad2-8392-a23e-0165e5b25da6", "id": null, "title": "六大茶類標籤" },
+    { "n": 26, "page_id": "efe6ee9a-fad2-82b1-a8dc-819dad0057ef", "id": null, "title": "紫砂壺養壺" },
+    { "n": 27, "page_id": "2866ee9a-fad2-83cd-a2d2-01af3cbe0604", "id": null, "title": "鐵觀音七泡有餘香" },
+    { "n": 28, "page_id": "4156ee9a-fad2-83cd-9c22-810f5a178c3c", "id": null, "title": "中秋送茶禮" },
+    { "n": 29, "page_id": "ba06ee9a-fad2-82be-9bb5-81b56a7370d1", "id": null, "title": "香港人存茶致命錯誤：冰箱存茶點解不可？" },
+    { "n": 30, "page_id": "d7a6ee9a-fad2-8323-9b44-811810092345", "id": null, "title": "綠茶保鮮秘訣" },
+    { "n": 31, "page_id": "0356ee9a-fad2-8257-a493-8122ed36299f", "id": null, "title": "普洱收藏入門" },
+    { "n": 32, "page_id": "4f56ee9a-fad2-8256-9628-01b931859aa0", "id": null, "title": "母樹大紅袍根本唔存在啦！2006年起禁止採摘" },
+    { "n": 33, "page_id": "2e66ee9a-fad2-8241-844d-81b876048650", "id": null, "title": "尋找本命茶" },
+    { "n": 34, "page_id": "8516ee9a-fad2-83d4-929f-8138ce5f58ef", "id": null, "title": "飯後饮茶助消化？真相係……" },
+    { "n": 35, "page_id": "ceb6ee9a-fad2-83fd-bfbe-812ea3c8d2e4", "id": null, "title": "黃茶為何是六大茶類中最罕見的？" },
+    { "n": 36, "page_id": "cf76ee9a-fad2-8335-8710-011b7e96908b", "id": null, "title": "一沖二焗三撞：港式奶茶入非遺嘅秘密" },
+    { "n": 37, "page_id": "d9e6ee9a-fad2-82ea-9461-8159b6195737", "id": null, "title": "絲襪奶茶的「絲襪」其實唔係絲襪！" },
+    { "n": 38, "page_id": "dea6ee9a-fad2-83ea-90d6-013a695e5f68", "id": null, "title": "手腳冰冷該喝紅茶？體質選茶自測指南" },
+    { "n": 39, "page_id": "cb96ee9a-fad2-82f9-a05d-01530b32029f", "id": null, "title": "港式奶茶三王爭霸" },
+    { "n": 40, "page_id": "1126ee9a-fad2-83ce-a23e-8163638fc5d6", "id": null, "title": "一盅兩件：廣東人飲茶嘅哲學係咩？" },
+    { "n": 41, "page_id": "a136ee9a-fad2-82bb-9be1-811fa3e17ff1", "id": null, "title": "香港老字號茶行" },
+    { "n": 42, "page_id": "f9d6ee9a-fad2-83dd-a997-01957959254a", "id": null, "title": "找茶測驗分享圖卡——你嘅本命茶係邊款？" },
+    { "n": 43, "page_id": "4c86ee9a-fad2-83d0-8e1f-01f1baefb58a", "id": null, "title": "冷泡茶點解唔會苦？低溫萃取的科学原理" },
+    { "n": 44, "page_id": "1366ee9a-fad2-82fc-b641-0182a8d6b6f0", "id": null, "title": "平價茶王評測" },
+    { "n": 45, "page_id": "d616ee9a-fad2-8277-8c0e-01c20eb108ed", "id": null, "title": "生普 vs 熟普" },
+    { "n": 46, "page_id": "5ef6ee9a-fad2-830b-907f-01ed74ced435", "id": null, "title": "一日三杯茶時間表" },
+    { "n": 47, "page_id": "c456ee9a-fad2-83c0-9b0e-015fd3b737a7", "id": null, "title": "冷泡茶黃金比例" },
+    { "n": 48, "page_id": "28b6ee9a-fad2-82bc-8183-0184f28c2e8a", "id": null, "title": "一壺一茶：紫砂壺點解唔可以混用？" }
+  ],
+
+  "replacement_plan": {
+    "content_dimensions_new_options": [
+      { "name": "經典款", "color": "pink" },
+      { "name": "設計師款", "color": "purple" },
+      { "name": "亞麻布", "color": "yellow" },
+      { "name": "磨砂珠光", "color": "blue" },
+      { "name": "燙印工藝", "color": "brown" },
+      { "name": "註冊流程", "color": "green" },
+      { "name": "中式習俗", "color": "red" },
+      { "name": "保養知識", "color": "gray" },
+      { "name": "送禮場景", "color": "orange" },
+      { "name": "品牌故事", "color": "default" }
+    ]
+  }
+}

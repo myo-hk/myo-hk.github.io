@@ -1,0 +1,30 @@
+# Dependencies
+node_modules/
+
+# Git worktrees (isolated feature workspaces)
+.worktrees/
+
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Test files
+test-*.js
+test-runner.html
+Icon?
+Icon
+.gomo/
+.gstack/
+.DS_Store
+test-results/
+
+
+# Script-generated reports
+*_report.json

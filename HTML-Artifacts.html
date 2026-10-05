@@ -1,0 +1,126 @@
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GQLW7LNP6H"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-GQLW7LNP6H');
+</script>
+
+<!-- 頁面底部加入 PDF 下載按鈕 -->
+<button id="pdf-download" style="
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    padding: 10px 16px;
+    background: #0066ff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    z-index: 1000;
+    font-size: 14px;
+">下載 PDF</button>
+
+<script>
+// 等待 html2pdf.js 載入（可透過 CDN 動態加載）
+function loadHtml2Pdf() {
+    return new Promise((resolve, reject) => {
+        if (window.html2pdf) { resolve(window.html2pdf); return; }
+        const script = document.createElement('script');
+        script.src = 'https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js';
+        script.onload = () => resolve(window.html2pdf);
+        script.onerror = reject;
+        document.head.appendChild(script);
+    });
+}
+
+// 主縮放函式（螢幕與列印共用）
+(function() {
+    const poster = document.querySelector('.a5-flyer');
+    const baseWidth = 420; // 設計稿寬度
+    const padding = 20;    // 預留邊距
+    let savedScale = '';
+
+    function computeScale() {
+        const viewportWidth = window.innerWidth;
+        const availableWidth = viewportWidth - padding;
+        let scale = Math.min(1, availableWidth / baseWidth);
+
+        // iOS Safari 列印補償
+        const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+        if (isIOS && window.matchMedia('(print)').matches) {
+            scale *= 1.03; // 約 +3%
+        }
+        return scale;
+    }
+
+    function applyScale(scale) {
+        poster.style.transform = `scale(${scale})`;
+        poster.style.transformOrigin = 'top center';
+        savedScale = `scale(${scale})`;
+        // 同時更新 CSS 變數，供 @media print 使用
+        document.documentElement.style.setProperty('--print-scale', scale);
+    }
+
+    function scalePoster() {
+        applyScale(computeScale());
+    }
+
+    // 初始化
+    scalePoster();
+    window.addEventListener('resize', scalePoster);
+
+    // 列印前後處理
+    window.addEventListener('beforeprint', () => {
+        poster.style.transform = 'none'; // 暫移除螢幕縮放
+    });
+    window.addEventListener('afterprint', () => {
+        poster.style.transform = savedScale; // 恢復縮放
+    });
+
+    // PDF 下載按鈕
+    document.getElementById('pdf-download').addEventListener('click', async () => {
+        const btn = event.target;
+        btn.disabled = true;
+        btn.textContent = '產生中…';
+        try {
+            const html2pdf = await loadHtml2Pdf();
+            await html2pdf()
+                .set({
+                    margin: 0,
+                    filename: 'poster.pdf',
+                    image: { type: 'jpeg', quality: 0.98 },
+                    html2canvas: { scale: 2, useCORS: true },
+                    jsPDF: { unit: 'mm', format: 'a5', orientation: 'portrait' }
+                })
+                .from('.a5-flyer')
+                .save();
+        } catch (e) {
+            console.error('PDF 產生失敗:', e);
+            alert('PDF 產生失敗，請使用瀏覽器「列印」->「另存為 PDF」。');
+        } finally {
+            btn.disabled = false;
+            btn.textContent = '下載 PDF';
+        }
+    });
+})();
+</script>
+
+<!-- 列印樣式 -->
+<style>
+@media print {
+    /* 使用 JS 傳遞的縮放比例 */
+    .a5-flyer {
+        transform: scale(var(--print-scale, 1)) !important;
+        transform-origin: top center !important;
+    }
+    /* 去除頁面邊距，確保剛好填滿 A5 */
+    body { margin: 0; padding: 0; }
+    /* 隱藏瀏覽器預設列印頭腳 */
+    @page { margin: 0; }
+    /* 確保不換頁 */
+    .a5-flyer { page-break-inside: avoid; }
+}
+</style>
